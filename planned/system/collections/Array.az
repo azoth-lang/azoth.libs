@@ -1,0 +1,34 @@
+// Would it be possible for Array[n: size, T] <: Array[T]? I think not, but implicit conversion could be an option.
+
+public mut ref struct Array[n: size, T]
+{
+    let elements: Raw_Array[T]$ref;
+
+    public unsafe init(.elements) { }
+    public unsafe init(data: @T)
+    {
+        unsafe(self.init(Raw_Array(data)));
+    }
+
+    public unsafe implicit operator[n: size] #[](params elements: Raw_Array[T]) -> Array[n, T]
+    {
+        return unsafe(Array[n,T](elements));
+    }
+}
+
+public mut ref struct Array[T]
+{
+    public let count: size;
+    let elements: Raw_Array[T]$ref;
+
+    public unsafe init(.count, .elements) { }
+    public unsafe init from_pointer[$ref](.count, elements: @T)
+    {
+        .elements = Raw_Array[T].from_pointer[$ref](elements);
+    }
+
+    public unsafe implicit operator #[](count: size, elements: @T) -> Array[T]$owned
+    {
+        return unsafe(Array$owned(count, elements));
+    }
+}

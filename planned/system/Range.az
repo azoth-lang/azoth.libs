@@ -1,0 +1,20 @@
+public struct Range[T]
+    where T <: Ordered
+{
+    public let start: T;
+    public let start_inclusive: bool;
+    public let end: T;
+    public let end_inclusive: bool;
+
+    public init(.start, .start_inclusive, .end, .end_inclusive) { }
+
+    public init open(.start, .end)
+    {
+        start_inclusive = end_inclusive = false;
+    }
+
+    public init closed(.start, .end)
+    {
+        start_inclusive = end_inclusive = true;
+    }
+}

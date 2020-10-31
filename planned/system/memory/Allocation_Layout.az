@@ -1,0 +1,29 @@
+/// The layout of a block of memory.
+///
+/// An `Allocation_Layout` describes a particular layout of memory. You build a
+/// an `Allocation_Layout` up as an input to give to an allocator.
+///
+/// For all layouts:
+///
+/// * `minimum_alignment` is a power-of-two  (note this implies non-zero).
+/// * `size`, when rounded up to the nearest multiple of `minimum_alignment`
+///    must not overflow (i.e. the rounded value must be less than `size.max_value`).
+
+// Why not store alignment as the power?
+public struct Allocation_Layout
+    invariant minimum_alignment.is_power_of_two()
+    invariant does_not_overflow_at_alignment(\size, minimum_alignment)
+{
+    public let \size: size;
+    public let minimum_alignment: size;
+
+    // TODO I'm assuming the invariant is auto checked on these
+    public init(.\size, .minimum_alignment) {}
+
+    public fn does_not_overflow_at_alignment(\size: size, minimum_alignment: size) -> bool
+    {
+        // TODO is this calculation correct?
+        let max_size = size.max_value - (minimum_alignment - 1)
+        return \size <= max_size;
+    }
+}

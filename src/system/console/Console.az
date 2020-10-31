@@ -1,0 +1,41 @@
+published mut class Console
+{
+    public new() { }
+
+    published /* safe */ fn write(mut self, value: String)
+    {
+        unsafe
+        {
+            print_utf8(value.bytes, value.byte_count);
+        }
+    }
+
+    published /* safe */ fn write_line(mut self, line: String)
+    {
+        unsafe
+        {
+            print_utf8(line.bytes, line.byte_count);
+            let newline: String = "\n";
+            print_utf8(newline.bytes, newline.byte_count);
+        }
+    }
+
+    published /* safe */ fn write_line(mut self)
+    {
+        unsafe
+        {
+            let newline: String = "\n";
+            print_utf8(newline.bytes, newline.byte_count);
+        }
+    }
+
+    published /* safe */ fn read_line(mut self) -> iso String
+    {
+        unsafe
+        {
+            let ptr = mem_allocate(1024);
+            let length = read_utf8_line(ptr, 1024);
+            return new String(ptr, length);
+        }
+    }
+}

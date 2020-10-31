@@ -1,0 +1,137 @@
+/// A memory allocator that can be registered as the default allocator through
+/// the `#Global_Allocator` attribute.
+///
+/// Some of the methods require that a memory block be *currently allocated* via
+/// the allocator. This means that:
+///
+/// * the starting address for that memory block was previously returned by a
+///   previous call to an allocation method on this allocator such as
+///   `allocate`, `allocate_zeroed`, or `reallocate`.
+/// * the memory block was not subsequently deallocated. Blocks are deallocated
+///   either by being passed to a deallocation method such as `deallocate` or by
+///   being passed to a reallocation method that returns a non-null pointer.
+public trait Global_Allocator
+{
+    // TODO This type shows the need for abstract predicate functions for
+    //      contracts. These could not be checked at runtime, but could be used
+    //      for compile time proof and for model checking. In the case of the
+    //      `Global_Allocator`, the predicate would be a method `allocated(@any)`
+    //      that determined if a block of memory was currently allocated using
+    //      this allocator.
+
+    /// Allocate memory as described by the given layout. Returns a pointer to
+    /// the newly-allocated memory. The contents of the memory may not be
+    /// initalized.
+    ///
+    /// # Exceptions
+    ///
+    /// Implementations are *strongly* encouraged to throw
+    /// `Allocation_Failure.Insufficient_Memory` on memory exhaustion rather
+    /// than aborting, but this is not a strict requirement. (Specifically: it
+    /// is legal to implement this type atop an underlying native allocation
+    /// library that aborts on memory exhaustion.)
+    ///
+    /// Callers wishing to abort computation in response to an allocation error
+    /// are encouraged to call the `handle_allocation_error` function, rather
+    /// than directly aborting.
+    // TODO is `handle_allocation_error` the correct function
+    public fn allocate(self, layout: Allocation_Layout) -> @any
+        may throw Allocation_Failure$forever
+        // TODO ensures self.allocated(return)
+        ;
+
+    /// Allocate memory as described by the given layout. Returns a pointer to
+    /// the newly-allocated memory. The contents of the memory are initalized to
+    /// zero.
+    ///
+    /// # Exceptions
+    ///
+    /// Implementations are *strongly* encouraged to throw
+    /// `Allocation_Failure.Insufficient_Memory` on memory exhaustion rather
+    /// than aborting, but this is not a strict requirement. (Specifically: it
+    /// is legal to implement this type atop an underlying native allocation
+    /// library that aborts on memory exhaustion.)
+    ///
+    /// Callers wishing to abort computation in response to an allocation error
+    /// are encouraged to call the `handle_allocation_error` function, rather
+    /// than directly aborting.
+    // TODO is `handle_allocation_error` the correct function
+    public fn allocate_zeroed(self, layout: Allocation_Layout) -> @any
+        may throw Allocation_Failure$forever
+        // TODO ensures self.allocated(return)
+    {
+        let memory = try self.allocate(layout);
+        zero(memory, layout.\size);
+        return memory;
+    }
+
+    /// Deallocate the block of memory.
+    ///
+    /// # Safety
+    ///
+    /// This function is unsafe because the caller must ensure that the memory
+    /// is currently allocated with this allocator.
+    public unsafe fn deallocate(self, memory: @any) -> void
+        // TODO requires self.allocated(memory)
+        // TODO ensures not self.allocated(memory)
+        ;
+
+    /// Shink or grow a block of memory to the given layout. Note that even if
+    /// the size is the same, a larger alignment may require reallocation.
+    ///
+    /// # Safety
+    ///
+    /// This function is unsafe because the caller must ensure that the memory
+    /// is currently allocated with this allocator.
+    ///
+    /// # Exceptions
+    ///
+    /// Implementations are *strongly* encouraged to throw
+    /// `Allocation_Failure.Insufficient_Memory` on memory exhaustion rather
+    /// than aborting, but this is not a strict requirement. (Specifically: it
+    /// is legal to implement this type atop an underlying native allocation
+    /// library that aborts on memory exhaustion.)
+    ///
+    /// Callers wishing to abort computation in response to an allocation error
+    /// are encouraged to call the `handle_allocation_error` function, rather
+    /// than directly aborting.
+    // TODO is `handle_allocation_error` the correct function
+    public unsafe fn reallocate(self, memory: @any, new_layout: Allocation_Layout) -> @any
+        may throw Allocation_Failure$forever
+        // TODO requires self.allocated(memory)
+        // TODO ensures memory==return or not self.allocated(memory) and self.allocated(return)
+        ;
+    // TODO a default implementation?
+
+    /// Shink or grow a block of memory to the given layout. Note that even if
+    /// the size is the same, a larger alignment may require reallocation. If a
+    /// new block of memory is allocated, only `preserve_bytes` need to be
+    /// copied from the old memory block.
+    ///
+    /// # Safety
+    ///
+    /// This function is unsafe because the caller must ensure that the memory
+    /// is currently allocated with this allocator.
+    ///
+    /// # Exceptions
+    ///
+    /// Implementations are *strongly* encouraged to throw
+    /// `Allocation_Failure.Insufficient_Memory` on memory exhaustion rather
+    /// than aborting, but this is not a strict requirement. (Specifically: it
+    /// is legal to implement this type atop an underlying native allocation
+    /// library that aborts on memory exhaustion.)
+    ///
+    /// Callers wishing to abort computation in response to an allocation error
+    /// are encouraged to call the `handle_allocation_error` function, rather
+    /// than directly aborting.
+    // TODO is `handle_allocation_error` the correct function
+    public unsafe fn reallocate(self,
+        memory: @any,
+        preserve_bytes: size,
+        new_layout: Allocation_Layout) -> @any
+        may throw Allocation_Failure$forever
+        // TODO requires self.allocated(memory)
+        // TODO ensures memory==return or not self.allocated(memory) and self.allocated(return)
+        ;
+    // TODO a default implementation?
+}

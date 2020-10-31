@@ -1,0 +1,5 @@
+public type Integer_Interval
+{
+    public const max_value: Self;
+    public const min_value: Self;
+}

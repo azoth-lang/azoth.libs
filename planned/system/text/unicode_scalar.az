@@ -1,0 +1,16 @@
+public struct unicode_scalar
+{
+    public const MinValue: unicode_scalar = unicode_scalar(unicode_code_point.MinValue);
+    public const MaxValue: unicode_scalar = unicode_scalar(unicode_code_point.MaxValue);
+
+    let value: unicode_code_point;
+
+    public init(.value)
+        // TODO requires not high or low surrogate
+    { }
+
+    public operator unicode_code_point(self) -> unicode_scalar
+    {
+        return self.value;
+    }
+}

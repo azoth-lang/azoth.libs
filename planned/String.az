@@ -1,0 +1,26 @@
+// Note: This is declared in the global namespace so that it will take precedence
+// over any `String` types declared in other packages.
+public ref struct String
+{
+    // For now, we implement this without using Array[byte] for simplicity
+    // public let bytes: Array[byte]$ref;
+    public let byte_count: size; // TODO this should just be the count of the byte array i.e. `bytes.count`
+    public let bytes: @byte;
+
+    // public unsafe new(count: size, bytes: @byte)
+    // {
+    //     .bytes = unsafe(new Array[byte](count, bytes));
+    // }
+
+    public unsafe init from_utf8_unchecked[$ref](byte_count: size, bytes: @byte)
+    {
+        // Use explicit `self.` to avoid advance features
+        self.byte_count = byte_count;
+        self.bytes = bytes;
+    }
+
+    public unsafe implicit operator "_"(byte_count: size, bytes: @byte) -> String$forever
+    {
+        return unsafe(String.from_utf8_unchecked[$forever](byte_count, bytes));
+    }
+}

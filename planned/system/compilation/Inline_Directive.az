@@ -1,0 +1,6 @@
+public enum struct Inline_Directive
+{
+    Never,
+    Hint,
+    Always,
+}

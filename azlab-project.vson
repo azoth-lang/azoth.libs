@@ -1,0 +1,6 @@
+{
+    "name": "azoth.stdlib",
+    "root_namespace": "",
+    "authors": ["Jeff Walker"],
+    "template": "lib"
+}

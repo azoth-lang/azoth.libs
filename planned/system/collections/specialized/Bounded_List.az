@@ -1,0 +1,6 @@
+// TODO move to system.collections package
+
+/// A list whose size can grow and shrink within a bound given when it is constructed
+public struct Bounded_List[T]
+{
+}

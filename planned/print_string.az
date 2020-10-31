@@ -1,0 +1,9 @@
+// For the time being, we use the following C function for writing to the
+// console. This function has been added to the Runtime Library. This avoids the
+// need to support C varargs functions right now.
+
+// Moved to just implement in RuntimeLibrary without external call
+// external
+// {
+//     public unsafe fn print_string(byte_count: size, bytes: @byte);
+// }

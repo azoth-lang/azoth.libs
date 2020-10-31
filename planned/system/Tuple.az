@@ -1,0 +1,23 @@
+// using system.collections;
+// using system.collections.specialized;
+
+// public class Tuple[params Types: Array[type]]
+// {
+//     public const count: size = Types.count;
+//     private let values: Parameters[params Types];
+
+//     public new(params .values) { }
+
+//     #Inline
+//     public operator #() (params values: Parameters[params Types]) -> Tuple[params Types]$owned
+//     {
+//         return new Tuple[params Types](params values);
+//     }
+
+//     #Inline
+//     public fn at[n: size] -> Types.at(n)
+//         requires n < Types.count
+//     {
+//         return values.at[n];
+//     }
+// }

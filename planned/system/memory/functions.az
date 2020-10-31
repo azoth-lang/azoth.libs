@@ -1,0 +1,43 @@
+// TODO unsafe fn copy_memory()
+
+// TODO unsafe fn forget()
+
+// TODO unsafe fn move_memory()
+
+public safe fn size_of[T] -> size
+{
+    // TODO correctly implement
+    return 0;
+}
+
+// Repeat a fixed byte value across a block of memory
+public unsafe fn write_bytes(destination: @any, value: byte, byte_count: size) -> void
+    // TODO requires destination+byte_count doesn't overflow
+{
+    // TODO improve performance
+    // TODO use llvm intrinsic
+    // Using while loop for gaurenteed peformance
+    var current = unsafe(destination as @byte);
+    var end = current + byte_count;
+    while(current < end)
+    {
+        unsafe(^current = value);
+        current += 1;
+    }
+}
+
+#Inline
+public unsafe fn zero(destination: @any, byte_count: size) -> void
+    // TODO requires destination+byte_count doesn't overflow
+{
+    unsafe(write_bytes(destination, 0, byte_count));
+}
+
+#Inline
+public unsafe fn zeroed[T]() -> T
+    where T: struct
+{
+    var value: T = uninitialized;
+    zero(@value, size_of[T]);
+    return value;
+}

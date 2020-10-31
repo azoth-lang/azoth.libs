@@ -1,0 +1,8 @@
+// Since this a pure function, it can be evaluated at compile time
+public fn factorial(n: integer) -> integer
+{
+    var result: integer = 1;
+    foreach factor in 2..n
+        { result *= factor; }
+    return result;
+}

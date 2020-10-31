@@ -1,0 +1,47 @@
+// Even though Raw_Array is not a primitve type, it is one of the types that the
+// compiler will need to treat specially. For optimization, the compiler should
+// be capable of optimizaing small arrays onto the stack the same way it
+// optimizes objects onto the stack.
+
+/// A `Raw_Array[T]` is a fairly thin wrapper around a pointer to a block of
+/// memory. It doesn't carry a size.
+public mut ref struct Raw_Array[T]
+{
+    private let elements: @T;
+
+    public new(count: size)
+    {
+        .elements = allocate[T](count);
+    }
+
+    // Lifetime parameter allows us to know the proper lifetime of the array
+    public unsafe init from_pointer[$ref](.elements)
+    {
+    }
+
+    public unsafe fn at(mut self, index: size) -> ref var T
+    {
+        return unsafe(ref var (elements+index)^.value);
+    }
+
+    public unsafe fn at(self, index: size) -> ref T
+    {
+        return unsafe(ref ^(elements+index));
+    }
+
+    public fn slice(mut self, index: size) -> mut Raw_Array[T] $< ref
+    {
+        return Raw_Array[T](elements+index);
+    }
+
+    public fn slice(self, index: size) -> Raw_Array[T] $< ref
+    {
+        return Raw_Array[T](elements+index);
+    }
+
+    // TODO this is strange, do they explicitly call delete?
+    public unsafe delete()
+    {
+        unsafe(deallocate(elements));
+    }
+}

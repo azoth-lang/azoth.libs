@@ -1,0 +1,41 @@
+public move struct Parameters[]
+{
+    public const count: size = 0;
+
+    #Inline
+    public init() { }
+
+    #Inline
+    public operator #() () -> Parameters[]
+    {
+        return Parameters[]();
+    }
+}
+
+public move struct Parameters[T, params Rest: Array[type]]
+{
+    public const count: size = Rest.count + 1;
+
+    private let first: T;
+    private let rest: Parameters[params Rest];
+
+    #Inline
+    public init(.first, params .rest) {  }
+
+    #Inline
+    public operator #() (first: T, params rest: Parameters[params Rest])
+        -> Parameters[T, params Rest]
+    {
+        return Parameters(first, params rest);
+    }
+
+    #Inline
+    public fn at[n: size] -> if n==0 => T else => Rest.at(n-1)
+        requires n < Rest.count
+    {
+        if n==0
+            { return first; }
+        else
+            { return rest.at[n-1]; }
+    }
+}

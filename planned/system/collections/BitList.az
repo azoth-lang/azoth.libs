@@ -1,0 +1,24 @@
+// This file is to demonstate one of the use cases for generic specialization.
+// That a list of bools would be optimized into a bit vector
+
+// The idea is that generics can only really be overloaded on number of arguments,
+// so two declarations with the same name and number of arguments must be specializations.
+public class List[T] <: List[T] // We must be a subtype of what we are specializing, we could inherit instead
+    where T==bool // This is what specializes us
+{
+
+}
+
+
+// An alternate syntax, since underscore means infer,
+public class List[_] <: List[bool]
+{
+}
+
+public specialize class List[_] <: List[bool]
+
+
+public class List[T]
+    where let T = bool
+{
+}

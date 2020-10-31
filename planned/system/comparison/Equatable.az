@@ -1,0 +1,10 @@
+/// A type for which there is an [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation).
+public type Equatable <: PartiallyEquatable
+{
+    public abstract override operator ==(other: Self) -> bool
+        // reflexive a == a
+        ensures self == self;
+        // The following postconditions are inherited from PartiallyEquatable
+        // symmetry if a==b, then b==a
+        // transitivity: if a==b and b==c, then a==c
+}

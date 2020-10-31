@@ -1,0 +1,53 @@
+/// An `Unsafe_Array[T]` is an array of `T`'s that start uninitialized.
+public mut ref struct Unsafe_Array[T]
+{
+    // TODO is this typed correctly? Will it compile?
+    public const empty: Unsafe_Array[never] = new Unsafe_Array[never](0);
+
+    public let count: size;
+    private let elements: Raw_Array[T]$ref;
+
+    public new(.count)
+    {
+        self.elements = new Raw_Array[T](self.count);
+    }
+
+    // Unsafe because count may not match elements?
+    // Because the type of elements is `Raw_Array[T]$ref` we know the lifetime
+    // of the `Unsafe_Array[T]`
+    private unsafe init(.count, .elements) { }
+
+    /// Unsafe because the element may not be initialized
+    public unsafe fn at(mut self, index: size) -> ref var T
+        requires index < count
+    {
+        return unsafe(elements.at(index));
+    }
+
+    public unsafe fn at(self, index: size) -> ref T
+        requires index < count
+    {
+        return unsafe(elements.at(index));
+    }
+
+    public fn slice(mut self, start: size, length: size) -> mut Unsafe_Array[T] $< ref
+        requires start < count
+        requires start + length <= count
+    {
+        return init Unsafe_Array[T](length, elements.slice(start));
+    }
+
+    public fn slice(self, start: size, length: size) -> Unsafe_Array[T] $< ref
+        requires start < count
+        requires start + length <= count
+    {
+        return init Unsafe_Array[T](length, elements.slice(start));
+    }
+
+    // TODO this is strange, do they explicitly call delete?
+    public unsafe delete()
+    {
+        // implicit delete handles self.elements. destructor needed for unsafe
+        // Or should it be explicit because of unsafe?
+    }
+}

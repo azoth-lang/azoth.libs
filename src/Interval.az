@@ -1,0 +1,26 @@
+// The interval classes are temporary classes used to handle interval expressions.
+// Eventually, there will be a single generic interval struct. Currently, intervals
+// not including their endpoints are represented by moving the endpoint. Open
+// intervals are represented use min and max values. The current foreach loop
+// uses `count` and `at()` to iterate over things, so the interval classes have
+// those.
+
+/*published class Size_Interval
+{
+    published let start: size;
+    published let end: size;
+    // TODO make this a computed property
+    published let count: size;
+
+    published new(.start, .end)
+        // requires start <= end
+    {
+        self.count = self.end - self.start + 1;
+    }
+
+    published fn at(self, index: size) -> size
+        // requires index < .count
+    {
+        return .start + index;
+    }
+}*/

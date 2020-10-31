@@ -1,0 +1,11 @@
+public enum class Allocation_Failure: Exception
+{
+    /// There was not enough memory avalible to allocate the requested amount
+    /// of memory. A smaller allocation may succed. If memory is freed, it may
+    /// be possible to allocate the requested amount of memory.
+    Insufficient_Memory,
+
+    /// The system state is invalid. Most likely due to heap curruption. Typically
+    /// all future allocations will fail.
+    Invalid_State;
+}

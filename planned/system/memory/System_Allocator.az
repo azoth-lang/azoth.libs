@@ -1,0 +1,18 @@
+// private type alias LPVOID = @any;
+// private type alias HANDLE = LPVOID;
+// private type alias SIZE_T = size;
+// private type alias DWORD = uint;
+// private type alias BOOL = int;
+
+// external "system"
+// {
+//     private safe fn GetProcessHeap() -> HANDLE;
+//     private safe fn HeapAlloc(hHeap: HANDLE, dwFlags: DWORD, dwBytes: SIZE_T) -> LPVOID;
+//     private unsafe fn HeapReAlloc(hHeap: HANDLE, dwFlags: DWORD, lpMem: LPVOID, dwBytes: SIZE_T) -> LPVOID;
+//     private unsafe fn HeapFree(hHeap: HANDLE, dwFlags: DWORD, lpMem: LPVOID) -> BOOL;
+//     private safe fn GetLastError() -> DWORD;
+// }
+
+public struct System_Allocator <: Global_Allocator
+{
+}

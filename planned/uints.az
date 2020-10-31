@@ -1,0 +1,15 @@
+public extend struct uint
+{
+    // public const min_value: uint = 0;
+    // public const max_value: uint = 2**32;
+
+    public operator .. (self, limit: uint) -> Range[uint]
+    {
+        return init Range.closed(self, limit);
+    }
+
+    public fn display_format(self) -> string
+    {
+        // ..
+    }
+}
