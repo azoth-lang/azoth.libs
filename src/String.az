@@ -9,7 +9,7 @@ using intrinsics;
 ///
 /// At the moment, this string class leaks all memory. Once destructors work
 /// correctly, that can be fixed.
-published class String
+published class string
 {
     published let byte_count: size; // TODO this should just be the count of the byte array i.e. `bytes.count`
     public let bytes: size; // raw pointer hidden as a size
@@ -32,7 +32,7 @@ published class String
     // }
 
     /// Concatenate two strings producing a new one
-    published /* safe */ fn concat(self, other: String) -> iso String
+    published /* safe */ fn concat(self, other: string) -> iso string
     {
         let new_byte_count = self.byte_count + other.byte_count;
         let new_bytes = mem_allocate(new_byte_count);
@@ -40,7 +40,7 @@ published class String
         {
             mem_copy(self.bytes, new_bytes, self.byte_count);
             mem_copy(other.bytes, new_bytes + self.byte_count, other.byte_count);
-            return new String(new_byte_count, new_bytes);
+            return new string(new_byte_count, new_bytes);
         }
     }
 
