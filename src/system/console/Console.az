@@ -1,4 +1,4 @@
-published mut class Console
+published class Console
 {
     public new() { }
 
