@@ -1,7 +1,7 @@
 /// A type for which there is an [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation).
 public type Equatable <: PartiallyEquatable
 {
-    public abstract override operator ==(other: Self) -> bool
+    public abstract override operator ==(const self, other: const Self) -> bool
         // reflexive a == a
         ensures self == self;
         // The following postconditions are inherited from PartiallyEquatable

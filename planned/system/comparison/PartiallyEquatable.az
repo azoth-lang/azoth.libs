@@ -1,9 +1,9 @@
 /// A type for which there is a [partial equivalence relation](https://en.wikipedia.org/wiki/Partial_equivalence_relation).
 /// For example, in floating point numbers `NaN =/= NaN`, so floating point types
 /// implement `PartiallyEquatable` but not `Equatable`.
-public type PartiallyEquatable
+public type Partially_Equatable
 {
-    public abstract operator ==(other: Self) -> bool
+    public abstract operator ==(const self, other: const Self) -> bool
         // symmetry: if a==b, then b==a
         // commenting out so we don't have to parse right now given that `return` changes to a varible here
         // ensures if return => other == self else => true
@@ -11,7 +11,7 @@ public type PartiallyEquatable
         // Commented out advanced contract so we don't have to parse it for now
         // ensures for a:Self, b:Self, c:Self if a==b and b==c => a==c;
 
-    public operator =/=(other: Self) -> bool
+    public operator =/=(const self, other: const Self) -> bool
     {
         return not (self == other);
     }

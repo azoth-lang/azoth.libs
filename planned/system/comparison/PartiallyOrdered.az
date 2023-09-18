@@ -7,35 +7,35 @@
 // see https://www.reddit.com/r/ProgrammingLanguages/comments/9u63pe/language_design_comparing_and_sorting/
 public type PartiallyOrdered <: PartiallyEquatable
 {
-    public abstract fn compare(other: Self) -> Ordering?;
+    public abstract fn compare(const self, other: const Self) -> Ordering?;
 
-    public override operator == (other: Self) -> bool?
+    public override operator == (const self, other: const Self) -> bool
     {
-        return self.compare(other) == .Equal;
+        return .compare(other) == .Equal;
     }
 
-    public operator < (other: Self) -> bool
+    public operator < (const self, other: const Self) -> bool
     {
-        return self.compare(other) == .Less;
+        return .compare(other) == .Less;
     }
 
-    public operator <= (other: Self) -> bool
+    public operator <= (const self, other: Self) -> bool
     {
-        return match self.compare(other)
+        return match .compare(other)
         {
             .Less | .Equal => true,
             _ => false
         };
     }
 
-    public operator > (other: Self) -> bool
+    public operator > (const self, other: Self) -> bool
     {
-        return self.compare(other) == .Greater;
+        return .compare(other) == .Greater;
     }
 
-    public operator >= (other: Self) -> bool
+    public operator >= (const self, other: Self) -> bool
     {
-        return match self.compare(other)
+        return match .compare(other)
         {
             .Greater | .Equal => true,
             _ => false
