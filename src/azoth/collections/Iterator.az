@@ -1,0 +1,4 @@
+public abstract class Iterator[T]
+{
+    published abstract fn \next(mut self) -> T?;
+}

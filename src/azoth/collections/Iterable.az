@@ -1,0 +1,4 @@
+public abstract class Iterable[T]
+{
+    published abstract fn new_iterator(self) -> Iterator[T];
+}
