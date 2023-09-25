@@ -11,16 +11,25 @@ using intrinsics;
 /// correctly, that can be fixed.
 published class string
 {
-    published let byte_count: size; // TODO this should just be the count of the byte array i.e. `bytes.count`
-    public let bytes: size; // raw pointer hidden as a size
+    /// The index of the start of the string data in `bytes`.
+    public let start: size;
+    /// The number of bytes in the string when encoded in UTF8.
+    published let byte_count: size;
+    // TODO use iref var?
+    var bytes: mut Raw_Bounded_List[byte];
 
-    // Constructor is private because it uses low level pointer functionality
-    // The language will bypass access rules to call it for string constants,
-    // but give them a type of `String$forever`
-    /* unsafe */ new(byte_count: size, bytes: size)
+    // Constructor is private because this is a temporary way of constructing strings for constants
+    // TODO parameter type doesn't make sense for string literals
+    /* unsafe */ new(bytes: mut Raw_Bounded_List[byte], start: size, byte_count: size)
     {
-        self.byte_count = byte_count;
-        self.bytes = bytes;
+        .bytes = bytes;
+        .start = start;
+        .byte_count = byte_count;
+    }
+
+    public fn raw_bytes(self) -> Raw_Bounded_List[byte]
+    {
+        return .bytes;
     }
 
     // Once it is supported, this should be a copy constructor
@@ -34,14 +43,17 @@ published class string
     /// Concatenate two strings producing a new one
     published /* safe */ fn concat(self, other: string) -> iso string
     {
-        let new_byte_count = self.byte_count + other.byte_count;
-        let new_bytes = mem_allocate(new_byte_count);
-        unsafe
+        let new_byte_count = .byte_count + other.byte_count;
+        let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
+        foreach i: size in .start..<(.start+.byte_count)
         {
-            mem_copy(self.bytes, new_bytes, self.byte_count);
-            mem_copy(other.bytes, new_bytes + self.byte_count, other.byte_count);
-            return new string(new_byte_count, new_bytes);
+            new_bytes.add(.bytes.at(i));
         }
+        foreach i: size in other.start..<(other.start+other.byte_count)
+        {
+            new_bytes.add(other.bytes.at(i));
+        }
+        return new string(new_bytes, 0, new_byte_count);
     }
 
     // published safe fn equals(self, other: String) -> bool
