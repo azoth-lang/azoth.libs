@@ -1,8 +1,56 @@
 // Since this a pure function, it can be evaluated at compile time
-public fn factorial(n: integer) -> integer
+published fn factorial(n: uint64) -> uint
 {
-    var result: integer = 1;
-    foreach factor in 2..n
-        { result *= factor; }
-    return result;
+    // TODO use a lookup table for all values that fit in uint64
+    if n < 2 => return 1;
+    if n < 21 // TODO use native ints instead of uint64
+    {
+        var result: uint64 = 2;
+        foreach factor in 3..n
+            { result *= factor; }
+        return result;
+    }
+    // TODO use a prime based algorthim for bigger factorials https://www.luschny.de/math/factorial/SwingIntro.pdf
+
+    // Divide and Conquer factorial algorithm. The factorial of n is computed as 2^k * m
+    // The 2^k portion
+}
+
+fn factorial_odd_part(n: uint) -> uint
+{
+
+}
+
+/// The product of the first `count` odd numbers starting from n through m inclusive
+/// # Parameters
+/// max_bits:
+///     The max bit length of `to`. Must be >= `to.bit_length()`
+// TODO use inclusive range?
+fn product_of_odds(\from: uint64, to: uint64, max_bits: size) -> uint
+    // requires n.is_odd and m.is_even
+    // TODO requries that (n + count * 2) <= uint64.max_value
+{
+    // TODO use unchecked math
+
+    // the number of operands to multiply
+    let num_operands = ((stop - start) / 2) + 1; // assuming the compiler will optimize divide by 2 to a shift
+
+    // If the result will fit in a `uint64`, compute it as a simple product. The bit length of the
+    // product of two numbers is bounded by the sum of the bit lengths of each number. Thus the bit
+    // length of the desired product is bounded by `num_operands * max_bits`. The
+    // `num_operands <= uint64.bits` avoids the unlikely case of an overflow in `num_operands * max_bits`.
+    if num_operands <= uint64.bits and num_operands * max_bits <= uint64.bits
+    {
+        var result: uint64 = \from;
+        // TODO need to step by 2
+        foreach factor in (\from+2)..m
+            { result *= factor; }
+        return result;
+    }
+
+    // The midpoint rounded up to the next odd number
+    let midpoint = (n + num_operands).binary_or(1);
+
+    // Divide into halves and recur
+    return product_of_odds(\from, midpoint, midpoint.bit_length()) * product_of_odds(midpoint + 2, m, max_bit_length);
 }
