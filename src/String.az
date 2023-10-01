@@ -21,9 +21,11 @@ published class string
     var bytes: mut Raw_Bounded_List[byte];
 
     // Constructor is private because this is a temporary way of constructing strings for constants
-    // TODO parameter type doesn't make sense for string literals
-    /* unsafe */ new(.bytes, .start, .byte_count)
+    /* unsafe */ new(self, bytes: Raw_Bounded_List[byte], start: size, byte_count: size)
     {
+        .bytes = bytes;
+        .start = start;
+        .byte_count = byte_count;
     }
 
     // published new()
@@ -31,7 +33,7 @@ published class string
     //     self.new(16);
     // }
 
-    published new(var capacity: size)
+    published new(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
         .bytes = new Raw_Bounded_List[byte](capacity);

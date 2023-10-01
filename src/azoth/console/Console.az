@@ -4,7 +4,7 @@ published class Console
 
     // For now, allow the console type to be directly constructed
     // TODO mark this as a type that must be constructed before `main`
-    published new()
+    published new(mut self)
     {
         .newline = "\n";
     }
