@@ -3,7 +3,7 @@ published fn NOT_IMPLEMENTED() -> never
     ABORT("Not Implemented!");
 }
 
-published fn NOT_IMPLEMENTED(message: string) -> never
+published fn NOT_IMPLEMENTED(message: String) -> never
 {
     ABORT(message);
 }

@@ -9,7 +9,7 @@ using intrinsics;
 ///
 /// At the moment, this string class leaks all memory. Once destructors work
 /// correctly, that can be fixed.
-published class string
+published class String
 {
     // const DefaultCapacity: size = 16;
 
@@ -28,7 +28,7 @@ published class string
         .byte_count = byte_count;
     }
 
-    // published new()
+    // published new(mut self)
     // {
     //     self.new(16);
     // }
@@ -40,6 +40,13 @@ published class string
         .start = 0;
         .byte_count = 0;
     }
+
+    // new from(mut self, bytes: iso Raw_Bounded_List[byte])
+    // {
+    //     .bytes = bytes;
+    //     .start = 0;
+    //     .byte_count = .bytes.count();
+    // }
 
     // TODO if .bytes can be replaced, then this is wrong
     public fn raw_bytes(self) -> Raw_Bounded_List[byte]
@@ -58,7 +65,7 @@ published class string
         NOT_IMPLEMENTED();
     }
 
-    public fn append(mut self, value: string)
+    public fn append(mut self, value: String)
     {
         NOT_IMPLEMENTED();
     }
@@ -79,21 +86,21 @@ published class string
     // }
 
     /// Concatenate two strings producing a new one
-    published /* safe */ fn concat(self, other: string) -> iso string
-    {
-        let new_byte_count = .byte_count + other.byte_count;
-        let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
-        foreach i: size in .start..<(.start+.byte_count)
-        {
-            new_bytes.add(.bytes.at(i));
-        }
-        foreach i: size in other.start..<(other.start+other.byte_count)
-        {
-            new_bytes.add(other.bytes.at(i));
-        }
-        return new string(new_bytes, 0, new_byte_count);
-    }
-
+    // published /* safe */ fn concat(self, other: String) -> iso String
+    // {
+    //     let new_byte_count = .byte_count + other.byte_count;
+    //     let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
+    //     foreach i: size in .start..<(.start+.byte_count)
+    //     {
+    //         new_bytes.add(.bytes.at(i));
+    //     }
+    //     foreach i: size in other.start..<(other.start+other.byte_count)
+    //     {
+    //         new_bytes.add(other.bytes.at(i));
+    //     }
+    //     return new String.from(new_bytes);
+    // }
+//
     // published safe fn equals(self, other: String) -> bool
     // {
     //     if self.byte_count =/= other.byte_count => return false;
@@ -109,7 +116,7 @@ published class string
     //     return true;
     // }
 
-    // Pad this string out to a given length using the supplied string
+    // Pad this String out to a given length using the supplied string
     // Currently only works correctly if the string is comprised only of ASCII
     // characters and `with` is only a single character
     // published safe fn pad_left(self, total_length: size, pad_with: String) -> String$owned
