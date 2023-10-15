@@ -1,5 +1,5 @@
-/// An iterator for a potentially infinate sequence of items.
-public abstract class Iterator[T]
+/// An iterator for a finite sequence of items.
+public abstract class FiniteIterator[T] // <: Iterator[T]
 {
     published abstract fn \next(mut self) -> T?;
 
