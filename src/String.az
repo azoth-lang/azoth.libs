@@ -54,9 +54,9 @@ published class String
         return .bytes;
     }
 
-    published fn byte_capacity(self) -> size
+    published fn get_byte_capacity(self) -> size
     {
-        return .bytes.capacity();
+        return .bytes.get_capacity();
     }
 
     public fn set_byte_capacity(mut self, capacity: size)
@@ -72,7 +72,7 @@ published class String
 
     fn ensure_capacity(mut self, capacity: size)
     {
-        if capacity < .bytes.capacity() => return;
+        if capacity < .bytes.get_capacity() => return;
         //let new_capacity = max(capacity, .bytes.capacity());
         NOT_IMPLEMENTED();
     }

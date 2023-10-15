@@ -1,3 +1,4 @@
+// TODO what is the right way to represent this?
 public abstract class Iterable[T]
 {
     published abstract fn new_iterator(self) -> Iterator[T];

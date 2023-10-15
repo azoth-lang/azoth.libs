@@ -1,11 +1,13 @@
-// The interval classes are temporary classes used to handle interval expressions.
-// Eventually, there will be a single generic interval struct. Currently, intervals
+// The range classes are temporary classes used to handle range expressions.
+// Eventually, there will be a single generic range struct. Currently, ranges
 // not including their endpoints are represented by moving the endpoint. Open
-// intervals are represented use min and max values. The current foreach loop
-// uses `count` and `at()` to iterate over things, so the interval classes have
+// ranges are represented use min and max values. The current foreach loop
+// uses `count` and `at()` to iterate over things, so the range classes have
 // those.
 
-/*published class Size_Interval
+// TODO range is for discrete values (e.g. ints) interval is for continous values.
+
+/*published class Size_range
 {
     published let start: size;
     published let end: size;
