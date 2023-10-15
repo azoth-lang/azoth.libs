@@ -8,4 +8,6 @@ public abstract class SizedIterator[T] // <: FiniteIterator[T]
     // TODO length size_hint on remaining? (see Rust)
 
     // TODO next_chunk()? (see Rust)
+
+    // TODO implement operations once `yield` is implemented
 }
