@@ -1,7 +1,7 @@
 /// An iterator for a potentially infinate sequence of items.
-public abstract class Iterator[T]
+public trait Iterator[T]
 {
-    published abstract fn \next(mut self) -> T?;
+    published fn \next(mut self) -> T?;
 
     // TODO length size_hint on remaining? (see Rust)
 
