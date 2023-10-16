@@ -1,0 +1,4 @@
+/// A collection is a collection of items that can be iterated.
+public trait Collection[T] <: Container, Iterable[T]
+{
+}

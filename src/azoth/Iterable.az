@@ -1,5 +1,6 @@
 // TODO what is the right way to represent this?
-public abstract class Iterable[T]
+public trait Iterable[T]
 {
-    published abstract fn new_iterator(self) -> Iterator[T];
+    published fn iterate(self) -> Iterator[T];
+    // published fn iterate(mut self) -> Iterator[ref var T];
 }

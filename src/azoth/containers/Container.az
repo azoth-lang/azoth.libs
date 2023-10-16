@@ -1,0 +1,12 @@
+// A container holds items but provides limited access to them
+published trait Container
+{
+    /// O(1)
+    published fn get_count(self) -> size;
+
+    /// O(1)
+    published fn is_empty(self) -> bool
+    {
+        return .get_count() == 0;
+    }
+}

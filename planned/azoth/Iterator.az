@@ -1,4 +1,0 @@
-public type Iterator[T]
-{
-    public abstract fn \next(mut self) -> T?;
-}
