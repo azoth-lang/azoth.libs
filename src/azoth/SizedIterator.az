@@ -1,9 +1,7 @@
 /// An iterator for a sequence of a known number of items.
-public trait SizedIterator[T] // <: FiniteIterator[T]
+public trait SizedIterator[T] <: FiniteIterator[T]
 {
     published fn get_remaining_count(self);
-
-    published fn \next(mut self) -> T?;
 
     // TODO length size_hint on remaining? (see Rust)
 

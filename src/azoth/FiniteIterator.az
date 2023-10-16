@@ -1,8 +1,6 @@
 /// An iterator for a finite sequence of items.
-public trait FiniteIterator[T] // <: Iterator[T]
+public trait FiniteIterator[T] <: Iterator[T]
 {
-    published fn \next(mut self) -> T?;
-
     // TODO length size_hint on remaining? (see Rust)
 
     // TODO next_chunk()? (see Rust)
