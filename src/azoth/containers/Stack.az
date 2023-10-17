@@ -1,0 +1,54 @@
+// TODO move to system.collections package
+
+public class Stack[T] <: Container
+{
+    // TODO switch to a specialized List[T] that doesn't cause indirection
+    let items: mut List[T];
+
+    public new(mut self)
+    {
+        .items = new List[T]();
+    }
+
+    public new(mut self, capacity: size)
+    {
+        .items = new List[T](capacity);
+    }
+
+    // public new(items: Iterable[T])
+    // {
+    //     self();
+    //     foreach item in items
+    //         { add(item); }
+    // }
+
+    // #Inline(.Always)
+    public fn get_count(self) -> size
+    {
+        return .items.get_count();
+    }
+
+    // #Inline(.Always)
+    public fn clear(mut self) -> void
+    {
+        .items.clear();
+    }
+
+    public fn peek(self) -> T?
+    {
+        if .is_empty() => return none;
+        return .items.at(.items.get_count() - 1);
+    }
+
+    public fn pop(mut self) -> T?
+    {
+        if .is_empty() => return none;
+        return .items.remove_at(.items.get_count() - 1);
+    }
+
+    // #Inline(.Always)
+    public fn push(mut self, item: T) -> void
+    {
+        .items.add(item);
+    }
+}

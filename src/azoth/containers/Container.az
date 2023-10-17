@@ -9,4 +9,7 @@ published trait Container
     {
         return .get_count() == 0;
     }
+
+    // TODO add()?
+    // TODO remove()?
 }

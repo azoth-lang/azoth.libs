@@ -1,4 +1,4 @@
-published class List[T]
+published class List[T] <: Collection[T]
 {
     var items: mut Raw_Bounded_List[T];
 
@@ -7,6 +7,7 @@ published class List[T]
         .items = new Raw_Bounded_List[T](2);
     }
 
+    // TOOD name: with_capacity
     published new(mut self, var capacity: size)
     {
         if capacity < 2 => capacity = 2;
@@ -39,8 +40,7 @@ published class List[T]
 
     published fn add(mut self, value: T)
     {
-        let count = .items.get_count();
-        .ensure_capacity(count + 1);
+        .ensure_capacity(.items.get_count() + 1);
         .items.add(value);
     }
 
@@ -51,8 +51,19 @@ published class List[T]
         while capacity < new_count { capacity *= 2; }
         let count = .items.get_count();
         let new_items: mut = new Raw_Bounded_List[T](capacity);
-        foreach i in 0..<count { new_items.add(.items.at(i)); }
+        foreach i in 0..<count
+            { new_items.add(.items.at(i)); }
         .items = new_items;
+    }
+
+    published fn remove_at(mut self, index: size) -> T
+    {
+        let item = .items.at(index);
+        let count = .items.get_count();
+        foreach i in index..<(count - 1)
+            { .items.set_at(i, .items.at(i + 1)); }
+        .items.shrink(count - 1);
+        return item;
     }
 
     published fn clear(mut self)
