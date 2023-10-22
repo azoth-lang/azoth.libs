@@ -18,10 +18,10 @@ published class String
     /// The number of bytes in the string when encoded in UTF8.
     published let byte_count: size;
     // TODO use iref var?
-    var bytes: mut Raw_Bounded_List[byte];
+    var bytes: mut Raw_Hybrid_Bounded_List[void, byte];
 
     // Constructor is private because this is a temporary way of constructing strings for constants
-    /* unsafe */ new(self, bytes: Raw_Bounded_List[byte], start: size, byte_count: size)
+    /* unsafe */ new(self, bytes: Raw_Hybrid_Bounded_List[void, byte], start: size, byte_count: size)
     {
         .bytes = bytes;
         .start = start;
@@ -36,7 +36,7 @@ published class String
     published new(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
-        .bytes = new Raw_Bounded_List[byte](capacity);
+        .bytes = new Raw_Hybrid_Bounded_List[void, byte](capacity);
         .start = 0;
         .byte_count = 0;
     }
@@ -49,7 +49,7 @@ published class String
     // }
 
     // TODO if .bytes can be replaced, then this is wrong
-    public fn raw_bytes(self) -> Raw_Bounded_List[byte]
+    public fn raw_bytes(self) -> Raw_Hybrid_Bounded_List[void, byte]
         => .bytes;
 
     published fn get_byte_capacity(self) -> size
