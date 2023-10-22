@@ -6,14 +6,21 @@
 published move /*struct*/ class Buffer[T]
     // invariant .get_count() <= get_capacity()
 {
-    // const default_capacity: size = 16;
+    // const DefaultCapacity: size = 16;
 
     // TODO use optional type to avoid allocating empty `Raw_Bounded_List[T]`
     var items: mut Raw_Bounded_List[T];
 
-    published new(mut self) { }
+    published new(mut self)
+        // #prove ensures .get_count() == 0 and .get_capacity() == DefaultCapacity
+    {
+        let DefaultCapacity: size = 16; // TODO make this a constant
+        .items = new Raw_Bounded_List[T](DefaultCapacity);
+    }
 
-    published new /*with_capacity*/(mut self, capacity: size)
+    // TOOD name: with_capacity
+    published new(mut self, capacity: size)
+        // #prove ensures .get_count() == 0 and .get_capacity() == capacity
     {
         .items = new Raw_Bounded_List[T](capacity);
     }
@@ -40,11 +47,12 @@ published move /*struct*/ class Buffer[T]
         // requires index < .get_count()
     {
         let count = .items.get_count();
-        if index >= count => ABORT("set(): index out of bounds");
+        if index >= count => ABORT("set_at(): index out of bounds");
         .items.set_at(index, value);
     }
 
     published fn add(mut self, value: T)
+        // #prove ensures old.get_count() == .get_count() + 1
     {
         .ensure_capacity(.items.get_count() + 1);
         .items.add(value);
@@ -52,9 +60,11 @@ published move /*struct*/ class Buffer[T]
 
     published fn remove_at(mut self, index: size) -> T
         // requires index < .get_count()
+        // #prove ensures old.get_count() == .get_count() - 1
     {
-        let item = .items.at(index);
         let count = .items.get_count();
+        if index >= count => ABORT("remove_at(): index out of bounds");
+        let item = .items.at(index);
         foreach i in index..<(count - 1)
             { .items.set_at(i, .items.at(i + 1)); }
         .items.shrink(count - 1);
@@ -62,21 +72,25 @@ published move /*struct*/ class Buffer[T]
     }
 
     published fn clear(mut self)
+        // #prove ensures .get_count() == 0
     {
         .items.shrink(0);
     }
 
     published fn ensure_capacity(mut self, min_capacity: size)
+        // #prove ensures .get_capacity() >= min_capacity
     {
         var capacity = .items.get_capacity();
         if min_capacity <= capacity => return;
-        let default_capacity: size = 16; // TODO make this a constant
-        if capacity < default_capacity { capacity = default_capacity; }
+        let DefaultCapacity: size = 16; // TODO make this a constant
+        if capacity < DefaultCapacity { capacity = DefaultCapacity; }
         while capacity < min_capacity { capacity *= 2; }
         .resize_to(capacity);
     }
 
     fn resize_to(mut self, new_capacity: size)
+        // requires new_capacity >= .get_count()
+        // #prove ensures .get_capacity() == new_capacity
     {
         let new_items: mut = new Raw_Bounded_List[T](new_capacity);
         let count = .get_count();
@@ -88,18 +102,20 @@ published move /*struct*/ class Buffer[T]
 
     /// Trim the capacity of this `Buffer[T]` down to `count`
     published fn trim_to_count(mut self)
+        // #prove ensures .get_capacity() == .get_count()
     {
         let count = .get_count();
         if .get_capacity() == count => return;
         .resize_to(count);
     }
 
-    /// Trim the capacity of this `Buffer[T]` down to what it would be
+    /// Trim the capacity of this `Buffer[T]` down to what it would be if `.get_count()` items
+    /// were added to a new `Buffer[T]`.
     published fn trim_excess_capacity(mut self)
     {
-        let default_capacity: size = 16; // TODO make this a constant
+        let DefaultCapacity: size = 16; // TODO make this a constant
         let count = .get_count();
-        var capacity = default_capacity;
+        var capacity = DefaultCapacity;
         while capacity < count { capacity *= 2; }
         if capacity < .get_capacity() { .resize_to(capacity); }
     }

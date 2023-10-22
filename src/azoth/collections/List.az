@@ -1,17 +1,17 @@
 published class List[T] <: Collection[T]
 {
-    var items: mut Raw_Bounded_List[T];
+    var items: mut Buffer[T];
 
     published new(mut self)
     {
-        .items = new Raw_Bounded_List[T](2);
+        .items = new Buffer[T]();
     }
 
     // TOOD name: with_capacity
     published new(mut self, var capacity: size)
     {
         if capacity < 2 => capacity = 2;
-        .items = new Raw_Bounded_List[T](capacity);
+        .items = new Buffer[T](capacity);
     }
 
     published fn get_capacity(self) -> size
@@ -25,49 +25,30 @@ published class List[T] <: Collection[T]
     }
 
     published fn at(self, index: size) -> T
+        // requires index < .get_count()
     {
-        let count = .items.get_count();
-        if index >= count => ABORT("at(): index out of bounds");
         return .items.at(index);
     }
 
     published fn set_at(mut self, index: size, value: T)
+        // requires index < .get_count()
     {
-        let count = .items.get_count();
-        if index >= count => ABORT("set(): index out of bounds");
         .items.set_at(index, value);
     }
 
     published fn add(mut self, value: T)
     {
-        .ensure_capacity(.items.get_count() + 1);
         .items.add(value);
     }
 
-    fn ensure_capacity(mut self, new_count: size)
-    {
-        var capacity = .items.get_capacity();
-        if new_count <= capacity => return;
-        while capacity < new_count { capacity *= 2; }
-        let count = .items.get_count();
-        let new_items: mut = new Raw_Bounded_List[T](capacity);
-        foreach i in 0..<count
-            { new_items.add(.items.at(i)); }
-        .items = new_items;
-    }
-
     published fn remove_at(mut self, index: size) -> T
+        // requires index < .get_count()
     {
-        let item = .items.at(index);
-        let count = .items.get_count();
-        foreach i in index..<(count - 1)
-            { .items.set_at(i, .items.at(i + 1)); }
-        .items.shrink(count - 1);
-        return item;
+        return .items.remove_at(index);
     }
 
     published fn clear(mut self)
     {
-        .items.shrink(0);
+        .items.clear();
     }
 }
