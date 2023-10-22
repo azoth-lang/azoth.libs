@@ -1,5 +1,5 @@
 /// An iterator for a sequence of a known number of items.
-public trait SizedIterator[T] <: FiniteIterator[T]
+public trait Sized_Iterator[T] <: Finite_Iterator[T]
 {
     published fn get_remaining_count(self);
 
