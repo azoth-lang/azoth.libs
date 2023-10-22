@@ -8,4 +8,38 @@ public trait Iterator[T]
     // TODO next_chunk()? (see Rust)
 
     // TODO implement operations once `yield` is implemented
+
+    // published fn where(mut self, predicate) -> Iterator[T]
+
+    // published fn flatten()
+
+    // published fn take(mut self, count: int) -> FiniteIterator[T]
+
+    // Many of these should return more specific types if the self type is more specfic. Not sure
+    // if that is the `self` type though.
+
+    // published fn skip(mut self, count: int) -> Self
+
+    // published fn skip_while(mut self, predicate) -> Self
+
+    // published fn skip_until(mut self, predicate) -> Self
+
+    // published fn take_while(mut self, predicate) -> Self
+
+    // published fn take_until(mut self, predicate) -> Self
+
+    // zip
+
+    // distinct
+
+    // distinct_by
+
+    // prepend
+
+    // does not do distinct the way C# except does
+    // published fn except(mut self, items: FiniteIterator[T])
+
+    // published fn except(mut self, item: T)
+
+    // published fn first(mut self) -> T?
 }

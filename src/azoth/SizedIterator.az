@@ -8,4 +8,7 @@ public trait SizedIterator[T] <: FiniteIterator[T]
     // TODO next_chunk()? (see Rust)
 
     // TODO implement operations once `yield` is implemented
+
+    // How
+    // published const empty: const SizedIterator[T] = ...;
 }

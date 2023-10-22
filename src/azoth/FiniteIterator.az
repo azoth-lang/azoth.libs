@@ -6,4 +6,35 @@ public trait FiniteIterator[T] <: Iterator[T]
     // TODO next_chunk()? (see Rust)
 
     // TODO implement operations once `yield` is implemented
+
+    // public fn reverse(mut self) -> FiniteIterator[T]
+    // {
+    // }
+
+    // order_by
+
+    // group_by
+
+    // concat
+
+    // append
+
+    // any
+
+    // all
+
+    // average
+
+    // published fn last(mut self) -> T?
+
+    // max
+
+    // min
+
+    // min_and_max aka range? or interval?
+
+    /// Need names to distingush if it aborts on empty or multiple
+    // published fn single(mut self) -> T?
+
+    // sum
 }
