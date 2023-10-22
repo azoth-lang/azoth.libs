@@ -10,9 +10,7 @@ published class Console
     }
 
     published /* safe */ fn write(mut self, value: String)
-    {
-        unsafe (print_raw_utf8_bytes(value.raw_bytes(), value.start, value.byte_count));
-    }
+        => unsafe (print_raw_utf8_bytes(value.raw_bytes(), value.start, value.byte_count));
 
     published /* safe */ fn write_line(mut self, line: String)
     {
@@ -21,9 +19,7 @@ published class Console
     }
 
     published /* safe */ fn write_line(mut self)
-    {
-        .write(.newline);
-    }
+        => .write(.newline);
 
     /*published safe fn read_line(mut self) -> iso String
     {

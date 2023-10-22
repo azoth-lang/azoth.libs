@@ -24,15 +24,11 @@ public class Stack[T] <: Container
 
     // #Inline(.Always)
     public fn get_count(self) -> size
-    {
-        return .items.get_count();
-    }
+        => .items.get_count();
 
     // #Inline(.Always)
     public fn clear(mut self) -> void
-    {
-        .items.clear();
-    }
+        => .items.clear();
 
     public fn peek(self) -> T?
     {
@@ -48,7 +44,5 @@ public class Stack[T] <: Container
 
     // #Inline(.Always)
     public fn push(mut self, item: T) -> void
-    {
-        .items.add(item);
-    }
+        => .items.add(item);
 }

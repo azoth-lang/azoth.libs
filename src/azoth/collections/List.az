@@ -15,40 +15,26 @@ published class List[T] <: Collection[T]
     }
 
     published fn get_capacity(self) -> size
-    {
-        return .items.get_capacity();
-    }
+        => .items.get_capacity();
 
     published fn get_count(self) -> size
-    {
-        return .items.get_count();
-    }
+        => .items.get_count();
 
     published fn at(self, index: size) -> T
         // requires index < .get_count()
-    {
-        return .items.at(index);
-    }
+        => .items.at(index);
 
     published fn set_at(mut self, index: size, value: T)
         // requires index < .get_count()
-    {
-        .items.set_at(index, value);
-    }
+        => .items.set_at(index, value);
 
     published fn add(mut self, value: T)
-    {
-        .items.add(value);
-    }
+        => .items.add(value);
 
     published fn remove_at(mut self, index: size) -> T
         // requires index < .get_count()
-    {
-        return .items.remove_at(index);
-    }
+        => .items.remove_at(index);
 
     published fn clear(mut self)
-    {
-        .items.clear();
-    }
+        => .items.clear();
 }

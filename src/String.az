@@ -50,25 +50,17 @@ published class String
 
     // TODO if .bytes can be replaced, then this is wrong
     public fn raw_bytes(self) -> Raw_Bounded_List[byte]
-    {
-        return .bytes;
-    }
+        => .bytes;
 
     published fn get_byte_capacity(self) -> size
-    {
-        return .bytes.get_capacity();
-    }
+        => .bytes.get_capacity();
 
     public fn set_byte_capacity(mut self, capacity: size)
         // requires .byte_count <= capacity
-    {
-        NOT_IMPLEMENTED();
-    }
+        => NOT_IMPLEMENTED();
 
     public fn append(mut self, value: String)
-    {
-        NOT_IMPLEMENTED();
-    }
+        => NOT_IMPLEMENTED();
 
     fn ensure_capacity(mut self, capacity: size)
     {

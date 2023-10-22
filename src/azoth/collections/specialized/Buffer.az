@@ -26,14 +26,10 @@ published move /*struct*/ class Buffer[T]
     }
 
     published fn get_capacity(self) -> size
-    {
-        return .items.get_capacity();
-    }
+        => .items.get_capacity();
 
     published fn get_count(self) -> size
-    {
-        return .items.get_count();
-    }
+        => .items.get_count();
 
     published fn at(self, index: size) -> T
         // requires index < .get_count()
@@ -73,9 +69,7 @@ published move /*struct*/ class Buffer[T]
 
     published fn clear(mut self)
         // #prove ensures .get_count() == 0
-    {
-        .items.shrink(0);
-    }
+        => .items.shrink(0);
 
     published fn ensure_capacity(mut self, min_capacity: size)
         // #prove ensures .get_capacity() >= min_capacity

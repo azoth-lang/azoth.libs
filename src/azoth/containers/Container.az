@@ -6,9 +6,7 @@ published trait Container
 
     /// O(1)
     published fn is_empty(self) -> bool
-    {
-        return .get_count() == 0;
-    }
+        => .get_count() == 0;
 
     // TODO add()?
     // TODO remove()?
