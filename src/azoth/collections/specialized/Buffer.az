@@ -1,0 +1,106 @@
+/// A growable buffer of data.
+///
+/// # Remarks
+/// Used internally by collections to ensure efficent memory management. Can be used by performance
+/// critical code to avoid extra layers of indirection.
+published move /*struct*/ class Buffer[T]
+    // invariant .get_count() <= get_capacity()
+{
+    // const default_capacity: size = 16;
+
+    // TODO use optional type to avoid allocating empty `Raw_Bounded_List[T]`
+    var items: mut Raw_Bounded_List[T];
+
+    published new(mut self) { }
+
+    published new /*with_capacity*/(mut self, capacity: size)
+    {
+        .items = new Raw_Bounded_List[T](capacity);
+    }
+
+    published fn get_capacity(self) -> size
+    {
+        return .items.get_capacity();
+    }
+
+    published fn get_count(self) -> size
+    {
+        return .items.get_count();
+    }
+
+    published fn at(self, index: size) -> T
+        // requires index < .get_count()
+    {
+        let count = .items.get_count();
+        if index >= count => ABORT("at(): index out of bounds");
+        return .items.at(index);
+    }
+
+    published fn set_at(mut self, index: size, value: T)
+        // requires index < .get_count()
+    {
+        let count = .items.get_count();
+        if index >= count => ABORT("set(): index out of bounds");
+        .items.set_at(index, value);
+    }
+
+    published fn add(mut self, value: T)
+    {
+        .ensure_capacity(.items.get_count() + 1);
+        .items.add(value);
+    }
+
+    published fn remove_at(mut self, index: size) -> T
+        // requires index < .get_count()
+    {
+        let item = .items.at(index);
+        let count = .items.get_count();
+        foreach i in index..<(count - 1)
+            { .items.set_at(i, .items.at(i + 1)); }
+        .items.shrink(count - 1);
+        return item;
+    }
+
+    published fn clear(mut self)
+    {
+        .items.shrink(0);
+    }
+
+    published fn ensure_capacity(mut self, min_capacity: size)
+    {
+        var capacity = .items.get_capacity();
+        if min_capacity <= capacity => return;
+        let default_capacity: size = 16; // TODO make this a constant
+        if capacity < default_capacity { capacity = default_capacity; }
+        while capacity < min_capacity { capacity *= 2; }
+        .resize_to(capacity);
+    }
+
+    fn resize_to(mut self, new_capacity: size)
+    {
+        let new_items: mut = new Raw_Bounded_List[T](new_capacity);
+        let count = .get_count();
+        // TODO create a more efficent copy mechanism
+        foreach i in 0..<count
+            { new_items.add(.items.at(i)); }
+        .items = new_items;
+    }
+
+    /// Trim the capacity of this `Buffer[T]` down to `count`
+    published fn trim_to_count(mut self)
+    {
+        let count = .get_count();
+        if .get_capacity() == count => return;
+        .resize_to(count);
+    }
+
+    /// Trim the capacity of this `Buffer[T]` down to what it would be
+    published fn trim_excess_capacity(mut self)
+    {
+        let default_capacity: size = 16; // TODO make this a constant
+        let count = .get_count();
+        var capacity = default_capacity;
+        while capacity < count { capacity *= 2; }
+        if capacity < .get_capacity() { .resize_to(capacity); }
+    }
+}

@@ -10,7 +10,7 @@ public class Stack[T] <: Container
         .items = new List[T]();
     }
 
-    public new(mut self, capacity: size)
+    public new /*with_capacity*/(mut self, capacity: size)
     {
         .items = new List[T](capacity);
     }
