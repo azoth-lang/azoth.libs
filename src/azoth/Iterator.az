@@ -1,45 +1,40 @@
-/// An iterator for a potentially infinate sequence of items.
-public trait Iterator[T]
+/// An iterator for a finite sequence of items.
+public trait Iterator[T] <: Unbounded_Iterator[T]
 {
-    published fn \next(mut self) -> T?;
-
     // TODO length size_hint on remaining? (see Rust)
 
     // TODO next_chunk()? (see Rust)
 
     // TODO implement operations once `yield` is implemented
 
-    // published fn where(mut self, predicate) -> Iterator[T]
+    // public fn reverse(mut self) -> FiniteIterator[T]
+    // {
+    // }
 
-    // published fn flatten()
+    // order_by
 
-    // published fn take(mut self, count: int) -> FiniteIterator[T]
+    // group_by
 
-    // Many of these should return more specific types if the self type is more specfic. Not sure
-    // if that is the `self` type though.
+    // concat
 
-    // published fn skip(mut self, count: int) -> Self
+    // append
 
-    // published fn skip_while(mut self, predicate) -> Self
+    // any
 
-    // published fn skip_until(mut self, predicate) -> Self
+    // all
 
-    // published fn take_while(mut self, predicate) -> Self
+    // average
 
-    // published fn take_until(mut self, predicate) -> Self
+    // published fn last(mut self) -> T?
 
-    // zip
+    // max
 
-    // distinct
+    // min
 
-    // distinct_by
+    // min_and_max aka range? or interval?
 
-    // prepend
+    /// Need names to distingush if it aborts on empty or multiple
+    // published fn single(mut self) -> T?
 
-    // does not do distinct the way C# except does
-    // published fn except(mut self, items: FiniteIterator[T])
-
-    // published fn except(mut self, item: T)
-
-    // published fn first(mut self) -> T?
+    // sum
 }
