@@ -2,17 +2,21 @@
 
 public class Stack[T] <: Container
 {
-    // TODO switch to a specialized List[T] that doesn't cause indirection
-    let items: mut List[T];
+    let first_chunk: mut Buffer_Chunk[T];
+    var chunk: mut Buffer_Chunk[T];
+    var count: size;
+    var cached_chunk: mut Buffer_Chunk[T]?;
 
     public new(mut self)
     {
-        .items = new List[T]();
+        .chunk = .first_chunk = new Buffer_Chunk[T]();
     }
 
-    public new /*with_capacity*/(mut self, capacity: size)
+    // TOOD name: with_capacity
+    published new(mut self, var capacity: size)
     {
-        .items = new List[T](capacity);
+        if capacity < 16 => capacity = 16;
+        .chunk = .first_chunk = new Buffer_Chunk[T](capacity);
     }
 
     // public new(items: Iterable[T])
@@ -24,25 +28,59 @@ public class Stack[T] <: Container
 
     // #Inline(.Always)
     public fn get_count(self) -> size
-        => .items.get_count();
-
-    // #Inline(.Always)
-    public fn clear(mut self) -> void
-        => .items.clear();
+        => .count;
 
     public fn peek(self) -> T?
     {
         if .is_empty() => return none;
-        return .items.at(.items.get_count() - 1);
+        return .chunk.at(.chunk.get_count() - 1);
     }
 
     public fn pop(mut self) -> T?
     {
         if .is_empty() => return none;
-        return .items.remove_at(.items.get_count() - 1);
+        let item = .chunk.remove_at(.chunk.get_count() - 1);
+        if .chunk.is_empty() and .chunk.get_next_chunk() is let next_chunk?
+        {
+            .cached_chunk = .chunk;
+            .chunk = next_chunk;
+        }
+        return item;
     }
 
     // #Inline(.Always)
     public fn push(mut self, item: T) -> void
-        => .items.add(item);
+    {
+        if not .chunk.try_add(item)
+        {
+            if .cached_chunk is let cached_chunk?
+            {
+                .chunk = cached_chunk;
+                .cached_chunk = none;
+            }
+            else
+            {
+                .chunk = new Buffer_Chunk[T](.count, .chunk);
+            }
+            // TODO check result is true
+            .chunk.try_add(item);
+        }
+    }
+
+    // #Inline(.Always)
+    public fn clear(mut self) -> void
+    {
+        if .count == 0 => return;
+
+        .count = 0;
+        if id .chunk =/= id .first_chunk
+        {
+            // drop all but first chunk
+            .chunk = .first_chunk;
+            .cached_chunk = none;
+        }
+
+        // clear out the first chunk
+        .chunk.clear();
+    }
 }
