@@ -1,0 +1,5 @@
+// The basis of strides through values
+published trait Strideable
+{
+    // published fn stride_by(self, stride: Self) -> Self?;
+}

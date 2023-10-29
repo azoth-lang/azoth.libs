@@ -1,0 +1,18 @@
+// TODO perhaps the name `Ordering` should be reserved for the definition of an ordering for a particular type (i.e. Ordering[T])
+
+public /*enum struct*/ class ordering
+{
+    // Less,
+    // Equal,
+    // Greater;
+
+    // public fn reverse(self) -> Ordering
+    // {
+    //     return match self
+    //     {
+    //         .Less => .Greater,
+    //         .Equal => .Equal,
+    //         .Greater => .Less
+    //     };
+    // }
+}

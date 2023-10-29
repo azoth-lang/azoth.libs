@@ -1,0 +1,34 @@
+published /*sealed*/ abstract class Assert
+{
+    // TODO make generic using extensions
+    // published fn that[T](value: T) -> Assert[T]
+    //     => new Assert[T](value);
+
+    published fn that(value: bool) -> AssertOnBool
+        => new AssertOnBool(value);
+}
+
+published /*sealed*/ class Assert[T]
+{
+
+}
+
+
+published /*sealed*/ class AssertOnBool: Assert[bool]
+{
+    let value: bool;
+
+    published new(self, .value) { }
+
+    published fn is_true(self)
+    {
+        if not .value
+            { ABORT("Expected true, but was false."); }
+    }
+
+    published fn is_false(self)
+    {
+        if not .value
+            { ABORT("Expected false, but was true."); }
+    }
+}

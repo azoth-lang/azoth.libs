@@ -1,0 +1,7 @@
+// TODO how to implement empty?
+published /*sealed*/ const class Interval[T] <: Ordered
+    // where T <: Ordered
+{
+    published let start: bound[T];
+    published let end: bound[T];
+}

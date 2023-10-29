@@ -1,0 +1,4 @@
+published trait Partial_Order[T]
+{
+    published fn compare(self, first: T, second: T) -> ordering?;
+}

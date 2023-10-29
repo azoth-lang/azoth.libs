@@ -1,0 +1,13 @@
+/// The maximum of two values.
+/// # Remarks
+/// If the values are equal, the first value will be returned.
+// public fn max[T](a: T, b: T) -> T
+//     where T <: Naturally_Ordered
+//     => if a >= b => a else => b;
+
+/// The minimum of two values.
+/// # Remarks
+/// If the values are equal, the first value will be returned.
+// public fn min[T](a: T, b: T) -> T
+//     where T <: Naturally_Ordered
+//     => if a <= b => a else => b;

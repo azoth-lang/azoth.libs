@@ -1,0 +1,6 @@
+/// A naturally comparable type that cannot be naturally fully ordered. That is, there are some
+/// unequal values that compare as equal.
+published trait Comparable
+{
+
+}

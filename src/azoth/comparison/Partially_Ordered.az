@@ -1,0 +1,44 @@
+/// A type for which there is a natural total order.
+/// The comparison must satisfy, for all `a`, `b` and `c`
+/// * antisymmetry: if `a < b` then `not(a > b)``, as well as `a > b` implying `not(a < b)`
+/// * transitivity: `a < b` and `b < c` implies `a < c`
+/// The same must hold for both == and >
+
+// see https://www.reddit.com/r/ProgrammingLanguages/comments/9u63pe/language_design_comparing_and_sorting/
+public trait Partially_Ordered <: Partially_Equatable
+{
+    //public fn compare(const self, other: const Self) -> ordering?;
+
+    // public override operator == (const self, other: const Self) -> bool
+    // {
+    //     return .compare(other) == .Equal;
+    // }
+
+    // public operator < (const self, other: const Self) -> bool
+    // {
+    //     return .compare(other) == .Less;
+    // }
+
+    // public operator <= (const self, other: Self) -> bool
+    // {
+    //     return match .compare(other)
+    //     {
+    //         .Less | .Equal => true,
+    //         _ => false
+    //     };
+    // }
+
+    // public operator > (const self, other: Self) -> bool
+    // {
+    //     return .compare(other) == .Greater;
+    // }
+
+    // public operator >= (const self, other: Self) -> bool
+    // {
+    //     return match .compare(other)
+    //     {
+    //         .Greater | .Equal => true,
+    //         _ => false
+    //     };
+    // }
+}
