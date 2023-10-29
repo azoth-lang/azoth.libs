@@ -1,0 +1,40 @@
+public class Indexable_Stack[T] <: Stack[T], Reversible_Iterable[T]
+{
+    let items: mut Buffer[T];
+
+    public new(mut self)
+    {
+        .items = new Buffer[T]();
+    }
+
+    // TODO name: with_capacity
+    published new(mut self, var capacity: size)
+    {
+        if capacity < 16 => capacity = 16;
+        .items = new Buffer[T](capacity);
+    }
+
+    // #Inline(.Always)
+    public fn get_count(self) -> size
+        => .items.get_count();
+
+    public fn peek(self) -> T?
+    {
+        if .is_empty() => return none;
+        return .items.at(.items.get_count() - 1);
+    }
+
+    public fn pop(mut self) -> T?
+    {
+        if .is_empty() => return none;
+        return .items.remove_at(.items.get_count() - 1);
+    }
+
+    // #Inline(.Always)
+    public fn push(mut self, item: T)
+        => .items.add(item);
+
+    // #Inline(.Always)
+    public fn clear(mut self)
+        => .items.clear();
+}

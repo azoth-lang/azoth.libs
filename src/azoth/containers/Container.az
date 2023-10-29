@@ -1,5 +1,5 @@
 // A container holds items but provides limited access to them
-published trait Container
+published trait Container[T]
 {
     /// O(1)
     published fn get_count(self) -> size;
@@ -8,6 +8,12 @@ published trait Container
     published fn is_empty(self) -> bool
         => .get_count() == 0;
 
-    // TODO add()?
-    // TODO remove()?
+    /// O(?)
+    published fn add(mut self, item: T);
+
+    /// O(?)
+    published fn remove(mut self) -> T?;
+
+    /// O(1)?
+    published fn clear(mut self);
 }

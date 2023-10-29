@@ -1,0 +1,7 @@
+// TODO what is the right way to represent this?
+/// An iterable that has an efficent way to iterate the items in reverse order.
+public trait Reversible_Iterable[T] <: Iterable[T]
+{
+    /// An iterable that will iterate over the same items in reverse order.
+    published fn in_reverse(self) -> Reversible_Iterable[T];
+}

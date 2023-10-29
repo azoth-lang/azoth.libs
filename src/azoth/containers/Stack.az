@@ -1,6 +1,6 @@
 // TODO move to system.collections package
 
-public class Stack[T] <: Container
+public class Stack[T] <: Container[T], Collection[T]
 {
     let first_chunk: mut Buffer_Chunk[T];
     var chunk: mut Buffer_Chunk[T];
@@ -12,7 +12,7 @@ public class Stack[T] <: Container
         .chunk = .first_chunk = new Buffer_Chunk[T]();
     }
 
-    // TOOD name: with_capacity
+    // TODO name: with_capacity
     published new(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
@@ -37,6 +37,7 @@ public class Stack[T] <: Container
     }
 
     public fn pop(mut self) -> T?
+        // overrides remove
     {
         if .is_empty() => return none;
         let item = .chunk.remove_at(.chunk.get_count() - 1);
@@ -50,6 +51,7 @@ public class Stack[T] <: Container
 
     // #Inline(.Always)
     public fn push(mut self, item: T) -> void
+        // overrides add
     {
         if not .chunk.try_add(item)
         {

@@ -23,8 +23,8 @@
 
 ## Ideas
 
-* `Indexable_Collection[T]`
 * `Sorted_Collection[T]`
 * Snapshotting?
 * BoundedQueue and BoundedPriorityQueue
 * BoundedList
+* Trait for collections backed by `Buffer` or `RingBuffer` that has methods for managing capacity?
