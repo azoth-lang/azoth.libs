@@ -1,5 +1,5 @@
 
-/// The a bound of an interval of `T`
+/// A bound of an interval of `T`
 public /*enum struct*/ class bound[T]
 {
     // case inclusive
