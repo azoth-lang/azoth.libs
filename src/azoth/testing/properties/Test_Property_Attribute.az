@@ -1,0 +1,3 @@
+public /*sealed*/ const class Test_Property_Attribute
+{
+}

@@ -1,5 +1,6 @@
 namespace collection
 {
+    #Test
     public fn \"Zero length collection is empty"()
     {
         // TODO let subject = Mock[Collection[int]]
@@ -10,6 +11,8 @@ namespace collection
         Assert.that(empty).is_true();
     }
 
+    #Test
+    // TODO parameterize on count
     public fn \"Non-zero length collection is not empty"()
     {
         // TODO let subject = Mock[Collection[int]]
