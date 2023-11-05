@@ -1,0 +1,57 @@
+namespace iterable
+{
+    #Test
+    public fn \"Can read while iterating"()
+    {
+        // TODO let subject = Mock[Collection[int]]
+        let subject = new Fake_Iterable();
+
+        let iterator: mut Iterator[int] = subject.iterate();
+
+        subject.read();
+
+        let end: int? = iterator.\next();
+
+        Assert.that(end).is_none();
+    }
+
+    #Test
+    public fn \"Cannot mutate while iterating"()
+    {
+        // TODO let subject = Mock[Collection[int]]
+        let subject: mut = new Fake_Iterable();
+
+        {
+            let iterator: mut Iterator[int] = subject.iterate();
+
+            // TODO next line does not compile
+            // subject.mutate();
+
+            let end: int? = iterator.\next();
+
+            Assert.that(end).is_none();
+        }
+
+        subject.mutate();
+    }
+
+    class Fake_Iterable <: Iterable[int]
+    {
+        published fn iterate(lent const self) -> lent mut Iterator[int]
+            => new Fake_Iterator(self);
+
+        public fn read(self) { }
+
+        public fn mutate(mut self) { }
+    }
+
+    class Fake_Iterator <: Iterator[int]
+    {
+        let iterable: const Fake_Iterable;
+
+        public new(mut self, .iterable) { }
+
+        published fn \next(mut self) -> int?
+            => none;
+    }
+}
