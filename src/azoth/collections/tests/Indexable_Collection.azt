@@ -1,0 +1,46 @@
+namespace indexable_collection
+{
+    #Test
+    public fn \"Can iterate empty forwards"()
+    {
+        // TODO let subject = Mock[Collection[int]]
+        let subject = new Fake_Collection(0);
+
+        let iterator: mut Iterator[int] = subject.iterate();
+
+        let end: int? = iterator.\next();
+
+        Assert.that(end).is_none();
+    }
+
+    #Test
+    public fn \"Can iterate one item forwards"()
+    {
+        // TODO let subject = Mock[Collection[int]]
+        let subject = new Fake_Collection(1);
+
+        let iterator: mut Iterator[int] = subject.iterate();
+
+        let first: int? = iterator.\next();
+        let end: int? = iterator.\next();
+
+        Assert.that(first).equals(0);
+        Assert.that(end).is_none();
+    }
+
+    class Fake_Collection <: Indexable_Collection[int]
+    {
+        let count: size;
+
+        public new(mut self, count: size)
+        {
+            .count = count;
+        }
+
+        published fn get_count(self) -> size
+            => .count;
+
+        published fn at(self, index: size) -> int
+            => index;
+    }
+}

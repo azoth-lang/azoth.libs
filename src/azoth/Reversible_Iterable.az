@@ -1,4 +1,4 @@
-// TODO what is the right way to represent this?
+// TODO what is the right way to represent this? Perhaps it should just return an Iterator[T]
 /// An iterable that has an efficent way to iterate the items in reverse order.
 public trait Reversible_Iterable[T] <: Iterable[T]
 {

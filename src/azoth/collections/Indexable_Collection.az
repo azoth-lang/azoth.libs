@@ -4,4 +4,8 @@ public trait Indexable_Collection[T] <: Collection[T], Reversible_Iterable[T]
     /// O(1)
     published fn at(self, index: size) -> T;
         // requires index < .get_count()
+
+    // Return should iterate over `ref T` to avoid copying of large value types
+    published fn iterate(lent const self) -> lent mut Iterator[/*ref*/ T]
+        => new Indexable_Collection_Iterator[T](self);
 }

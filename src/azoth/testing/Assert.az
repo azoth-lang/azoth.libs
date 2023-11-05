@@ -6,6 +6,9 @@ published /*sealed*/ abstract class Assert
 
     published fn that(value: bool) -> AssertOnBool
         => new AssertOnBool(value);
+
+    published fn that(value: int?) -> AssertOnOptionalInt
+        => new AssertOnOptionalInt(value);
 }
 
 published /*sealed*/ class Assert[T]
@@ -30,5 +33,25 @@ published /*sealed*/ class AssertOnBool: Assert[bool]
     {
         if not .value
             { ABORT("Expected false, but was true."); }
+    }
+}
+
+published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
+{
+    let value: int?;
+
+    published new(self, .value) { }
+
+    published fn is_none(self)
+    {
+        if .value is let _? { }
+        else
+            { ABORT("Expected none, but was an int."); }
+    }
+
+    published fn equals(self, value: int?)
+    {
+        if .value =/= value
+            { ABORT("Expected value not found."); }
     }
 }

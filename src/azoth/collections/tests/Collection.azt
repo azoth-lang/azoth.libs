@@ -32,7 +32,7 @@ namespace collection
             .count = count;
         }
 
-        public fn get_count(self) -> size
+        published fn get_count(self) -> size
             => .count;
     }
 }

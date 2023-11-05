@@ -20,17 +20,21 @@ published class List[T] <: Indexable_Collection[T]
     published fn get_count(self) -> size
         => .items.get_count();
 
+    // TODO does this need `lent self`?
     published fn at(self, index: size) -> T
         // requires index < .get_count()
         => .items.at(index);
 
+    // TODO does this need `lent self`?
     published fn set_at(mut self, index: size, value: T)
         // requires index < .get_count()
         => .items.set_at(index, value);
 
+    // TODO does this need `lent self`?
     published fn add(mut self, value: T)
         => .items.add(value);
 
+    // TODO does this need `lent self`?
     published fn remove_at(mut self, index: size) -> T
         // requires index < .get_count()
         => .items.remove_at(index);
