@@ -1,0 +1,10 @@
+class Indexable_Collection_Mutable_Iterable[T] <: Mutable_Iterable[T]
+{
+    let collection: iso Indexable_Collection[T];
+
+    public new(mut self, .collection) { }
+
+    // TODO should iterate over `ref var T` to allow mutation
+    published fn iterate(lent iso self) -> lent mut Iterator[/*ref var*/ T]
+        => new Indexable_Collection_Mutable_Iterator[T](.collection);
+}

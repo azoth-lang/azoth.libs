@@ -5,7 +5,11 @@ public trait Indexable_Collection[T] <: Collection[T], Reversible_Iterable[T]
     published fn at(self, index: size) -> T;
         // requires index < .get_count()
 
-    // Return should iterate over `ref T` to avoid copying of large value types
+    // TODO should iterate over `ref T` to avoid copying of large value types
     published fn iterate(lent const self) -> lent mut Iterator[/*ref*/ T]
         => new Indexable_Collection_Iterator[T](self);
+
+    /// An `Mutable_Iterable` that allows mutating the elements of this collection
+    published fn mutable(lent iso self) -> lent iso Mutable_Iterable[/*ref var*/ T]
+        => new Indexable_Collection_Mutable_Iterable[T](move self);
 }

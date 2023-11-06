@@ -1,8 +1,6 @@
 // TODO what is the right way to represent this?
 public trait Iterable[T]
 {
-    // Return should iterate over `ref T` to avoid copying of large value types
+    // TODO should iterate over `ref T` to avoid copying of large value types
     published fn iterate(lent const self) -> lent mut Iterator[/*ref*/ T];
-
-    // published fn iterate(lent xmut self) -> lent Iterator[/*ref var*/ T];
 }

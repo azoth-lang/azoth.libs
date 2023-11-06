@@ -1,0 +1,21 @@
+class Indexable_Collection_Mutable_Iterator[T] <: Iterator[T]
+{
+    let collection: iso Indexable_Collection[T];
+    var index: size;
+
+    public new(mut self, .collection)
+    {
+        .index = 0;
+    }
+
+    published fn \next(mut self) -> T?
+    {
+        // Note it is not a concern that the collection size could change, because it is `const`
+        if .index >= .collection.get_count()
+            { return none; }
+
+        let item = .collection.at(.index);
+        .index += 1;
+        return item;
+    }
+}
