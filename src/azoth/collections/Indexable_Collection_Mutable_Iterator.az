@@ -1,6 +1,6 @@
 class Indexable_Collection_Mutable_Iterator[T] <: Iterator[T]
 {
-    let collection: iso Indexable_Collection[T];
+    let collection: xmut Indexable_Collection[T];
     var index: size;
 
     public new(mut self, .collection)
