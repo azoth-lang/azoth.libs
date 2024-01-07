@@ -11,5 +11,5 @@ public trait Indexable_Collection[T] <: Collection[T], Reversible_Iterable[T]
 
     /// An `Mutable_Iterable` that allows mutating the elements of this collection
     published fn mutable(lent iso self) -> lent iso Mutable_Iterable[/*ref var*/ T]
-        => new Indexable_Collection_Mutable_Iterable[T](self);
+        => new Indexable_Collection_Mutable_Iterable[T](move self);
 }
