@@ -7,10 +7,12 @@ namespace indexable_collection
         let subject = new Fake_Collection(0);
 
         let iterator: mut Iterator[int] = subject.iterate();
-
+        // Getting the count shows that the collection can be read while iterating
+        let count = subject.get_count();
         let end: int? = iterator.\next();
 
         Assert.that(end).is_none();
+        Assert.that(count).equals(0);
     }
 
     #Test
@@ -53,14 +55,10 @@ namespace indexable_collection
         let iterator: mut Iterator[int] = subject.mutable().iterate();
 
         let first: int? = iterator.\next();
-        // TODO getting count does not compile
-        // Getting the count shows that the collection can be read while iterating
-        let count = subject.get_count();
         let end: int? = iterator.\next();
 
         Assert.that(first).equals(0);
         Assert.that(end).is_none();
-        //Assert.that(count).equals(1);
     }
 
     class Fake_Collection <: Indexable_Collection[int]

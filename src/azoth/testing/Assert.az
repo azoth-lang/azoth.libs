@@ -31,7 +31,7 @@ published /*sealed*/ class AssertOnBool: Assert[bool]
 
     published fn is_false(self)
     {
-        if not .value
+        if .value
             { ABORT("Expected false, but was true."); }
     }
 }
