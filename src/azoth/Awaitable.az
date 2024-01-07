@@ -1,0 +1,8 @@
+// DRAFT
+
+public trait Awaitable[T, TThrows /*= never*/]
+{
+    // type TAwaiter <: Awaiter[T, TThrows];
+
+    // published get awaiter() -> TAwaiter;
+}

@@ -1,0 +1,16 @@
+// DRAFT
+
+public trait Awaiter[T, TThrows]
+{
+    /// Whether the promise is complete regardless of whether it errored or not.
+    // published get is_complete() -> bool;
+
+    /// Get the value if the promise completed successfully. Throws the exception if the promise
+    /// failed. Returns `none` if the promise is not complete.
+    // published get value() -> T?
+    //     may throw TThrows;
+
+    /// Invoke this continuation when the promise is complete.
+    /// TODO how to handle that there can be only one at a time?
+    // published fn on_complete(continuation: (Result[T, TThrows]) -> never);
+}
