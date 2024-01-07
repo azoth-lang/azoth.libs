@@ -3,6 +3,8 @@ public trait Unbounded_Iterator[T]
 {
     published fn \next(mut self) -> T?;
 
+    // TODO published delete(iso self)
+
     // TODO length size_hint on remaining? (see Rust)
 
     // TODO next_chunk()? (see Rust)
