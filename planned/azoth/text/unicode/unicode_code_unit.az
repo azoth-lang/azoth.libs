@@ -1,0 +1,20 @@
+/// Unicode code unit for UTF-8. That is a single the smallest combination of bits that can
+/// represent a unit of encoded text in UTF-8.
+published struct unicode_code_unit_8
+{
+
+}
+
+/// Unicode code unit for UTF-16. That is a single the smallest combination of bits that can
+/// represent a unit of encoded text in UTF-16.
+published struct unicode_code_unit_16
+{
+
+}
+
+/// Unicode code unit for UTF-32. That is a single the smallest combination of bits that can
+/// represent a unit of encoded text in UTF-32.
+published struct unicode_code_unit_32
+{
+
+}

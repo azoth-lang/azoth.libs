@@ -1,0 +1,19 @@
+/// One of the 17 Unicode Planes that Unicode Code Points are divided into.
+published struct unicode_plane
+    invariant value < Count
+{
+    const Count: byte = 17;
+    published const BasicMultilingual: unicode_plane = unicode_plane(0);
+    published const SupplementaryMultilingual: unicode_plane = unicode_plane(1);
+    published const SupplementaryIdeographic: unicode_plane = unicode_plane(2);
+    published const TertiaryIdeographic: unicode_plane = unicode_plane(3);
+    published const SupplementarySpecialPurpose: unicode_plane = unicode_plane(14);
+    published const SupplementaryPrivateUseAreaA: unicode_plane = unicode_plane(15);
+    published const SupplementaryPrivateUseAreaB: unicode_plane = unicode_plane(16);
+
+    let value: byte;
+
+    public init(.value)
+        requires value < Count
+    { }
+}

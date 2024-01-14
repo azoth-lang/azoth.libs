@@ -1,3 +1,5 @@
+
+// A Unicode Scalar (i.e. a Unicode Code Point that is not a surragate pair)
 public struct unicode_scalar
 {
     public const MinValue: unicode_scalar = unicode_scalar(unicode_code_point.MinValue);
