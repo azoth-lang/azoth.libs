@@ -1,14 +1,9 @@
 using intrinsics;
 
-/// This is a temporary version of the `String` class. Because the language
-/// doesn't support pointers yet, it uses a set of primitive memory manipulation
-/// functions that hide pointers as `size` values.
+/// This is a temporary version of the `String` class.
 ///
-/// The advantage of this approach is that it is easier to add functions to the
-/// String class. It also provides tests of language functionality.
-///
-/// At the moment, this string class leaks all memory. Once destructors work
-/// correctly, that can be fixed.
+/// Eventually, this should support slice operations which represent views onto a portion of an
+/// existing string. That is not supported yet.
 published class String
 {
     // const DefaultCapacity: size = 16;
@@ -92,7 +87,7 @@ published class String
     //     }
     //     return new String.from(new_bytes);
     // }
-//
+    //
     // published safe fn equals(self, other: String) -> bool
     // {
     //     if self.byte_count =/= other.byte_count => return false;

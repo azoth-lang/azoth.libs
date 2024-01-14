@@ -1,0 +1,28 @@
+
+/// A 7-bit ASCII character
+published struct ascii_char
+    invariant value <= MaxCodePointValue
+{
+    const MaxCodePointValue: byte = 0x7F;
+    published const MinValue: ascii_char = ascii_char(0);
+    published const MaxValue: ascii_char = ascii_char()
+
+    let value: byte;
+
+    public init(.value)
+        requires value <= MaxCodePointValue
+    { }
+
+    public unsafe implicit operator ''(count: size, bytes: @byte) -> ascii_char
+    {
+
+    }
+
+    #Inline
+    public operator <=(self, other: ascii_char) -> bool
+    {
+        return self.value <= other.value;
+    }
+
+    // TODO implement rest of operators and functions
+}
