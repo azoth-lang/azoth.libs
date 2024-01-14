@@ -1,4 +1,5 @@
-published trait Ordering[T] <: Partial_Ordering[T]
+/// A total order over `T`
+published trait Ordering[T] <: Partial_Ordering[T], Key_Comparer[T]
 {
     published fn compare(self, first: T, second: T) -> ordering;
 }

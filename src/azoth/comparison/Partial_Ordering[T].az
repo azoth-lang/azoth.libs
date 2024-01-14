@@ -1,3 +1,4 @@
+/// A partial order over `T`
 published trait Partial_Ordering[T]
 {
     published fn compare(self, first: T, second: T) -> ordering?;

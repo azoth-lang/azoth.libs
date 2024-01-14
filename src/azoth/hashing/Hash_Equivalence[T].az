@@ -1,5 +1,5 @@
 /// An equivalence relation between values that also supports hashing for placement in a hashtable.
-published trait Hash_Equivalence[T] <: Equivalence[T]
+published trait Hash_Equivalence[T] <: Equivalence[T], Key_Comparer[T]
 {
     published fn hash(self, value: T) -> uint64; // TODO nuint
 }
