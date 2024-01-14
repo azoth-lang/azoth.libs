@@ -1,5 +1,5 @@
 /// One of the 17 Unicode Planes that Unicode Code Points are divided into.
-published struct unicode_plane
+published const struct unicode_plane
     invariant value < Count
 {
     const Count: byte = 17;

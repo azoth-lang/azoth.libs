@@ -1,6 +1,6 @@
 /// A Unicode Code Point. That is the numeric value assigned to a single Unicode "character"
 /// including surragate pairs.
-public struct unicode_code_point
+public const struct unicode_code_point
     invariant value <= MaxCodePointValue
 {
     const MaxCodePointValue: uint = 0x10FFFF;
