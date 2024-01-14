@@ -1,0 +1,13 @@
+/// An equivalence that compares reference types by their identitiy.
+public const class Identity_Equivalence <: Hash_Equivalence[Any]
+    // where T: ref
+{
+    // TODO ensure a single instance
+    public new(self) { }
+
+    published fn equal(const self, first: Any, second: Any) -> bool
+        => id first == id second;
+
+    published fn hash(const self, value: Any) -> uint64 // TODO nuint
+        => identity_hash(value);
+}
