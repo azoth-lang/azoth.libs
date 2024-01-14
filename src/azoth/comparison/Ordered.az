@@ -2,5 +2,5 @@
 public trait Ordered <: Equatable, Partially_Ordered
 {
     // This only works if `Ordering <: Ordering?`
-    //public /*override*/ fn compare(self, other: Self) -> Ordering;
+    //public /*override*/ fn compare(self, other: Self) -> ordering;
 }

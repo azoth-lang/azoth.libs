@@ -1,0 +1,4 @@
+published trait Partial_Equivalence[T]
+{
+    published fn equal(self, first: T, second: T) -> bool?;
+}
