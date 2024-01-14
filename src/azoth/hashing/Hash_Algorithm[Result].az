@@ -1,0 +1,12 @@
+/// An algorithm for hashing bytes. May or may not be cryptographically secure.
+public trait Hash_Algorithm[Result]
+{
+    // public fn hash(mut self, bytes: Array[byte]);
+
+    // public unsafe fn hash(mut self, bytes: @byte, length: size);
+
+    /// Reset the hash algorithm to the initial state so it can be used to compute a new hash.
+    public fn reset(mut self);
+
+    public fn finalize(self) -> Result;
+}

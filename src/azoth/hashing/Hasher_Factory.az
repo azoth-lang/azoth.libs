@@ -1,0 +1,5 @@
+/// A factory for `Hasher`s. Used by hashtables to create hashers as needed.
+public trait Hasher_Factory
+{
+    public fn create(self) -> Hasher;
+}

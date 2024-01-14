@@ -1,0 +1,5 @@
+/// A type that supports equality comparison and hashing for placement in a hash table.
+public trait Hashable <: Equatable
+{
+    published fn hash(self, hasher: mut Hasher);
+}

@@ -1,0 +1,11 @@
+/// Computes a hash of objects typically for use in a hashtable. Hash values produced by a hasher
+/// will not typically be stable across runs of an application.
+public trait Hasher
+{
+    // public fn combine[T](mut self, value: T)
+    //     where T: Hashable;
+
+    // public unsafe fn combine(mut self, bytes: iref byte, count: size);
+
+    public fn finalize(self) -> uint64; // TODO nuint
+}
