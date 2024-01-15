@@ -1,5 +1,5 @@
 /// An iterator for a sequence of a known number of items.
-public trait Sized_Iterator[T] <: Iterator[T]
+public trait Sized_Iterator[out T] <: Iterator[T]
 {
     published fn get_remaining_count(self) -> int;
 

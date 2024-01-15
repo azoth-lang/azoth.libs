@@ -1,5 +1,5 @@
 /// An iterator for a finite sequence of items.
-public trait Iterator[T] <: Unbounded_Iterator[T]
+public trait Iterator[out T] <: Unbounded_Iterator[T]
 {
     // TODO length size_hint on remaining? (see Rust)
 

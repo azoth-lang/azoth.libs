@@ -10,4 +10,12 @@ published trait Set[T] <: Collection[T]
     // published fn create_by_identity() -> Hash_Set[T]
     //     where T: ReferenceType
     //     => new Hash_Set[T](new Identity_Equivalence());
+
+    published fn add(mut self, value: T);
+
+    published fn add(mut self, values: Iterator[T])
+    {
+        // foreach value in values
+        //     { .add(value); }
+    }
 }

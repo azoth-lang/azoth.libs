@@ -1,5 +1,5 @@
 /// An iterator for a potentially infinate sequence of items.
-public trait Unbounded_Iterator[T]
+public trait Unbounded_Iterator[out T]
 {
     published fn \next(mut self) -> T?;
 
@@ -11,7 +11,7 @@ public trait Unbounded_Iterator[T]
 
     // TODO implement operations once `yield` is implemented
 
-    // published fn where(mut self, predicate) -> Iterator[T]
+    // published fn where(mut self, predicate: (T) -> bool) -> Iterator[T]
 
     // published fn flatten()
 
