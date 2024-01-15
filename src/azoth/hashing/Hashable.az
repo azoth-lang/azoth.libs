@@ -1,5 +1,5 @@
 /// A type that supports equality comparison and hashing for placement in a hash table.
-public trait Hashable <: Equatable
+public trait Hashable[TSelf] <: Equatable[TSelf]
 {
-    published fn hash(self, hasher: mut Hasher);
+    published fn hash(self, lent hasher: mut Hasher);
 }

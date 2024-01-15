@@ -1,0 +1,13 @@
+published trait Set[T] <: Collection[T]
+{
+    // TODO allow constructors in traits so these can be called like constructors
+
+    published fn create() -> Hash_Set[T]
+        // where T: Hashable
+        => new Hash_Set[T]();
+
+
+    // published fn create_by_identity() -> Hash_Set[T]
+    //     where T: ReferenceType
+    //     => new Hash_Set[T](new Identity_Equivalence());
+}

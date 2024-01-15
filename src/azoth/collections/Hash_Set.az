@@ -1,0 +1,23 @@
+published class Hash_Set[T] <: Set[T]
+{
+    published new(mut self)
+        // where T: Hashable
+    {
+        //self.new()
+    }
+
+    published new(mut self, key_comparer: Hash_Equivalence[T])
+    {
+    }
+
+    // TODO name with_capacity
+    published new(mut self, capacity: size)
+    {
+
+    }
+
+    published new(mut self, capacity: size, key_comparer: Hash_Equivalence[T])
+    {
+
+    }
+}

@@ -1,6 +1,6 @@
 // A type for which there is a natural [total order](https://en.wikipedia.org/wiki/Total_order).
-public trait Ordered <: Equatable, Partially_Ordered
+public trait Ordered[TSelf] <: Equatable[TSelf], Partially_Ordered[TSelf]
 {
     // This only works if `Ordering <: Ordering?`
-    //public /*override*/ fn compare(self, other: Self) -> ordering;
+    public /*override*/ fn compare(const self, other: const TSelf) -> ordering;
 }

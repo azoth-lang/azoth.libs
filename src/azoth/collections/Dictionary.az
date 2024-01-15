@@ -1,0 +1,7 @@
+published trait Dictionary[Key, Value] <: Collection[Key_Value_Pair[Key, Value]]
+{
+    published fn create(key_comparer: Key_Comparer[Key]) -> Dictionary[Key, Value]
+    {
+
+    }
+}

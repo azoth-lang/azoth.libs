@@ -1,5 +1,5 @@
 /// Something that has a successor and predecessor
-published trait Steppable <: Ordered
+published trait Steppable[TSelf] <: Ordered[TSelf]
 {
     // published fn step_forward(self) -> Self?;
 

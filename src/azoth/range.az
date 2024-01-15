@@ -2,7 +2,7 @@
 /// A range represents a range of discrete values that are naturally ordered(e.g `int`).
 /// # Remarks
 /// To empty ranges are equal even if
-published /*sealed*/ const class /*struct*/ range[T] <: Ordered, Reversible_Iterable[T]
+published /*sealed*/ const class /*struct*/ range[T] <: Ordered[range[T]], Reversible_Iterable[T]
     // where T <: Steppable
 {
     /// The inclusive start of the range or `none` if the start is unbounded.

@@ -1,9 +1,12 @@
 /// A type for which there is a [partial equivalence relation](https://en.wikipedia.org/wiki/Partial_equivalence_relation).
 /// For example, in floating point numbers `NaN =/= NaN`, so floating point types
 /// implement `Partially_Equatable` but not `Equatable`.
-public trait Partially_Equatable
+public trait Partially_Equatable[TSelf]
 {
-    // public operator ==(const self, other: const Self) -> bool
+    // TODO replace with operator
+    public fn equals(const self, other: const TSelf) -> bool?;
+
+    // public operator ==(const self, other: const Self) -> bool?
         // symmetry: if a==b, then b==a
         // commenting out so we don't have to parse right now given that `return` changes to a varible here
         // ensures if return => other == self else => true
@@ -11,6 +14,6 @@ public trait Partially_Equatable
         // Commented out advanced contract so we don't have to parse it for now
         // ensures let a:Self, b:Self, c:Self if a==b and b==c => a==c;
 
-    // public operator =/=(const self, other: const Self) -> bool
+    // public operator =/=(const self, other: const Self) -> bool?
     //  => not (self == other);
 }

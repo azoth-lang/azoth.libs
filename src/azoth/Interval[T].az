@@ -1,5 +1,7 @@
+// An interval is possibly infinite set of values between two endpoints.
 // TODO how to implement empty?
-published /*sealed*/ const class Interval[T] <: Ordered
+// TODO make this a struct?
+published /*sealed*/ const class Interval[T] <: Ordered[Interval[T]]
     // where T <: Ordered
 {
     published let start: bound[T];

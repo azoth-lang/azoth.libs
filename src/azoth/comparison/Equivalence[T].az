@@ -1,4 +1,4 @@
-published trait Equivalence[T] <: Partial_Equivalence[T]
+published trait Equivalence[in T] <: Partial_Equivalence[T]
 {
     published fn equal(self, first: T, second: T) -> bool;
 }

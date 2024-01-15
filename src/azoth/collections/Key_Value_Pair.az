@@ -1,0 +1,7 @@
+published /*struct*/ class Key_Value_Pair[Key, Value]
+{
+    published let key: const Key;
+    published let value: Value;
+
+    published new(self, .key, .value) { }
+}

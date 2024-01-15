@@ -1,0 +1,22 @@
+/// A `Hash_Equivalence[T]` relation for `Hashable` types
+public const class Hashable_Hash_Equivalence[T] <: Hash_Equivalence[T]
+    // where T: Hashable
+{
+    let factory: Hasher_Factory;
+
+    published new(self, .factory) { }
+
+    published fn equal(const self, first: T, second: T) -> bool
+    {
+        // return first.equals(second);
+        NOT_IMPLEMENTED();
+    }
+
+    published fn hash(const self, value: T) -> uint64 // TODO nuint
+    {
+        NOT_IMPLEMENTED();
+        // let hasher: mut = .factory.create();
+        // value.hash(hasher);
+        // return hasher.finalize();
+    }
+}

@@ -3,7 +3,6 @@ public const class Identity_Equivalence <: Hash_Equivalence[Any]
     // where T: ref
 {
     // TODO ensure a single instance
-    public new(self) { }
 
     published fn equal(const self, first: Any, second: Any) -> bool
         => id first == id second;

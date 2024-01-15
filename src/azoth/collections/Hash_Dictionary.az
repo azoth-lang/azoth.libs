@@ -1,0 +1,4 @@
+published class Hash_Dictionary[Key, Value] <: Dictionary[Key, Value]
+{
+
+}
