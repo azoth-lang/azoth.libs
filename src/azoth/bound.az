@@ -1,6 +1,6 @@
 
 /// A bound of an interval of `T`
-public /*enum struct*/ class bound[T]
+public /*enum struct*/ const class bound[T]
 {
     // case inclusive
     // case exclusive

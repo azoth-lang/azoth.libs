@@ -1,5 +1,3 @@
-// TODO move to system.collections package
-
 public class Stack[T] <: Container[T], Collection[T]
 {
     let first_chunk: mut Buffer_Chunk[T];

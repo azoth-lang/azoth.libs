@@ -6,10 +6,10 @@ published /*sealed*/ const class /*struct*/ range[T] <: Ordered[range[T]], Rever
     // where T <: Steppable
 {
     /// The inclusive start of the range or `none` if the start is unbounded.
-    published let start: T?;
+    published let start: const T?;
 
     /// The inclusive end of the ranger or `none` if the end is unbounded
-    published let end: T?;
+    published let end: const T?;
 
     // published fn is_empty(const self) -> bool
     //     => .end < .start;
