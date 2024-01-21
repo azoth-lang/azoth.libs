@@ -15,10 +15,10 @@ published trait Set[T] <: Collection[T]
 
     published fn add(mut self, value: T) -> bool;
 
-    published fn add(mut self, values: Iterator[T])
+    published fn add(mut self, values: mut Iterator[T])
     {
-        // foreach value in values
-        //     { .add(value); }
+        foreach value in values
+            { .add(value); }
     }
 
     published fn remove(mut self, value: T) -> bool;
