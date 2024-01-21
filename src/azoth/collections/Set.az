@@ -11,11 +11,15 @@ published trait Set[T] <: Collection[T]
     //     where T: ReferenceType
     //     => new Hash_Set[T](new Identity_Equivalence());
 
-    published fn add(mut self, value: T);
+    published fn contains(self, value: T) -> bool;
+
+    published fn add(mut self, value: T) -> bool;
 
     published fn add(mut self, values: Iterator[T])
     {
         // foreach value in values
         //     { .add(value); }
     }
+
+    published fn remove(mut self, value: T) -> bool;
 }

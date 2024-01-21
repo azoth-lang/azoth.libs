@@ -1,7 +1,7 @@
 public extend struct uint
 {
-    // public const min_value: uint = 0;
-    // public const max_value: uint = 2**32;
+    // public const min: uint = 0;
+    // public const max: uint = 2**32;
 
     public operator _.._ (self, limit: uint) -> Range[uint]
     {

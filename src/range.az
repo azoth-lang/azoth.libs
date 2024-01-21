@@ -1,0 +1,73 @@
+
+/// A range represents a range of discrete values that are naturally ordered (e.g `int`). The range
+/// is defined by an inclusive start and an exclusive end. However, if the start and end are equal,
+/// it is an empty range.
+///
+/// # Remarks
+///
+/// Ranges are used for iterating through a range of values and also for slicing strings and
+/// collections. The reason there is an empty range at each value is to support operations like
+/// taking the values before and after an empty slice. Ranges are not comparable because there are
+/// multiple ways one might wish to compare them. Consider for example what order two ranges with
+/// the same start should have.
+// TODO move into `azoth` namespace
+published /*sealed*/ const class /*struct*/ range
+    // where T <: Steppable
+    // invariant .start <= .end
+{
+    published new(self, .start, .end)
+    {
+        if .start < .end
+            { .end = .start; }
+    }
+
+    /// The inclusive start of the range.
+    published let start: int;
+
+    /// The exclusive end of the range.
+    published let end: int;
+
+    // TODO `get`
+    published fn length(const self) -> uint
+        => (.end - .start) as! uint;
+        // => .start.steps_to(.end);
+
+    // TODO `get`
+    published fn is_empty(const self) -> bool
+        => .start == .end;
+
+    published fn contains(const self, value: int) -> bool
+        => .start <= value and value < .end;
+
+    published fn iterate(const self) -> mut Range_Iterator
+        => return new Range_Iterator(self);
+}
+
+// The range classes are temporary classes used to handle range expressions.
+// Eventually, there will be a single generic range struct. Currently, ranges
+// not including their endpoints are represented by moving the endpoint. Open
+// ranges are represented use min and max values. The current foreach loop
+// uses `count` and `at()` to iterate over things, so the range classes have
+// those.
+
+// TODO range is for discrete values (e.g. ints) interval is for continous values.
+
+/*published class Size_range
+{
+    published let start: size;
+    published let end: size;
+    // TODO make this a computed property
+    published let count: size;
+
+    published new(.start, .end)
+        // requires start <= end
+    {
+        self.count = self.end - self.start + 1;
+    }
+
+    published fn at(self, index: size) -> size
+        // requires index < .count
+    {
+        return .start + index;
+    }
+}*/

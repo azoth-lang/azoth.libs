@@ -2,9 +2,9 @@ published class Hash_Dictionary[Key, Value] <: Dictionary[Key, Value]
 {
     published let key_comparer: Hash_Equivalence[Key];
 
-    published new(mut self) { }
+    // published new(mut self) { }
 
     published new(mut self, .key_comparer) { }
 
-    published new(mut self, capcity: size, .key_comparer) { }
+    published new /*with_capcity*/(mut self, capcity: size, .key_comparer) { }
 }

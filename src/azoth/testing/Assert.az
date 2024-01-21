@@ -44,8 +44,7 @@ published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
 
     published fn is_none(self)
     {
-        if .value is let _? { }
-        else
+        if .value is let _?
             { ABORT("Expected none, but was an int."); }
     }
 

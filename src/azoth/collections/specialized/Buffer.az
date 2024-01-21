@@ -62,7 +62,7 @@ published move /*struct*/ class Buffer[T]
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
-            { .items.set_at(i, .items.at(i + 1)); }
+            { .items.set_at(i as! size, .items.at(i as! size + 1)); }
         .items.shrink(count - 1);
         return item;
     }
@@ -90,7 +90,7 @@ published move /*struct*/ class Buffer[T]
         let count = .get_count();
         // TODO create a more efficent copy mechanism
         foreach i in 0..<count
-            { new_items.add(.items.at(i)); }
+            { new_items.add(.items.at(i as! size)); }
         .items = new_items;
     }
 

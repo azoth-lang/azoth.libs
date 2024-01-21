@@ -1,7 +1,7 @@
 /// A numeric type whose values are integers. A given type may represent only
 /// a subset of the integers as do all the primitive integer types, both signed
 /// and unsigned.
-public type integer
+public trait integer
 {
     public operator +(ref self, other: ref Self) -> Self;
 }

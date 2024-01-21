@@ -1,7 +1,7 @@
 public extend struct size
 {
-    public const min_value: size = 0;
-    public const max_value: size = 0.bit_not();
+    public const min: size = 0;
+    public const max: size = 0.bit_not();
 
     /// Returns true if and only if `self == 2^k` for some `k`.
     public fn is_power_of_two(self) -> bool

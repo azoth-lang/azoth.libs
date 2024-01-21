@@ -71,7 +71,7 @@ published class Buffer_Chunk[T] <: Collection[T]
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
-            { .items.set_at(i, .items.at(i + 1)); }
+            { .items.set_at(i as! size, .items.at(i as! size + 1)); }
         .items.shrink(count - 1);
         return item;
     }
