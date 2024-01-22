@@ -1,0 +1,17 @@
+public class Where_Iterator[T] <: Unbounded_Iterator[T]
+{
+    let iterator: mut Unbounded_Iterator[T];
+    let predicate: (T) -> bool;
+
+    public new(mut self, .iterator, .predicate) { }
+
+    published fn \next(mut self) -> T?
+    {
+        while .iterator.\next() is let value?
+        {
+            if .predicate(value)
+                => return value;
+        }
+        return none;
+    }
+}

@@ -11,7 +11,8 @@ public trait Unbounded_Iterator[out T]
 
     // TODO implement operations once `yield` is implemented
 
-    // published fn where(mut self, predicate: (T) -> bool) -> Iterator[T]
+    published fn \where(mut self, predicate: (T) -> bool) -> mut Unbounded_Iterator[T]
+        => new Where_Iterator[T](self, predicate);
 
     // published fn flatten()
 

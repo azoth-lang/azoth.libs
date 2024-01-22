@@ -1,0 +1,18 @@
+namespace unbounded_iterator
+{
+    #Test
+    public fn \"Where filters iterators"()
+    {
+        let subject: mut = new List[int]();
+        subject.add(4);
+        subject.add(42);
+        subject.add(-1);
+
+        let iterator: mut = subject.iterate().where(greater_than_4);
+
+        Assert.that(iterator.\next()).equals(42);
+        Assert.that(iterator.\next()).is_none();
+    }
+
+    public fn greater_than_4(value: int) -> bool => value > 4;
+}
