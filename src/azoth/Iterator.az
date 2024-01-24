@@ -37,4 +37,7 @@ public trait Iterator[out T] <: Unbounded_Iterator[T]
     // published fn single(mut self) -> T?
 
     // sum
+
+    published fn \where(mut self, predicate: (T) -> bool) -> mut Iterator[T]
+        => new Where_Iterator[T](self, predicate);
 }

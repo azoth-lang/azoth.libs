@@ -15,3 +15,29 @@ public class Where_Iterator[T] <: Unbounded_Iterator[T]
         return none;
     }
 }
+
+// ----------------------------------
+
+// public class Where_Iterator[T] <: Unbounded_Iterator[T]
+//     forSome type Source <: Unbounded_Iterator[T]
+// {
+//     let iterator: mut Source;
+//     let predicate: (T) -> bool;
+
+//     public new(mut self, .iterator, .predicate) { }
+
+//     published fn \next(mut self) -> T?
+//     {
+//         while .iterator.\next() is let value?
+//         {
+//             if .predicate(value)
+//                 => return value;
+//         }
+//         return none;
+//     }
+// }
+
+// public extend Where_Iterator[T] <: Iterator[T]
+//     where Source <: Iterator[T]
+// {
+// }
