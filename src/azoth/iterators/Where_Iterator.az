@@ -1,4 +1,6 @@
 public class Where_Iterator[T] <: Unbounded_Iterator[T]
+    // TODO how does the compiler guarentee that it is safe to use `ref S` for `T`?
+    // It needs to know that `T` won't be save into a field in this class.
 {
     let iterator: mut Unbounded_Iterator[T];
     let predicate: (T) -> bool;
@@ -15,6 +17,21 @@ public class Where_Iterator[T] <: Unbounded_Iterator[T]
         return none;
     }
 }
+
+// ----------------------------------
+
+
+// public sealed class Where_Iterator[Source, T = _] <: Unbounded_Iterator[T]
+//     where Source <: Unbounded_Iterator[T]
+//     { ... }
+
+// This seems to be ok because whether `Source <: Unbounded_Iterator[T]` is a compile time fact
+// of the instance. Note that even if the Source implements iterator, what matters is the type it
+// was constructed with.
+// public extend Where_Iterator[Source, T] <: Iterator[T]
+//     where Source <: Iterator[T]
+// {
+// }
 
 // ----------------------------------
 
@@ -37,7 +54,4 @@ public class Where_Iterator[T] <: Unbounded_Iterator[T]
 //     }
 // }
 
-// public extend Where_Iterator[T] <: Iterator[T]
-//     where Source <: Iterator[T]
-// {
-// }
+

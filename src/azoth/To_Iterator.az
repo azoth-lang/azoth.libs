@@ -1,0 +1,174 @@
+// experimental trait for converting to an iterator
+// This would need to be generic over the self reference capability
+// public trait To_Iterator[c: capability, T]
+// {
+//     public fn to_iterator(c self) -> mut Iterator[T];
+
+//     public fn any(c self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[$c, T]
+// {
+//     public fn to_iterator($c self) -> mut Iterator[T];
+
+//     public fn any($c self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// WRONG: can't use `&` because it would be ambigous with intersection types
+// public trait To_Iterator[&c, T]
+// {
+//     public fn to_iterator(&c self) -> mut Iterator[T];
+
+//     public fn any(&c self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[<c>, T]
+// {
+//     public fn to_iterator(<c> self) -> mut Iterator[T];
+
+//     public fn any(<c> self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[c|>,x T]
+// {
+//     public fn to_iterator(c|>self) -> mut Iterator[T];
+
+//     public fn any(c|>self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+
+// public trait To_Iterator[%c Self, T]
+// {
+//     public fn to_iterator(%c self) -> mut Iterator[T];
+
+//     public fn any(%c self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+
+// public trait To_Iterator[c~Self, T]
+// {
+//     public fn to_iterator(c~self) -> mut Iterator[T];
+
+//     public fn any(c~self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[~c Self, T]
+// {
+//     public fn to_iterator(~c self) -> mut Iterator[T];
+
+//     public fn any(~c self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[c>>Self, T]
+// {
+//     public fn to_iterator(c~self) -> mut Iterator[T];
+
+//     public fn any(c~self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public trait To_Iterator[S, T]
+//     where S: Self
+// {
+//     public fn to_iterator(self: S) -> mut Iterator[T];
+
+//     public fn any(self: S, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// -----------------------------------
+
+// public trait To_Iterator[T]
+// {
+//     public fn to_iterator(self) -> mut Iterator[T];
+
+//     public fn any(self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// // This seems strange, because something being `mut Iterator[T]` is dynamic
+// public extend mut Iterator[T] <: To_Iterator[T]
+// {
+//     public fn to_iterator(mut self) -> mut Iterator[T]
+//         => self;
+// }
+
+// public extend Iterable[T] <: To_Iterator[T]
+// {
+//     public fn to_iterator(lent const self) -> lent mut Iterator[T]
+//         => .iterate();
+// }
+
+/// -----------------------------------------------
+
+// public trait To_Iterator[$, T]
+// {
+//     public fn to_iterator(lent $ self) -> lent mut Iterator[T];
+
+//     public fn any(self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public extend Iterator[T] <: To_Iterator[mut, T]
+// {
+//     public fn to_iterator(mut self) -> mut Iterator[T]
+//         => self;
+// }
+
+// public extend Iterable[T] <: To_Iterator[const, T]
+// {
+//     public fn to_iterator(lent const self) -> lent mut Iterator[T]
+//         => .iterate();
+// }
+
+// ----------------------------------------------------------
+
+// public trait To_Iterator[S, T]
+//     where S: Self
+// {
+//     public fn to_iterator(self: S) -> mut Iterator[T];
+
+//     public fn any(self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public extend Iterator[T] <: To_Iterator[mut Iterator[T], T]
+// {
+//     public fn to_iterator(mut self) -> mut Iterator[T]
+//         => self;
+// }
+
+// public extend Iterable[T] <: To_Iterator[const Iterable[T], T]
+// {
+//     public fn to_iterator(lent const self) -> lent mut Iterator[T]
+//         => .iterate();
+// }
+
+/// --------------------
+// public trait To_Iterator[Self, T]
+// {
+//     public fn to_iterator(self) -> mut Iterator[T];
+
+//     public fn any(self, predicate: (T) -> bool) -> mut Iterator[T]
+//         => new Any_Iterator[T](.to_iterator(), predicate);
+// }
+
+// public extend Iterator[T] <: To_Iterator[mut Iterator[T], T]
+// {
+//     public fn to_iterator(mut self) -> mut Iterator[T]
+//         => self;
+// }
+
+// public extend Iterable[T] <: To_Iterator[const Iterable[T], T]
+// {
+//     public fn to_iterator(lent const self) -> lent mut Iterator[T]
+//         => .iterate();
+// }
