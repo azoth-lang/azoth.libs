@@ -4,7 +4,7 @@
 public trait Partially_Equatable[TSelf]
 {
     // TODO replace with operator
-    public fn equals(const self, other: const TSelf) -> bool?;
+    public fn equals(const self, other: /*const*/ TSelf) -> bool?;
 
     // public operator ==(const self, other: const Self) -> bool?
         // symmetry: if a==b, then b==a

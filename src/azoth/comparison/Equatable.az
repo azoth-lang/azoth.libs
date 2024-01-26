@@ -2,7 +2,7 @@
 public trait Equatable[TSelf] <: Partially_Equatable[TSelf]
 {
     // TODO replace with operator
-    public fn equals(const self, other: const TSelf) -> bool;
+    public fn equals(const self, other: /*const*/ TSelf) -> bool;
 
     // public abstract override operator ==(const self, other: const Self) -> bool
         // reflexive a == a

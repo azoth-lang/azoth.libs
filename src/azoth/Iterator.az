@@ -38,6 +38,7 @@ public trait Iterator[out T] <: Unbounded_Iterator[T]
 
     // sum
 
-    published fn \where(mut self, predicate: (T) -> bool) -> mut Iterator[T]
-        => new Where_Iterator[T](self, predicate);
+    // TODO Where_Iterator[T] needs to implement Iterator[T]
+    // published fn \where(mut self, predicate: (T) -> bool) -> mut Iterator[T]
+    //     => new Where_Iterator[T](self, predicate);
 }

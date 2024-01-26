@@ -2,5 +2,5 @@
 public trait Ordered[TSelf] <: Equatable[TSelf], Partially_Ordered[TSelf]
 {
     // This only works if `Ordering <: Ordering?`
-    public /*override*/ fn compare(const self, other: const TSelf) -> ordering;
+    public /*override*/ fn compare(const self, other: /*const*/ TSelf) -> ordering;
 }
