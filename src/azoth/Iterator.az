@@ -5,9 +5,9 @@
 /// is not a separate iterator type for sequences whose item count is within `size` for two reasons.
 /// First, even if the item count is within `size` that doesn't mean that the items actually fit into
 /// memory. That depends on both the avalible memory and the size of individual elements. Second,
-/// `size` has a different `max_value` on different systems. Consider items returned from a database
-/// table. The rows are finite, but whether they fit in `size` depends on the particular platform
-/// the code is running on.
+/// `size.max` is different on different systems. Consider items returned from a database table. The
+/// rows are finite, but whether they fit in `size` depends on the particular platform the code is
+/// running on.
 public trait Iterator[out T] <: Unbounded_Iterator[T]
 {
     /// A hint as to the number of remaining elements. This value may not be correct and

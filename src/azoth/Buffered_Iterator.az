@@ -1,0 +1,9 @@
+/// An iterator that has buffered all the items of the collection. This allows subsequent iterators
+/// to be optimized since all the elements are held in a buffer that can be mutated.
+/// TODO does this really help performance? Reverse and sort are the things that would have a buffer
+/// and they won't be followed by much other than `to_list()`. But maybe the list can take ownership
+/// of the buffer.
+published trait Buffered_Iterator[T] <: Iterator[T]
+{
+
+}
