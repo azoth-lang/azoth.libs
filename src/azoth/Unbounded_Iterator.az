@@ -3,16 +3,14 @@ public trait Unbounded_Iterator[out T]
 {
     published fn \next(mut self) -> T?;
 
-    // TODO published delete(iso self)
-
-    // TODO length size_hint on remaining? (see Rust)
-
-    // TODO next_chunk()? (see Rust)
-
     // TODO implement operations once `yield` is implemented
 
     published fn \where(mut self, predicate: (T) -> bool) -> mut Unbounded_Iterator[T]
         => new Where_Iterator[T](self, predicate);
+
+    // TODO published delete(iso self)?
+
+    // TODO next_chunk()? (see Rust)
 
     // published fn flatten()
 

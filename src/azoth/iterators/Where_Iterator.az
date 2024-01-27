@@ -1,11 +1,17 @@
-public class Where_Iterator[T] <: Unbounded_Iterator[T]
+// TODO should not implement Iterator[T] of source doesn't
+public class Where_Iterator[T] <: Iterator[T], Unbounded_Iterator[T]
     // TODO how does the compiler guarentee that it is safe to use `ref S` for `T`?
-    // It needs to know that `T` won't be save into a field in this class.
+    // It needs to know that `T` won't be saved into a field in this class.
 {
     let iterator: mut Unbounded_Iterator[T];
     let predicate: (T) -> bool;
 
     public new(mut self, .iterator, .predicate) { }
+
+    /// # Notes
+    /// There is no way of knowing how many elements will be left after filtering, so the lower
+    /// bound on the size is always zero.
+    published fn size_hint(self) -> size => 0;
 
     published fn \next(mut self) -> T?
     {

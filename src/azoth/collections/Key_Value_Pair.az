@@ -1,4 +1,5 @@
 published /*struct*/ class Key_Value_Pair[Key, Value]
+    // where Key <: const
 {
     published let key: Key;
     published let value: Value;

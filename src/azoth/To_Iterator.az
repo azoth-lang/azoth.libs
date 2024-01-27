@@ -1,4 +1,7 @@
-// experimental trait for converting to an iterator
+// experimental trait for converting to an iterator that would allow declaring
+// Linq methods in a single place.
+
+
 // This would need to be generic over the self reference capability
 // public trait To_Iterator[c: capability, T]
 // {
