@@ -48,6 +48,23 @@ public trait Iterator[out T] <: Unbounded_Iterator[T]
     // published fn last(mut self) -> T?
 
     // max
+    // published fn max(mut self) -> T?
+    //     where T <: Ordered
+    //     => .max(new Natural_Ordering[T]());
+
+    // published fn max(mut self, order: Ordering[T]) -> T?
+    // {
+    //     if .\next() is not var value?
+    //         => return none;
+
+    //     foreach x in self
+    //     {
+    //         if with order => value > x
+    //             { value = x; }
+    //     }
+    //     return value;
+    // }
+
 
     // min
 
