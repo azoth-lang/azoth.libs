@@ -8,6 +8,8 @@ class Indexable_Collection_Iterator[T] <: Iterator[T]
         .index = 0;
     }
 
+    published fn size_hint(self) -> size => .collection.get_count() - .index;
+
     published fn \next(mut self) -> T?
     {
         // Note it is not a concern that the collection size could change, because it is `const`
