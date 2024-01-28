@@ -21,6 +21,16 @@ public trait Iterator[out T] <: Unbounded_Iterator[T]
     published fn \where(mut self, predicate: (T) -> bool) -> mut Iterator[T]
         => new Where_Iterator[T](self, predicate);
 
+    // published fn to_hash_dictionary[Value](mut self, value_selector: (T) -> Value) -> mut Hash_Dictionary[T, Value]
+    // {
+    //     let dictionary = new Hash_Dictionary[T, Value](.size_hint(), new Identity_Equivalence[T]());
+    //     foreach key in self
+    //     {
+    //         dictionary.add(key, value_selector(key));
+    //     }
+    //     return dictionary;
+    // }
+
     // TODO implement operations once `yield` is implemented
 
 

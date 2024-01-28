@@ -6,5 +6,5 @@ published class Hash_Dictionary[Key, Value] <: Dictionary[Key, Value]
 
     published new(mut self, .key_comparer) { }
 
-    published new /*with_capcity*/(mut self, capcity: size, .key_comparer) { }
+    published new /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
 }

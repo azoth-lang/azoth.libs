@@ -7,7 +7,7 @@
 // see https://www.reddit.com/r/ProgrammingLanguages/comments/9u63pe/language_design_comparing_and_sorting/
 public trait Partially_Ordered[TSelf] <: Partially_Equatable[TSelf]
 {
-    //public fn compare(const self, other: const Self) -> ordering?;
+    public fn compare(self, lent other: TSelf) -> ordering?;
 
     // public override operator == (const self, other: const Self) -> bool
     // {

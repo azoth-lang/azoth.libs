@@ -1,5 +1,5 @@
 /// A partial order over `T`
 published trait Partial_Ordering[in T]
 {
-    published fn compare(self, first: T, second: T) -> ordering?;
+    published fn compare(self, lent first: T, lent second: T) -> ordering?;
 }

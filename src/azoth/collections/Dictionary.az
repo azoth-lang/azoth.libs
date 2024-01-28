@@ -5,9 +5,9 @@ published trait Dictionary[Key, Value] <: Collection[Key_Value_Pair[Key, Value]]
     // {
     // }
 
-    published fn contains(self, key: Key) -> bool;
+    published fn contains(self, lent key: Key) -> bool;
 
-    published fn at(self, key: Key) -> Value?;
+    published fn at(self, lent key: Key) -> Value?;
 
     published fn set_at(mut self, key: Key, value: Value);
 
@@ -15,5 +15,5 @@ published trait Dictionary[Key, Value] <: Collection[Key_Value_Pair[Key, Value]]
 
     published fn try_add(mut self, key: Key, value: Value) -> bool;
 
-    published fn try_remove(mut self, key: Key) -> Value?;
+    published fn try_remove(mut self, lent key: Key) -> Value?;
 }
