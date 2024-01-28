@@ -1,4 +1,4 @@
-class Indexable_Collection_Iterator[T] <: Iterator[T]
+class Indexable_Collection_Iterator[out T] <: Iterator[T]
 {
     let collection: const Indexable_Collection[T];
     var index: size;

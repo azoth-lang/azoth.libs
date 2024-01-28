@@ -1,4 +1,4 @@
-class Indexable_Collection_Mutable_Iterable[T] <: Mutable_Iterable[T]
+class Indexable_Collection_Mutable_Iterable[out T] <: Mutable_Iterable[T]
 {
     let collection: iso Indexable_Collection[T];
 

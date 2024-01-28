@@ -1,7 +1,7 @@
 // DRAFT
 
 // Note: T = `void` for promises without a value
-public trait Awaitable[T /*= void*/, TThrows /*= never*/]
+public trait Awaitable[out T /*= void*/, out TThrows /*= never*/]
 {
     // type TAwaiter <: Awaiter[T, TThrows];
 

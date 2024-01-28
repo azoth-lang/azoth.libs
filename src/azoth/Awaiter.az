@@ -1,6 +1,6 @@
 // DRAFT
 
-public trait Awaiter[T, TThrows]
+public trait Awaiter[out T, out TThrows]
 {
     /// Whether the promise is complete regardless of whether it errored or not.
     // published get is_complete() -> bool;

@@ -1,5 +1,5 @@
 /// An algorithm for hashing bytes. May or may not be cryptographically secure.
-public trait Hash_Algorithm[Result]
+public trait Hash_Algorithm[out Result]
 {
     // public fn hash(mut self, bytes: Array[byte]);
 

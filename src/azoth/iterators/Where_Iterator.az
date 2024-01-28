@@ -1,5 +1,5 @@
 // TODO should not implement Iterator[T] of source doesn't
-public class Where_Iterator[T] <: Iterator[T], Unbounded_Iterator[T]
+public class Where_Iterator[out T] <: Iterator[T], Unbounded_Iterator[T]
     // TODO how does the compiler guarentee that it is safe to use `ref S` for `T`?
     // It needs to know that `T` won't be saved into a field in this class.
 {

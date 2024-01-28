@@ -5,6 +5,9 @@ published trait Dictionary[Key, Value] <: Collection[Key_Value_Pair[Key, Value]]
     // {
     // }
 
+    // TODO keys: Set[Key]
+    // TODO values: Collection[Value]
+
     published fn contains(self, lent key: Key) -> bool;
 
     published fn at(self, lent key: Key) -> Value?;
