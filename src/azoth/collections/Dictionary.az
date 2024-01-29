@@ -1,4 +1,4 @@
-published trait Dictionary[Key, Value] <: Collection[Key_Value_Pair[Key, Value]]
+published trait Dictionary[Key, ind Value] <: Collection[Key_Value_Pair[Key, Value]]
 {
     // TODO support creating either a Hash_Dictionary or Sorted_Dictionary depending on the type of key comparer
     // published fn create(key_comparer: Key_Comparer[Key]) -> Dictionary[Key, Value]

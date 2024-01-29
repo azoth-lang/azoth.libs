@@ -1,4 +1,4 @@
-public class Stack[T] <: Container[T], Collection[T]
+public class Stack[ind T] <: Container[T], Collection[T]
 {
     let first_chunk: mut Buffer_Chunk[T];
     var chunk: mut Buffer_Chunk[T];

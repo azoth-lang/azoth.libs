@@ -1,4 +1,4 @@
-published /*struct*/ const class Key_Value_Pair[out Key, out Value]
+published /*struct*/ const class Key_Value_Pair[out Key, ind Value]
     // where Key <: const
 {
     published let key: Key;
