@@ -37,7 +37,7 @@ namespace iterable
 
     class Fake_Iterable <: Iterable[int]
     {
-        published fn iterate(lent const self) -> lent mut Iterator[int]
+        published fn iterate(temp const self) -> mut Iterator[int]
             => new Fake_Iterator(self);
 
         public fn read(self) { }
@@ -47,7 +47,7 @@ namespace iterable
 
     class Fake_Iterator <: Iterator[int]
     {
-        let iterable: const Fake_Iterable;
+        let iterable: temp const Fake_Iterable;
 
         public new(mut self, .iterable) { }
 

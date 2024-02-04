@@ -2,5 +2,5 @@
 public trait Mutable_Iterable[out T]
 {
     // TODO should iterate over `iref var T` to allow mutation
-    published fn iterate(lent iso self) -> lent mut Iterator[/*iref var*/ T];
+    published fn iterate(temp iso self) -> mut Iterator[/*iref var*/ T];
 }

@@ -2,13 +2,13 @@
 public trait Iterable[out T]
 {
     // TODO should iterate over `ref T` to avoid copying of large value types
-    published fn iterate(lent const self) -> lent mut Iterator[/*ref*/ T];
+    published fn iterate(temp const self) -> mut Iterator[/*ref*/ T];
 
     // TODO implicit conversion to `Iterator[T]`
 
     // --------------------- Iterator[T] forwards
     // TODO why does this compile? The `predicate` shouldn't be allowed to be shared with the `lent`
     // return value. Is it because funtion types are currently effectively immutable?
-    published fn \where(lent const self, predicate: (T) -> bool) -> lent mut Iterator[T]
+    published fn \where(temp const self, predicate: (T) -> bool) -> mut Iterator[T]
         => .iterate().\where(predicate);
 }
