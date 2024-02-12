@@ -8,6 +8,5 @@ public const class Identity_Equivalence <: Hash_Equivalence[id Any]
         => first == second;
 
     published fn hash(const self, value: Any) -> uint64 // TODO nuint
-        // TODO maybe identity_hash should work on `id Any`?
-        => identity_hash(value);
+        => value.identity_hash();
 }
