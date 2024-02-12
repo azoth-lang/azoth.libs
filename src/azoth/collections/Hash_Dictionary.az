@@ -1,6 +1,7 @@
 published class Hash_Dictionary[ind Key, ind Value] <: Dictionary[Key, Value]
 {
-    published let key_comparer: Hash_Equivalence[Key];
+    // TODO I believe the `read|>` is needed here for when `Hash_Equivalence` expects its argument to be nonmutable
+    published let key_comparer: Hash_Equivalence[read|>Key];
 
     // published new(mut self) { }
 
