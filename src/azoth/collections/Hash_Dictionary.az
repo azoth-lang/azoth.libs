@@ -1,4 +1,4 @@
-published class Hash_Dictionary[Key, Value] <: Dictionary[Key, Value]
+published class Hash_Dictionary[ind Key, ind Value] <: Dictionary[Key, Value]
 {
     published let key_comparer: Hash_Equivalence[Key];
 

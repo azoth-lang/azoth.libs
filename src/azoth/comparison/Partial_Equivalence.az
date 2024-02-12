@@ -1,4 +1,5 @@
 published trait Partial_Equivalence[in T]
+// TODO restrict T to `read`, `const`, or `id`
 {
     published fn equal(self, lent first: T, lent second: T) -> bool?;
 }

@@ -1,5 +1,5 @@
-published /*struct*/ const class Key_Value_Pair[out Key, ind Value]
-    // where Key <: const
+// Note: `Key` type must be `ind` otherwise the `key` field always inheirts the `const` from this type.
+published /*struct*/ const class Key_Value_Pair[ind Key, ind Value]
 {
     published let key: Key;
     published let value: Value;

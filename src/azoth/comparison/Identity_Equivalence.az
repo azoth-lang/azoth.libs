@@ -1,5 +1,5 @@
 /// An equivalence that compares reference types by their identitiy.
-public const class Identity_Equivalence <: Hash_Equivalence[Any]
+public const class Identity_Equivalence <: Hash_Equivalence[id Any]
     // where T: ref
 {
     // TODO ensure a single instance
