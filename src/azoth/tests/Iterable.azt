@@ -8,7 +8,7 @@ namespace iterable
 
         let iterator: mut Iterator[int] = subject.iterate();
 
-        subject.read();
+        subject.test_read();
 
         let end: int? = iterator.\next();
 
@@ -25,14 +25,14 @@ namespace iterable
             let iterator: mut Iterator[int] = subject.iterate();
 
             // TODO next line does not compile
-            // subject.mutate();
+            // subject.test_mutate();
 
             let end: int? = iterator.\next();
 
             Assert.that(end).is_none();
         }
 
-        subject.mutate();
+        subject.test_mutate();
     }
 
     class Fake_Iterable <: Iterable[int]
@@ -40,9 +40,9 @@ namespace iterable
         published fn iterate(temp const self) -> mut Iterator[int]
             => new Fake_Iterator(self);
 
-        public fn read(self) { }
+        public fn test_read(self) { }
 
-        public fn mutate(mut self) { }
+        public fn test_mutate(mut self) { }
     }
 
     class Fake_Iterator <: Iterator[int]
