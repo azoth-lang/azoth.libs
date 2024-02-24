@@ -8,7 +8,7 @@
 /// `size.max` is different on different systems. Consider items returned from a database table. The
 /// rows are finite, but whether they fit in `size` depends on the particular platform the code is
 /// running on.
-public trait Iterator[out T] <: Unbounded_Iterator[T]
+public trait Iterator[T out] <: Unbounded_Iterator[T]
 {
     /// A hint as to the number of remaining elements. This value may not be correct and
     /// implementations should not fail if it is. In cases where the number of elements is known to

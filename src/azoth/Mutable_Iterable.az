@@ -1,5 +1,5 @@
 // TODO what is the right way to represent this?
-public trait Mutable_Iterable[out T]
+public trait Mutable_Iterable[T out]
 {
     // TODO should iterate over `iref var T` to allow mutation
     published fn iterate(temp iso self) -> mut Iterator[/*iref var*/ T];

@@ -3,7 +3,7 @@
 /// TODO does this really help performance? Reverse and sort are the things that would have a buffer
 /// and they won't be followed by much other than `to_list()`. But maybe the list can take ownership
 /// of the buffer.
-published trait Buffered_Iterator[out T] <: Iterator[T]
+published trait Buffered_Iterator[T out] <: Iterator[T]
 {
 
 }

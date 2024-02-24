@@ -1,4 +1,4 @@
-public class Indexable_Stack[ind T] <: Stack[T], Reversible_Iterable[T]
+public class Indexable_Stack[T ind] <: Stack[T], Reversible_Iterable[T]
 {
     let items: mut Buffer[T];
 

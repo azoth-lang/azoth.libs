@@ -1,6 +1,6 @@
 /// A chunk of a buffer stored as a linked list of chunks. Each chunk is a bounded list and has a
 /// reference to the next chunk.
-published class Buffer_Chunk[ind T] <: Collection[T]
+published class Buffer_Chunk[T ind] <: Collection[T]
     // invariant .get_count() <= get_capacity()
 {
     // const DefaultCapacity: size = 16;

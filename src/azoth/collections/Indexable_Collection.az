@@ -1,5 +1,5 @@
 /// A collection whose elements can be randomly accessed by an index.
-public trait Indexable_Collection[ind T] <: Collection[T], Reversible_Iterable[T]
+public trait Indexable_Collection[T ind] <: Collection[T], Reversible_Iterable[T]
 {
     /// O(1)
     published fn at(self, index: size) -> T;

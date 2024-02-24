@@ -1,11 +1,15 @@
-published class Hash_Dictionary[ind Key, ind Value] <: Dictionary[Key, Value]
+published class Hash_Dictionary[Key ind, Value ind] <: Dictionary[Key, Value]
 {
-    // TODO I believe the `read|>` is needed here for when `Hash_Equivalence` expects its argument to be nonmutable
-    published let key_comparer: Hash_Equivalence[read|>Key];
+    // TODO I believe the `read|>` is needed here for when `Hash_Equivalence` expects its argument
+    // to be nonmutable.
+    let key_comparer: Hash_Equivalence[read|>Key];
 
     // published new(mut self) { }
 
     published new(mut self, .key_comparer) { }
 
     published new /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
+
+    published fn get_key_comparer(self) -> Hash_Equivalence[read|>Key]
+        => .key_comparer;
 }

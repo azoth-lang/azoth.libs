@@ -1,6 +1,6 @@
 /// The natural ordering for the type `T` as given by its implemention of `Ordered`.
 // TODO hide this behind a `natural_order` property on `Ordered`?
-public class Natural_Ordering[in T] <: Ordering[T]
+public class Natural_Ordering[T in] <: Ordering[T]
     // where T <: Ordered
 {
     // TODO single instance per `T`?

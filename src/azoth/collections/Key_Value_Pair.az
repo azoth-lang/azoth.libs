@@ -1,5 +1,5 @@
 // Note: `Key` type must be `ind` otherwise the `key` field always inheirts the `const` from this type.
-published /*struct*/ const class Key_Value_Pair[ind Key, ind Value]
+published /*struct*/ const class Key_Value_Pair[Key ind, Value ind]
 {
     published let key: Key;
     published let value: Value;

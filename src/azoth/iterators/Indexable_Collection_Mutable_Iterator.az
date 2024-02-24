@@ -1,4 +1,4 @@
-class Indexable_Collection_Mutable_Iterator[out T] <: Iterator[T]
+class Indexable_Collection_Mutable_Iterator[T out] <: Iterator[T]
 {
     let collection: temp iso Indexable_Collection[T];
     var index: size;
