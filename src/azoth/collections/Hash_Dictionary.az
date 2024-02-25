@@ -1,8 +1,7 @@
-published class Hash_Dictionary[Key ind, Value ind] <: Dictionary[Key, Value]
+published class Hash_Dictionary[Key shareable ind, Value ind /*nonmutable out*/] <: Dictionary[Key, Value]
 {
-    // TODO I believe the `read|>` is needed here for when `Hash_Equivalence` expects its argument
-    // to be nonmutable.
-    let key_comparer: Hash_Equivalence[read|>Key];
+    // TODO type parameter access should be `Self.Key`
+    let key_comparer: Hash_Equivalence[Key];
 
     // published new(mut self) { }
 
@@ -10,6 +9,6 @@ published class Hash_Dictionary[Key ind, Value ind] <: Dictionary[Key, Value]
 
     published new /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
 
-    published fn get_key_comparer(self) -> Hash_Equivalence[read|>Key]
+    published fn get_key_comparer(self) -> Hash_Equivalence[Key]
         => .key_comparer;
 }
