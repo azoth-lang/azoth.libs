@@ -1,5 +1,5 @@
 /// A `Hash_Equivalence[T]` relation for `Hashable` types
-public const class Hashable_Hash_Equivalence[T in] <: Hash_Equivalence[T]
+public const class Hashable_Hash_Equivalence[shareable T in] <: Hash_Equivalence[T]
     // where T: Hashable
 {
     let factory: Hasher_Factory;
