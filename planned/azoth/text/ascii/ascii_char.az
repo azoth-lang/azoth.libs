@@ -5,7 +5,7 @@ published struct ascii_char
 {
     const MaxCodePointValue: byte = 0x7F;
     published const MinValue: ascii_char = ascii_char(0);
-    published const MaxValue: ascii_char = ascii_char()
+    published const MaxValue: ascii_char = ascii_char(MaxCodePointValue);
 
     let value: byte;
 

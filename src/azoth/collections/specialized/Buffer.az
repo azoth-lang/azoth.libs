@@ -8,7 +8,7 @@ published move /*struct*/ class Buffer[T ind]
 {
     // const DefaultCapacity: size = 16;
 
-    // TODO use optional type to avoid allocating empty `Raw_Bounded_List[T]`
+    // TODO use optional type to avoid allocating empty `Raw_Hybrid_Bounded_List[T]`
     var items: mut Raw_Hybrid_Bounded_List[void, T];
 
     published new(mut self)
@@ -18,7 +18,7 @@ published move /*struct*/ class Buffer[T ind]
         .items = new Raw_Hybrid_Bounded_List[void, T](DefaultCapacity);
     }
 
-    // TOOD name: with_capacity
+    // TODO name: with_capacity
     published new(mut self, capacity: size)
         // #prove ensures .get_count() == 0 and .get_capacity() == capacity
     {

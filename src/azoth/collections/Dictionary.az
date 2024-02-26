@@ -9,7 +9,7 @@ published trait Dictionary[Key ind, Value ind] <: Collection[Key_Value_Pair[Key,
     // {
     // }
 
-    published fn get_key_comparer(self) -> Key_Comparer[read|>Key];
+    published fn get_key_comparer(self) -> Key_Comparer[Key];
 
     // TODO keys: Set[Key]
     // TODO values: Collection[Value]
