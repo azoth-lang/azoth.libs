@@ -1,8 +1,8 @@
 // Note: `Key` type must be `ind` otherwise the `key` field always inheirts the `const` from this type.
-published /*struct*/ const class Key_Value_Pair[Key ind, Value ind]
+published const copy struct key_valye_pair[Key ind, Value ind]
 {
     published let key: Key;
     published let value: Value;
 
-    published new(self, .key, .value) { }
+    published init(self, .key, .value) { }
 }

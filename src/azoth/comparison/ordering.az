@@ -1,6 +1,6 @@
 // TODO perhaps the name `Ordering` should be reserved for the definition of an ordering for a particular type (i.e. Ordering[T])
 
-public /*enum struct*/ const class ordering
+public /*enum*/ const copy struct ordering
 {
     // Less,
     // Equal,
