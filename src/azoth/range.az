@@ -10,15 +10,17 @@
 /// taking the values before and after an empty slice. Ranges are not comparable because there are
 /// multiple ways one might wish to compare them. Consider for example what order two ranges with
 /// the same start should have.
-// TODO move into `azoth` namespace
-published /*sealed*/ const class /*struct*/ range
+published const copy struct range <: Iterable[int]
     // where T <: Steppable
     // invariant .start <= .end
 {
-    published new(self, .start, .end)
+    published init(self, .start, .end)
     {
-        if .start < .end
-            { .end = .start; }
+        if .start < .end => ABORT("End before start");
+    }
+
+    published init empty(self, .start)
+    {
     }
 
     /// The inclusive start of the range.
