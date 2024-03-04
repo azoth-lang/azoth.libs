@@ -1,0 +1,20 @@
+namespace range_tests
+{
+    #Test
+    public fn \"Initialize with start and end"()
+    {
+        let subject = range(1, 5);
+
+        Assert.that(subject.start).equals(1);
+        Assert.that(subject.end).equals(5);
+    }
+
+    #Test
+    public fn \"Initialize empty"()
+    {
+        let subject = range.empty(42);
+
+        Assert.that(subject.start).equals(42);
+        Assert.that(subject.end).equals(42);
+    }
+}

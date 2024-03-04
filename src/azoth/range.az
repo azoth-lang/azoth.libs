@@ -16,11 +16,12 @@ published const copy struct range <: Iterable[int]
 {
     published init(self, .start, .end)
     {
-        if .start < .end => ABORT("End before start");
+        if .end < .start => ABORT("End before start");
     }
 
     published init empty(self, .start)
     {
+        .end = .start;
     }
 
     /// The inclusive start of the range.
