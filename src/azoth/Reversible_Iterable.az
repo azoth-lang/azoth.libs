@@ -3,7 +3,7 @@
 /// # Remarks
 /// `Iterable[T].reverse` returns `Buffered_Iterator[T]` because it has to buffer all the items in
 /// order to reverse them. This returns `Iterator[T]` because it doesn't need to buffer.
-public trait Reversible_Iterable[T out] <: Iterable[T]
+public trait Reversible_Iterable[T ind out] <: Iterable[T]
 {
     /// An iterator that will iterate over the items in reverse order.
     published /*new*/ fn reverse(self) -> Iterator[T];
