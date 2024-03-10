@@ -1,5 +1,5 @@
 // TODO what is the right way to represent this?
-public trait Iterable[T out]
+public trait Iterable[T ind out]
 {
     // TODO should iterate over `ref T` to avoid copying of large value types
     published fn iterate(temp const self) -> mut Iterator[/*ref*/ T];

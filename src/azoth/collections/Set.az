@@ -1,4 +1,4 @@
-published trait Set[T] <: Collection[T]
+published trait Set[T ind] <: Collection[T]
 {
     // TODO allow constructors in traits so these can be called like constructors
 

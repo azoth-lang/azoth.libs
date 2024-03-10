@@ -5,6 +5,9 @@ public trait Indexable_Collection[T ind] <: Collection[T], Reversible_Iterable[T
     published fn at(self, index: size) -> T;
         // requires index < .get_count()
 
+    published fn set_at(mut self, index: size, value: T);
+        // requires index < .get_count()
+
     // TODO should iterate over `ref T` to avoid copying of large value types
     published fn iterate(temp const self) -> mut Iterator[/*ref*/ T]
         => new Indexable_Collection_Iterator[T](self);

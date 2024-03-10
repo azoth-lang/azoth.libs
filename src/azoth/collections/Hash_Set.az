@@ -1,4 +1,4 @@
-published class Hash_Set[T] <: Set[T]
+published class Hash_Set[T ind] <: Set[T]
 {
     published new(mut self)
         // where T: Hashable

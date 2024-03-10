@@ -1,5 +1,5 @@
 /// A collection is a collection of items that can be iterated.
-public trait Collection[T out] <: Iterable[T]
+public trait Collection[T ind out] <: Iterable[T]
 {
     /// O(1)
     published fn get_count(self) -> size;

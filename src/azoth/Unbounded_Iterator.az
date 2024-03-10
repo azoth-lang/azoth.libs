@@ -1,5 +1,5 @@
 /// An iterator for a potentially infinate sequence of items.
-public trait Unbounded_Iterator[T out]
+public trait Unbounded_Iterator[T ind out]
 {
     published fn \next(mut self) -> T?;
 
