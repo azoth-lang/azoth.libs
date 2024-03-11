@@ -1,4 +1,4 @@
-published class List[T ind] <: Indexable_Collection[T]
+published class List[T ind nonwritable out] <: Indexable_Collection[T]
 {
     var items: mut Buffer[T];
 

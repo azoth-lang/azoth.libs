@@ -2,7 +2,7 @@
 // Note: the `Value` could `read out` meaning that once the collection is can only be read, that
 // parameter acts like an `out` parameter. However, the `Key` can't be that because it must still be
 // passed into `at()` in order to retrieve values. Thus `Key` may only ever vary by the capability.
-published trait Dictionary[Key ind, Value ind] <: Collection[key_valye_pair[Key, Value]]
+published trait Dictionary[Key shareable ind, Value ind nonwritable out] <: Collection[key_value_pair[Key, Value]]
 {
     // TODO support creating either a Hash_Dictionary or Sorted_Dictionary depending on the type of key comparer
     // published fn create(key_comparer: Key_Comparer[Key]) -> Dictionary[Key, Value]

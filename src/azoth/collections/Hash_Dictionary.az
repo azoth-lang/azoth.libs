@@ -1,8 +1,8 @@
 
 // See https://engineering.fb.com/2019/04/25/developer-tools/f14/ for ideas on high performance hash tables
-published class Hash_Dictionary[Key shareable ind, Value ind /*nonmutable out*/] <: Dictionary[Key, Value]
+published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <: Dictionary[Key, Value]
 {
-    // TODO type parameter access should be `Self.Key`
+    // TODO type parameter access should be `Self.Key`?
     let key_comparer: Hash_Equivalence[Key];
 
     // published new(mut self) { }
