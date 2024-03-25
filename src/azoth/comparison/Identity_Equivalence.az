@@ -6,6 +6,6 @@ public const class Identity_Equivalence <: Hash_Equivalence[id Any]
     published fn equal(const self, first: id Any, second: id Any) -> bool
         => first == second;
 
-    published fn hash(const self, value: id Any) -> uint64 // TODO nuint
+    published fn hash(const self, value: id Any) -> nuint
         => value.identity_hash();
 }

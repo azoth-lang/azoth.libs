@@ -7,5 +7,5 @@ public trait Hasher
 
     // public unsafe fn combine(mut self, bytes: iref byte, count: size);
 
-    public fn finalize(self) -> uint64; // TODO nuint
+    public fn finalize(self) -> nuint;
 }

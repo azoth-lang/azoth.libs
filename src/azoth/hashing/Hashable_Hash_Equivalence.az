@@ -12,7 +12,7 @@ public const class Hashable_Hash_Equivalence[shareable T in] <: Hash_Equivalence
         NOT_IMPLEMENTED();
     }
 
-    published fn hash(const self, value: T) -> uint64 // TODO nuint
+    published fn hash(const self, value: T) -> nuint
     {
         NOT_IMPLEMENTED();
         // let hasher: mut = .factory.create();
