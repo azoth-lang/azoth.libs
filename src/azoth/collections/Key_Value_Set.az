@@ -1,0 +1,5 @@
+// A set of key value pairs. This is similar to a `Multidictionary` except that that each value can
+// occur only once. Hence the pairs of keys and values form a set.
+published class Key_Value_Set[Key ind, Value ind] <: Set[key_value_pair[Key, Value]]
+{
+}

@@ -1,0 +1,2 @@
+// A dictionary that allows multiple entries for the same key. Similar to a
+// `Dictionary[Key, Bag[Value]]`. See also `Key_Value_Set`
