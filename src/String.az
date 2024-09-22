@@ -1,4 +1,4 @@
-using intrinsics;
+import intrinsics;
 
 /// This is a temporary version of the `String` class.
 ///

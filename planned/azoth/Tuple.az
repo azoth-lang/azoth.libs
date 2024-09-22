@@ -1,5 +1,5 @@
-// using system.collections;
-// using system.collections.specialized;
+// import system.collections;
+// import system.collections.specialized;
 
 // public class Tuple[params Types: Array[type]]
 // {
