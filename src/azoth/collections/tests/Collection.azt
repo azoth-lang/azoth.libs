@@ -6,7 +6,7 @@ namespace collection
         // TODO let subject = Mock[Collection[int]]
         let subject = new Fake_Collection(0);
 
-        var empty = subject.is_empty();
+        var empty = subject.is_empty;
 
         Assert.that(empty).is_true();
     }
@@ -18,7 +18,7 @@ namespace collection
         // TODO let subject = Mock[Collection[int]]
         let subject = new Fake_Collection(1);
 
-        var empty = subject.is_empty();
+        var empty = subject.is_empty;
 
         Assert.that(empty).is_false();
     }
@@ -32,7 +32,7 @@ namespace collection
             .count = count;
         }
 
-        published fn get_count(self) -> size
+        published get count(self) -> size
             => .count;
     }
 }

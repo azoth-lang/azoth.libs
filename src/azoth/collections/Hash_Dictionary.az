@@ -11,6 +11,6 @@ published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <:
 
     published new /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
 
-    published fn get_key_comparer(self) -> Hash_Equivalence[Key]
+    published get key_comparer(self) -> Hash_Equivalence[Key]
         => .key_comparer;
 }

@@ -15,19 +15,19 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
     }
 
     // #Inline(.Always)
-    public fn get_count(self) -> size
-        => .items.get_count();
+    public get count(self) -> size
+        => .items.count;
 
     public fn peek(self) -> T?
     {
-        if .is_empty() => return none;
-        return .items.at(.items.get_count() - 1);
+        if .is_empty => return none;
+        return .items.at(.items.count - 1);
     }
 
     public fn pop(mut self) -> T?
     {
-        if .is_empty() => return none;
-        return .items.remove_at(.items.get_count() - 1);
+        if .is_empty => return none;
+        return .items.remove_at(.items.count - 1);
     }
 
     // #Inline(.Always)

@@ -8,7 +8,7 @@ namespace indexable_collection
 
         let iterator: mut Iterator[int] = subject.iterate();
         // Getting the count shows that the collection can be read while iterating
-        let count = subject.get_count();
+        let count = subject.count;
         let end: int? = iterator.\next();
 
         Assert.that(end).is_none();
@@ -25,7 +25,7 @@ namespace indexable_collection
 
         let first: int? = iterator.\next();
         // Getting the count shows that the collection can be read while iterating
-        let count = subject.get_count();
+        let count = subject.count;
         let end: int? = iterator.\next();
 
         Assert.that(first).equals(0);
@@ -70,7 +70,7 @@ namespace indexable_collection
             .count = count;
         }
 
-        published fn get_count(self) -> size
+        published get count(self) -> size
             => .count;
 
         published fn at(self, index: size) -> int

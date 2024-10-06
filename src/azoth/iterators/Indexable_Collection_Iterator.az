@@ -8,12 +8,12 @@ class Indexable_Collection_Iterator[T] <: Iterator[T]
         .index = 0;
     }
 
-    published fn size_hint(self) -> size => .collection.get_count() - .index;
+    published fn size_hint(self) -> size => .collection.count - .index;
 
     published fn \next(mut self) -> T?
     {
         // Note it is not a concern that the collection size could change, because it is `temp const`
-        if .index >= .collection.get_count()
+        if .index >= .collection.count
             { return none; }
 
         let item = .collection.at(.index);

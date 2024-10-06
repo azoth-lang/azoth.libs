@@ -47,10 +47,10 @@ published class String
     public fn raw_bytes(self) -> Raw_Hybrid_Bounded_List[void, byte]
         => .bytes;
 
-    published fn get_byte_capacity(self) -> size
-        => .bytes.get_capacity();
+    published get byte_capacity(self) -> size
+        => .bytes.capacity;
 
-    public fn set_byte_capacity(mut self, capacity: size)
+    public set byte_capacity(mut self, capacity: size)
         // requires .byte_count <= capacity
         => NOT_IMPLEMENTED();
 
@@ -59,7 +59,7 @@ published class String
 
     fn ensure_capacity(mut self, capacity: size)
     {
-        if capacity < .bytes.get_capacity() => return;
+        if capacity < .bytes.capacity => return;
         //let new_capacity = max(capacity, .bytes.capacity());
         NOT_IMPLEMENTED();
     }

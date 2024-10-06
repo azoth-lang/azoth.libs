@@ -3,10 +3,10 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
 {
     /// O(1)
     published fn at(self, index: size) -> T;
-        // requires index < .get_count()
+        // requires index < .count
 
     published fn set_at(mut self, index: size, value: T);
-        // requires index < .get_count()
+        // requires index < .count
 
     // TODO should iterate over `ref T` to avoid copying of large value types
     published fn iterate(temp const self) -> mut Iterator[/*ref*/ T]

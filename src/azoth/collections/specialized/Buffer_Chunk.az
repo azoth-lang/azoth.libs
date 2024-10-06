@@ -1,7 +1,7 @@
 /// A chunk of a buffer stored as a linked list of chunks. Each chunk is a bounded list and has a
 /// reference to the next chunk.
 published class Buffer_Chunk[T ind] <: Collection[T]
-    // invariant .get_count() <= get_capacity()
+    // invariant .count <= .capacity
 {
     // const DefaultCapacity: size = 16;
 
@@ -9,65 +9,65 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     var items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
 
     published new(mut self)
-        // #prove ensures .get_count() == 0 and .get_capacity() == DefaultCapacity
+        // #prove ensures .count == 0 and .capacity == DefaultCapacity
     {
         let DefaultCapacity: size = 16; // TODO make this a constant
         .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, DefaultCapacity);
     }
 
     published new(mut self, capacity: size)
-        // #prove ensures .get_count() == 0 and .get_capacity() == capacity
+        // #prove ensures .count == 0 and .capacity == capacity
     {
         .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, capacity);
     }
 
     published new(mut self, capacity: size, next_chunk: mut Buffer_Chunk[T])
-        // #prove ensures .get_count() == 0 and .get_capacity() == capacity
+        // #prove ensures .count == 0 and .capacity == capacity
     {
         .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](next_chunk, capacity);
     }
 
-    published fn get_next_chunk(mut self) -> mut Buffer_Chunk[T]?
-        => .items.get_fixed();
+    published get next_chunk(mut self) -> mut Buffer_Chunk[T]?
+        => .items.\fixed;
 
-    published fn get_capacity(self) -> size
-        => .items.get_capacity();
+    published get capacity(self) -> size
+        => .items.capacity;
 
-    published fn is_full(self) -> bool
-        => .items.get_count() == .items.get_capacity();
+    published get is_full(self) -> bool
+        => .items.count == .items.capacity;
 
-    published fn get_count(self) -> size
-        => .items.get_count();
+    published get count(self) -> size
+        => .items.count;
 
     published fn at(self, index: size) -> T
-        // requires index < .get_count()
+        // requires index < .count
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("at(): index out of bounds");
         return .items.at(index);
     }
 
     published fn set_at(mut self, index: size, value: T)
-        // requires index < .get_count()
+        // requires index < .count
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("set_at(): index out of bounds");
         .items.set_at(index, value);
     }
 
     published fn try_add(mut self, value: T) -> bool
-        // #prove ensures old.get_count() == .get_count() + 1
+        // #prove ensures old.count == .count + 1
     {
-        if .items.get_count() == .items.get_capacity() => return false;
+        if .items.count == .items.capacity => return false;
         .items.add(value);
         return true;
     }
 
     published fn remove_at(mut self, index: size) -> T
-        // requires index < .get_count()
-        // #prove ensures old.get_count() == .get_count() - 1
+        // requires index < .count
+        // #prove ensures old.count() == .count - 1
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
@@ -77,6 +77,6 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     }
 
     published fn clear(mut self)
-        // #prove ensures .get_count() == 0
+        // #prove ensures .count == 0
         => .items.shrink(0);
 }

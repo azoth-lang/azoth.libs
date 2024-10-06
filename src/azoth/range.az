@@ -31,12 +31,12 @@ published const copy struct range <: Iterable[int]
     published let end: int;
 
     // TODO `get`
-    published fn length(const self) -> uint
+    published get length(const self) -> uint
         => (.end - .start) as! uint;
         // => .start.steps_to(.end);
 
     // TODO `get`
-    published fn is_empty(const self) -> bool
+    published get is_empty(const self) -> bool
         => .start == .end;
 
     published fn contains(const self, value: int) -> bool

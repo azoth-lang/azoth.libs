@@ -4,7 +4,7 @@
 /// Used internally by collections to ensure efficent memory management. Can be used by performance
 /// critical code to avoid extra layers of indirection.
 published move /*struct*/ class Buffer[T ind]
-    // invariant .get_count() <= get_capacity()
+    // invariant .count <= .capacity
 {
     // const DefaultCapacity: size = 16;
 
@@ -12,7 +12,7 @@ published move /*struct*/ class Buffer[T ind]
     var items: mut Raw_Hybrid_Bounded_List[void, T];
 
     published new(mut self)
-        // #prove ensures .get_count() == 0 and .get_capacity() == DefaultCapacity
+        // #prove ensures .count == 0 and .capacity == DefaultCapacity
     {
         let DefaultCapacity: size = 16; // TODO make this a constant
         .items = new Raw_Hybrid_Bounded_List[void, T](DefaultCapacity);
@@ -20,45 +20,45 @@ published move /*struct*/ class Buffer[T ind]
 
     // TODO name: with_capacity
     published new(mut self, capacity: size)
-        // #prove ensures .get_count() == 0 and .get_capacity() == capacity
+        // #prove ensures .count == 0 and .capacity == capacity
     {
         .items = new Raw_Hybrid_Bounded_List[void, T](capacity);
     }
 
-    published fn get_capacity(self) -> size
-        => .items.get_capacity();
+    published get capacity(self) -> size
+        => .items.capacity;
 
-    published fn get_count(self) -> size
-        => .items.get_count();
+    published get count(self) -> size
+        => .items.count;
 
     published fn at(self, index: size) -> T
-        // requires index < .get_count()
+        // requires index < .count
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("at(): index out of bounds");
         return .items.at(index);
     }
 
     published fn set_at(mut self, index: size, value: T)
-        // requires index < .get_count()
+        // requires index < .count
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("set_at(): index out of bounds");
         .items.set_at(index, value);
     }
 
     published fn add(mut self, value: T)
-        // #prove ensures old.get_count() == .get_count() + 1
+        // #prove ensures old.count == .count + 1
     {
-        .ensure_capacity(.items.get_count() + 1);
+        .ensure_capacity(.items.count + 1);
         .items.add(value);
     }
 
     published fn remove_at(mut self, index: size) -> T
-        // requires index < .get_count()
-        // #prove ensures old.get_count() == .get_count() - 1
+        // requires index < .count
+        // #prove ensures old.count() == .count - 1
     {
-        let count = .items.get_count();
+        let count = .items.count;
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
@@ -68,13 +68,13 @@ published move /*struct*/ class Buffer[T ind]
     }
 
     published fn clear(mut self)
-        // #prove ensures .get_count() == 0
+        // #prove ensures .count == 0
         => .items.shrink(0);
 
     published fn ensure_capacity(mut self, min_capacity: size)
-        // #prove ensures .get_capacity() >= min_capacity
+        // #prove ensures .capacity >= min_capacity
     {
-        var capacity = .items.get_capacity();
+        var capacity = .items.capacity;
         if min_capacity <= capacity => return;
         let DefaultCapacity: size = 16; // TODO make this a constant
         if capacity < DefaultCapacity { capacity = DefaultCapacity; }
@@ -83,11 +83,11 @@ published move /*struct*/ class Buffer[T ind]
     }
 
     fn resize_to(mut self, new_capacity: size)
-        // requires new_capacity >= .get_count()
-        // #prove ensures .get_capacity() == new_capacity
+        // requires new_capacity >= .count
+        // #prove ensures .capacity == new_capacity
     {
         let new_items: mut = new Raw_Hybrid_Bounded_List[void, T](new_capacity);
-        let count = .get_count();
+        let count = .count;
         // TODO create a more efficent copy mechanism
         foreach i in 0..<count
             { new_items.add(.items.at(i as! size)); }
@@ -96,21 +96,21 @@ published move /*struct*/ class Buffer[T ind]
 
     /// Trim the capacity of this `Buffer[T]` down to `count`
     published fn trim_to_count(mut self)
-        // #prove ensures .get_capacity() == .get_count()
+        // #prove ensures .capacity == .count
     {
-        let count = .get_count();
-        if .get_capacity() == count => return;
+        let count = .count;
+        if .capacity == count => return;
         .resize_to(count);
     }
 
-    /// Trim the capacity of this `Buffer[T]` down to what it would be if `.get_count()` items
+    /// Trim the capacity of this `Buffer[T]` down to what it would be if `.count` items
     /// were added to a new `Buffer[T]`.
     published fn trim_excess_capacity(mut self)
     {
         let DefaultCapacity: size = 16; // TODO make this a constant
-        let count = .get_count();
+        let count = .count;
         var capacity = DefaultCapacity;
         while capacity < count { capacity *= 2; }
-        if capacity < .get_capacity() { .resize_to(capacity); }
+        if capacity < .capacity { .resize_to(capacity); }
     }
 }

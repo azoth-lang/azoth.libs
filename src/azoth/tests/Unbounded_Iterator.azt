@@ -8,7 +8,7 @@ namespace unbounded_iterator
         subject.add(42);
         subject.add(-1);
 
-        let iterator: mut = subject.iterate().where(greater_than_4);
+        let iterator: mut = subject.iterate().\where(greater_than_4);
 
         Assert.that(iterator.\next()).equals(42);
         Assert.that(iterator.\next()).is_none();

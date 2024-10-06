@@ -2,11 +2,11 @@
 public trait Collection[T ind out] <: Iterable[T]
 {
     /// O(1)
-    published fn get_count(self) -> size;
+    published get count(self) -> size;
 
     /// O(1)
-    published fn is_empty(self) -> bool
-        => .get_count() == 0;
+    published get is_empty(self) -> bool
+        => .count == 0;
 
     /// O(1)?
     published fn clear(mut self);

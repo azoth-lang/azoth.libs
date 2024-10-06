@@ -25,21 +25,21 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
     // }
 
     // #Inline(.Always)
-    public fn get_count(self) -> size
+    public get count(self) -> size
         => .count;
 
     public fn peek(self) -> T?
     {
-        if .is_empty() => return none;
-        return .chunk.at(.chunk.get_count() - 1);
+        if .is_empty => return none;
+        return .chunk.at(.chunk.count - 1);
     }
 
     public fn pop(mut self) -> T?
         // overrides remove
     {
-        if .is_empty() => return none;
-        let item = .chunk.remove_at(.chunk.get_count() - 1);
-        if .chunk.is_empty() and .chunk.get_next_chunk() is let next_chunk?
+        if .is_empty => return none;
+        let item = .chunk.remove_at(.chunk.count - 1);
+        if .chunk.is_empty and .chunk.next_chunk is let next_chunk?
         {
             .cached_chunk = .chunk;
             .chunk = next_chunk;
