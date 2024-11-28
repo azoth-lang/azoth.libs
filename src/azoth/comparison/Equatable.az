@@ -4,13 +4,13 @@ public trait Equatable[TSelf] <: Partially_Equatable[TSelf]
     // TODO replace with operator
     public fn equals(const self, other: /*const*/ TSelf) -> bool;
 
-    // public abstract override operator ==(const self, other: const Self) -> bool
+    // public abstract override operator _==_(const self, other: const Self) -> bool
         // reflexive a == a
         //ensures self == self;
         // The following postconditions are inherited from PartiallyEquatable
         // symmetry if a==b, then b==a
         // transitivity: if a==b and b==c, then a==c
 
-    // public operator =/=(const self, other: const Self) -> bool
+    // public operator _=/=_(const self, other: const Self) -> bool
     //  => not (self == other);
 }

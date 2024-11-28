@@ -9,17 +9,17 @@ public trait Partially_Ordered[TSelf] <: Partially_Equatable[TSelf]
 {
     public fn compare(self, lent other: TSelf) -> ordering?;
 
-    // public override operator == (const self, other: const Self) -> bool?
+    // public override operator _==_ (const self, other: const Self) -> bool?
     // {
     //     return .compare(other) == .Equal;
     // }
 
-    // public operator < (const self, other: const Self) -> bool?
+    // public operator _<_ (const self, other: const Self) -> bool?
     // {
     //     return .compare(other) == .Less;
     // }
 
-    // public operator <= (const self, other: Self) -> bool?
+    // public operator _<=_ (const self, other: Self) -> bool?
     // {
     //     return match .compare(other)
     //     {
@@ -28,12 +28,12 @@ public trait Partially_Ordered[TSelf] <: Partially_Equatable[TSelf]
     //     };
     // }
 
-    // public operator > (const self, other: Self) -> bool>
+    // public operator _>_ (const self, other: Self) -> bool>
     // {
     //     return .compare(other) == .Greater;
     // }
 
-    // public operator >= (const self, other: Self) -> bool
+    // public operator _>=_ (const self, other: Self) -> bool
     // {
     //     return match .compare(other)
     //     {

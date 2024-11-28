@@ -9,7 +9,7 @@
 //     public new(params .values) { }
 
 //     #Inline
-//     public operator #() (params values: Parameters[params Types]) -> Tuple[params Types]$owned
+//     public operator #(_) (params values: Parameters[params Types]) -> Tuple[params Types]$owned
 //     {
 //         return new Tuple[params Types](params values);
 //     }

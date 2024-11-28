@@ -13,13 +13,13 @@ public const struct unicode_code_point
         requires value <= MaxCodePointValue
     { }
 
-    public unsafe implicit operator ''(count: size, bytes: @byte) -> code_point
+    public unsafe implicit operator '_'(count: size, bytes: @byte) -> code_point
     {
 
     }
 
     #Inline
-    public operator <=(self, other: unicode_code_point) -> bool
+    public operator _<=_(self, other: unicode_code_point) -> bool
     {
         return self.value <= other.value;
     }

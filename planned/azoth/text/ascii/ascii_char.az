@@ -13,13 +13,13 @@ published struct ascii_char
         requires value <= MaxCodePointValue
     { }
 
-    public unsafe implicit operator ''(count: size, bytes: @byte) -> ascii_char
+    public unsafe implicit operator '_'(count: size, bytes: @byte) -> ascii_char
     {
 
     }
 
     #Inline
-    public operator <=(self, other: ascii_char) -> bool
+    public operator _<=_(self, other: ascii_char) -> bool
     {
         return self.value <= other.value;
     }

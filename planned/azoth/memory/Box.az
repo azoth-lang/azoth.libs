@@ -16,17 +16,17 @@ public mut struct Box[T]
 
     // TODO maybe instead of overloading `.` we should overload `^` and treat
     // this more like a pointer.
-    public safe operator.(ref mut self) -> ref mut T
+    public safe operator _.(ref mut self) -> ref mut T
     {
         return unsafe(ref mut ^value);
     }
 
-    public safe operator.(ref self) -> ref T
+    public safe operator _.(ref self) -> ref T
     {
         return unsafe(ref ^value);
     }
 
-    public safe operator=(ref mut self, value: T) -> void
+    public safe operator _=_(ref mut self, value: T) -> void
     {
         unsafe(^self.value = value);
     }

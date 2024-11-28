@@ -3,5 +3,5 @@
 /// and unsigned.
 public trait integer
 {
-    public operator +(ref self, other: ref Self) -> Self;
+    public operator _+_(ref self, other: ref Self) -> Self;
 }

@@ -6,7 +6,7 @@ public move struct Parameters[]
     public init() { }
 
     #Inline
-    public operator #() () -> Parameters[]
+    public operator #(_) () -> Parameters[]
     {
         return Parameters[]();
     }
@@ -23,7 +23,7 @@ public move struct Parameters[T, params Rest: Array[type]]
     public init(.first, params .rest) {  }
 
     #Inline
-    public operator #() (first: T, params rest: Parameters[params Rest])
+    public operator #(_) (first: T, params rest: Parameters[params Rest])
         -> Parameters[T, params Rest]
     {
         return Parameters(first, params rest);
