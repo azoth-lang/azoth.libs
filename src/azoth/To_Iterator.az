@@ -19,7 +19,7 @@
 //         => new Any_Iterator[T](.to_iterator(), predicate);
 // }
 
-// WRONG: can't use `&` because it would be ambigous with intersection types
+// WRONG: can't use `&` because it would be ambiguous with intersection types
 // public trait To_Iterator[&c, T]
 // {
 //     public fn to_iterator(&c self) -> mut Iterator[T];

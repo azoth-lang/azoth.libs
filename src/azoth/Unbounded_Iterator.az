@@ -1,4 +1,4 @@
-/// An iterator for a potentially infinate sequence of items.
+/// An iterator for a potentially infinite sequence of items.
 public trait Unbounded_Iterator[T ind out]
 {
     published fn \next(mut self) -> T?;
@@ -16,7 +16,7 @@ public trait Unbounded_Iterator[T ind out]
 
     // published fn take(mut self, count: int) -> FiniteIterator[T]
 
-    // Many of these should return more specific types if the self type is more specfic. Not sure
+    // Many of these should return more specific types if the self type is more specific. Not sure
     // if that is the `self` type though.
 
     // published fn skip(mut self, count: int) -> Self

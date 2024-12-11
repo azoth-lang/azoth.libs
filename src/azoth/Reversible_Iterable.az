@@ -1,4 +1,4 @@
-/// An iterable that has an efficent way to iterate the items in reverse order.
+/// An iterable that has an efficient way to iterate the items in reverse order.
 ///
 /// # Remarks
 /// `Iterable[T].reverse` returns `Buffered_Iterator[T]` because it has to buffer all the items in
