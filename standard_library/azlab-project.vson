@@ -1,5 +1,5 @@
 {
-    "name": "azoth.stdlib",
+    "name": "azoth.standard_library",
     "root_namespace": "",
     "authors": ["Jeff Walker"],
     "template": "lib"
