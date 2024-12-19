@@ -2,5 +2,11 @@
     "name": "azoth.standard_library",
     "root_namespace": "",
     "authors": ["Jeff Walker"],
-    "template": "lib"
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.compilation": { "path": "../compilation", "trusted": true, "bundle":"internal" },
+        "azoth.collections.raw": { "path": "../collections.raw", "trusted": true, "relation":"published", "bundle":"internal" },
+        "azoth.core": { "path": "../core", "trusted": true, "relation":"published", "bundle":"internal" }
+    }
 }

@@ -1,6 +1,6 @@
-// Even though Raw_Array is not a primitve type, it is one of the types that the
+// Even though Raw_Array is not a primitive type, it is one of the types that the
 // compiler will need to treat specially. For optimization, the compiler should
-// be capable of optimizaing small arrays onto the stack the same way it
+// be capable of optimizing small arrays onto the stack the same way it
 // optimizes objects onto the stack.
 
 /// A `Raw_Array[T]` is a fairly thin wrapper around a pointer to a block of

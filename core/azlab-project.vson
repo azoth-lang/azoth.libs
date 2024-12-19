@@ -1,0 +1,12 @@
+{
+    "name": "azoth.core",
+    "root_namespace": "",
+    "authors": ["Jeff Walker"],
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.compilation": { "path": "../compilation", "trusted": true, "bundle":"internal" },
+        "azoth.compiler.intrinsics": { "path": "../compiler.intrinsics", "trusted": true },
+        "azoth.collections.raw": { "path": "../collections.raw", "trusted": true, "relation":"published", "bundle":"internal" }
+    }
+}

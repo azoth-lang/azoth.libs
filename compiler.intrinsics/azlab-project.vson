@@ -1,0 +1,6 @@
+{
+    "name": "azoth.compiler.intrinsics",
+    "root_namespace": "azoth.compiler.intrinsics",
+    "authors": ["Jeff Walker"],
+    "template": "lib"
+}

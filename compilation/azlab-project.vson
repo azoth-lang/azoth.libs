@@ -1,0 +1,6 @@
+{
+    "name": "azoth.compilation",
+    "root_namespace": "azoth.compilation",
+    "authors": ["Jeff Walker"],
+    "template": "lib"
+}

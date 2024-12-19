@@ -1,0 +1,10 @@
+{
+    "name": "azoth.text.unicode",
+    "root_namespace": "azoth.text.unicode",
+    "authors": ["Jeff Walker"],
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.core": { "path": "../core", "trusted": true, "relation":"published" }
+    }
+}

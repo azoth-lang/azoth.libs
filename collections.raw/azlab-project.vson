@@ -1,0 +1,11 @@
+{
+    "name": "azoth.collections.raw",
+    "root_namespace": "azoth.collections.raw",
+    "authors": ["Jeff Walker"],
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.compiler.intrinsics": { "path": "../compiler.intrinsics", "trusted": true },
+        "azoth.compilation": { "path": "../compilation", "trusted": true }
+    }
+}

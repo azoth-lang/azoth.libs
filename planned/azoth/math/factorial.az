@@ -10,7 +10,7 @@ published fn factorial(n: uint64) -> uint
             { result *= factor; }
         return result;
     }
-    // TODO use a prime based algorthim for bigger factorials https://www.luschny.de/math/factorial/SwingIntro.pdf
+    // TODO use a prime based algorithm for bigger factorials https://www.luschny.de/math/factorial/SwingIntro.pdf
 
     // Divide and Conquer factorial algorithm. The factorial of n is computed as 2^k * m
     // The 2^k portion
@@ -28,7 +28,7 @@ fn factorial_odd_part(n: uint) -> uint
 // TODO use inclusive range?
 fn product_of_odds(\from: uint64, to: uint64, max_bits: size) -> uint
     // requires n.is_odd and m.is_even
-    // TODO requries that (n + count * 2) <= uint64.max_value
+    // TODO requires that (n + count * 2) <= uint64.max_value
 {
     // TODO use unchecked math
 

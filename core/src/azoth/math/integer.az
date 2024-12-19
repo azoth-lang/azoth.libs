@@ -1,0 +1,7 @@
+/// A numeric type whose values are integers. A given type may represent only
+/// a subset of the integers as do all the simple integer types, both signed
+/// and unsigned.
+public trait integer
+{
+    // TODO public operator _+_(ref self, other: ref Self) -> Self;
+}
