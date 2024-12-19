@@ -20,9 +20,7 @@ published struct ascii_char
 
     #Inline
     public operator _<=_(self, other: ascii_char) -> bool
-    {
-        return self.value <= other.value;
-    }
+        => .value <= other.value;
 
     // TODO implement rest of operators and functions
 }

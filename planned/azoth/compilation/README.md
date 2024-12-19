@@ -1,3 +1,3 @@
-# `system.compilation`
+# `azoth.compilation`
 
-The `system.compilation` namespace contains attributes used to direct the compiler how best to compile the code.
+The `azoth.compilation` namespace contains attributes used to direct the compiler how best to compile the code.
