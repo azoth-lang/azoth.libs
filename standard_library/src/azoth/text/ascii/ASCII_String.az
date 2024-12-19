@@ -2,20 +2,20 @@
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published class ASCII_String
+published const class ASCII_String
 {
     /// The index of the start of the string data in `chars`.
     public let start: size;
     /// The length of the string.
     published let length: size;
     // TODO use iref var?
-    var chars: mut Raw_Bounded_List[ascii_char];
+    let chars: const Raw_Hybrid_Bounded_List[void, byte];
 
-    published new(mut self, var capacity: size)
+    /*published new(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
         .chars = new Raw_Bounded_List[ascii_char](capacity);
         .start = 0;
         .length = 0;
-    }
+    }*/
 }

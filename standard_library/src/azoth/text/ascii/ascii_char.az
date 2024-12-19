@@ -1,0 +1,28 @@
+
+/// A 7-bit ASCII character
+published const copy struct ascii_char
+    // TODO invariant value <= MaxCodePointValue
+{
+    // TODO const MaxCodePointValue: byte = 0x7F;
+    // TODO published const MinValue: ascii_char = ascii_char(0);
+    // TODO published const MaxValue: ascii_char = ascii_char(MaxCodePointValue);
+
+    let value: byte;
+
+    public init(mut self, .value)
+        // TODO requires value <= MaxCodePointValue
+    {
+        if .value > 127 => ABORT("Invalid ASCII character value");
+    }
+
+    /*public unsafe implicit operator '_'(count: size, bytes: @byte) -> ascii_char
+    {
+
+    }*/
+
+    /*#Inline
+    public operator _<=_(self, other: ascii_char) -> bool
+        => .value <= other.value;*/
+
+    // TODO implement rest of operators and functions
+}
