@@ -4,23 +4,23 @@ import intrinsics;
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published class String
+published const class String
 {
     // const DefaultCapacity: size = 16;
 
     /// The index of the start of the string data in `bytes`.
     public let start: size;
     /// The number of bytes in the string when encoded in UTF8.
-    published let byte_count: size;
+    published let utf8_byte_count: size;
     // TODO use iref var?
-    var bytes: mut Raw_Hybrid_Bounded_List[void, byte];
+    let bytes: const Raw_Hybrid_Bounded_List[void, byte];
 
     // Constructor is private because this is a temporary way of constructing strings for constants
-    /* unsafe */ new(self, bytes: Raw_Hybrid_Bounded_List[void, byte], start: size, byte_count: size)
+    /* unsafe */ new(mut self, bytes: const Raw_Hybrid_Bounded_List[void, byte], start: size, utf8_byte_count: size)
     {
         .bytes = bytes;
         .start = start;
-        .byte_count = byte_count;
+        .utf8_byte_count = utf8_byte_count;
     }
 
     // published new(mut self)
@@ -28,33 +28,33 @@ published class String
     //     self.new(16);
     // }
 
-    published new(mut self, var capacity: size)
+    /*published new(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
         .bytes = new Raw_Hybrid_Bounded_List[void, byte](capacity);
         .start = 0;
-        .byte_count = 0;
-    }
+        .utf8_byte_count = 0;
+    }*/
 
     // new from(mut self, bytes: iso Raw_Bounded_List[byte])
     // {
     //     .bytes = bytes;
     //     .start = 0;
-    //     .byte_count = .bytes.count();
+    //     .utf8_byte_count = .bytes.count();
     // }
 
     // TODO if .bytes can be replaced, then this is wrong
-    public fn raw_bytes(self) -> Raw_Hybrid_Bounded_List[void, byte]
+    public fn raw_bytes(self) -> const Raw_Hybrid_Bounded_List[void, byte]
         => .bytes;
 
-    published get byte_capacity(self) -> size
-        => .bytes.capacity;
+    /*published get byte_capacity(self) -> size
+        => .bytes.capacity;*/
 
-    public set byte_capacity(mut self, capacity: size)
-        // requires .byte_count <= capacity
-        => NOT_IMPLEMENTED();
+    /*public set byte_capacity(mut self, capacity: size)
+        // requires .utf8_byte_count <= capacity
+        => NOT_IMPLEMENTED();*/
 
-    public fn append(mut self, value: String)
+    /*public fn append(mut self, value: String)
         => NOT_IMPLEMENTED();
 
     fn ensure_capacity(mut self, capacity: size)
@@ -62,26 +62,26 @@ published class String
         if capacity < .bytes.capacity => return;
         //let new_capacity = max(capacity, .bytes.capacity());
         NOT_IMPLEMENTED();
-    }
+    }*/
 
     // Once it is supported, this should be a copy constructor
     // published safe new(other: String)
     // {
-    //     self.byte_count = other.byte_count;
-    //     self.bytes = mem_allocate(self.byte_count);
-    //     unsafe(mem_copy(other.bytes, self.bytes, self.byte_count));
+    //     self.utf8_byte_count = other.utf8_byte_count;
+    //     self.bytes = mem_allocate(self.utf8_byte_count);
+    //     unsafe(mem_copy(other.bytes, self.bytes, self.utf8_byte_count));
     // }
 
     /// Concatenate two strings producing a new one
     // published /* safe */ fn concat(self, other: String) -> iso String
     // {
-    //     let new_byte_count = .byte_count + other.byte_count;
+    //     let new_byte_count = .utf8_byte_count + other.utf8_byte_count;
     //     let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
-    //     foreach i: size in .start..<(.start+.byte_count)
+    //     foreach i: size in .start..<(.start+.utf8_byte_count)
     //     {
     //         new_bytes.add(.bytes.at(i));
     //     }
-    //     foreach i: size in other.start..<(other.start+other.byte_count)
+    //     foreach i: size in other.start..<(other.start+other.utf8_byte_count)
     //     {
     //         new_bytes.add(other.bytes.at(i));
     //     }
@@ -90,9 +90,9 @@ published class String
     //
     // published safe fn equals(self, other: String) -> bool
     // {
-    //     if self.byte_count =/= other.byte_count => return false;
+    //     if self.utf8_byte_count =/= other.utf8_byte_count => return false;
 
-    //     foreach i: size in 0..<other.byte_count
+    //     foreach i: size in 0..<other.utf8_byte_count
     //     {
     //         if mem_get_byte(self.bytes+i) =/= mem_get_byte(other.bytes+i)
     //         {
@@ -111,10 +111,10 @@ published class String
     //     if self.bytes >= total_length => return new String(self);
 
     //     let new_bytes = mem_allocate(total_length);
-    //     let padding = total_length - self.byte_count;
+    //     let padding = total_length - self.utf8_byte_count;
     //     unsafe
     //     {
-    //         mem_copy(self.bytes, new_bytes + padding, self.byte_count);
+    //         mem_copy(self.bytes, new_bytes + padding, self.utf8_byte_count);
     //         // foreach i: size in 0..<padding
     //         // {
     //         //     mem_copy(pad_with.bytes, new_bytes+i, 1);

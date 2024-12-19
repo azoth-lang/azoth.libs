@@ -1,2 +1,2 @@
 published /*safe*/ fn ABORT(message: String) -> never
-    => unsafe (ABORT_RAW_UTF8_BYTES(message.raw_bytes(), message.start, message.byte_count));
+    => unsafe (ABORT_RAW_UTF8_BYTES(message.raw_bytes(), message.start, message.utf8_byte_count));

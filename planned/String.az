@@ -15,7 +15,7 @@ public ref struct String
     public unsafe init from_utf8_unchecked[$ref](byte_count: size, bytes: @byte)
     {
         // Use explicit `self.` to avoid advance features
-        self.byte_count = byte_count;
+        self.utf8_byte_count = byte_count;
         self.bytes = bytes;
     }
 
