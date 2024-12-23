@@ -1,0 +1,7 @@
+/// This function is used as the body of any intrinsic function or method. It should never be called
+/// since the compiler should replace the implementation. However, to make the code compile, some
+/// implementation is needed. If this function is ever called, the compiler should cause an abort//
+/// with an appropriate message.
+#Intrinsic
+published fn INTRINSIC() -> never
+    => INTRINSIC();
