@@ -1,0 +1,8 @@
+/// Represents a tagged union of a reference to `T` and an integer value. The bit size of the
+/// integer value is platform dependent
+#Intrinsic
+public const struct Tagged_Reference[T]
+    // TODO where T: reference
+{
+
+}
