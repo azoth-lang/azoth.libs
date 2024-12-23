@@ -72,8 +72,7 @@ published const class Assert_On_Optional_ASCII_String: Assert[ASCII_String?]
 
     published fn equals(self, value: ASCII_String)
     {
-        //if not value.equals(.value)
-        //    { ABORT("Expected value not found."); }
-        NOT_IMPLEMENTED();
+        if not value.equals(.value)
+            { ABORT("Expected value not found."); }
     }
 }

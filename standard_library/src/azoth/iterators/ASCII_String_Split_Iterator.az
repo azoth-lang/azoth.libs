@@ -1,0 +1,41 @@
+class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
+{
+    let str: ASCII_String;
+    let split_on: byte;
+    let start: size;
+    var index: size;
+    let end: size;
+
+    public new(mut self, .str, split_on: ascii_char)
+    {
+        .split_on = split_on.value;
+        .start = .str.start;
+        .index = .str.start;
+        .end = .start + .str.length;
+    }
+
+    published fn size_hint(self) -> size => 1;
+
+    published fn \next(mut self) -> ASCII_String?
+    {
+        NOT_IMPLEMENTED();
+        // TODO this should be implemented on top of ASCII_String and slice
+        /*while .index < .end
+        {
+            if .str.bytes.at(.index) == .split_on
+            {
+                let result = new ASCII_String(.start, .index - .start, .str.bytes);
+                .start = .index += 1;
+                return result;
+            }
+            .index += 1;
+        }
+        if .start <= .end
+        {
+            let result = new ASCII_String(.start, .end - .start, .str.bytes);
+            .start = .end + 1;
+            return result;
+        }
+        return none;*/
+    }
+}
