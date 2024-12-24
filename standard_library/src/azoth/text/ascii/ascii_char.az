@@ -25,4 +25,11 @@ published const copy struct ascii_char
         => .value <= other.value;*/
 
     // TODO implement rest of operators and functions
+
+    public get digit_value(self) -> byte
+    {
+        // i.e. .value < '0' or .value > '9'
+        if .value < 48 or .value > 57 => ABORT("Character is not an ASCII digit");
+        return .value - 48; // i.e. - `0`
+    }
 }

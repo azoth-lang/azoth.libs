@@ -2,7 +2,7 @@
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published const struct ASCII_String
+published const struct ASCII_String <: Iterable[ascii_char]
 {
     /// The index of the start of the string data in `chars`.
     public let start: size;
@@ -11,14 +11,31 @@ published const struct ASCII_String
     // TODO use iref var?
     public let bytes: const Raw_Hybrid_Bounded_List[void, byte];
 
-    public init(mut self, .start, .length, .bytes) { }
+    public init(self, .start, .length, .bytes) { }
 
-    published init(mut self, value: String)
+    published init(self, value: String)
     {
         .start = value.start;
         .length = value.utf8_byte_count;
         // TODO validate that this string is actually ASCII
         .bytes = value.raw_bytes();
+    }
+
+    published fn iterate(self) -> mut Iterator[ascii_char]
+        => new ASCII_String_Iterator(self);
+
+    published fn slice(self, start_index: size) -> ASCII_String
+    {
+        if start_index >= .length => ABORT("start_index is not in the ASCII_String");
+        return ASCII_String(.start + start_index, .length - start_index, .bytes);
+    }
+
+    published fn slice(self, start_index: size, length: size) -> ASCII_String
+    {
+        if start_index >= .length => ABORT("start_index is not in the ASCII_String");
+        // Avoid overflow by subtracting instead of adding
+        if length > .length - start_index => ABORT("start_index + length is not in the ASCII_String");
+        return ASCII_String(.start + start_index, length, .bytes);
     }
 
     published fn split(self, split_on: ascii_char) -> mut Iterator[ASCII_String]

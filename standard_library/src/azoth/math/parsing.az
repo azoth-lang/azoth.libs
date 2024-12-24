@@ -1,0 +1,10 @@
+published fn parse_uint(value: ASCII_String) -> uint
+{
+    var result: uint = 0;
+    foreach char in value
+    {
+        result *= 10;
+        result += char.digit_value;
+    }
+    return result;
+}

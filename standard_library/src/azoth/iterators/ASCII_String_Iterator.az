@@ -1,0 +1,25 @@
+class ASCII_String_Iterator <: Iterator[ascii_char]
+{
+    let str: ASCII_String;
+    var index: size;
+    let end: size;
+
+    public new(mut self, .str)
+    {
+        .index = 0;//.str.start;
+        .end = 0;//.index + .str.length;
+    }
+
+    published fn size_hint(self) -> size => .str.length - .index;
+
+    published fn \next(mut self) -> ascii_char?
+    {
+        if .index < .end
+        {
+            let char = ascii_char(.str.bytes.at(.index));
+            .index += 1;
+            return char;
+        }
+        return none;
+    }
+}
