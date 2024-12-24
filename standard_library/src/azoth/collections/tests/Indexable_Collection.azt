@@ -61,6 +61,27 @@ namespace indexable_collection
         Assert.that(end).is_none();
     }
 
+    #Test
+    public fn \"Unstable sort of short list"()
+    {
+        let subject: mut = new List[int]();
+        subject.add(5);
+        subject.add(1);
+        subject.add(3);
+        subject.add(0);
+        subject.add(4);
+        subject.add(2);
+
+        subject.unstable_sort(new Int_Ordering());
+
+        Assert.that(subject.at(0)).equals(0);
+        Assert.that(subject.at(1)).equals(1);
+        Assert.that(subject.at(2)).equals(2);
+        Assert.that(subject.at(3)).equals(3);
+        Assert.that(subject.at(4)).equals(4);
+        Assert.that(subject.at(5)).equals(5);
+    }
+
     class Fake_Collection <: Indexable_Collection[int]
     {
         let count: size;

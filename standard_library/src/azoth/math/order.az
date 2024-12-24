@@ -3,7 +3,7 @@ public const class Int_Ordering <: Ordering[int]
 {
     published fn compare(self, first: int, second: int) -> int8
     {
-        if first > second => return -1;
+        if first < second => return -1;
         if first == second => return 0;
         return 1;
     }

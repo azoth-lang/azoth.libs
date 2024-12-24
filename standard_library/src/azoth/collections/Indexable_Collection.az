@@ -28,7 +28,7 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
     fn insertion_sort(mut self, start_index: size, end_index: size, order: Ordering[T])
     {
         // TODO support using `with order`
-        foreach i in (start_index+1)..<end_index
+        foreach i in (start_index+1)..end_index
         {
             // TODO support using foreach for this
             var j = i as! size;
