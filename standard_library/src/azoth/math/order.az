@@ -1,0 +1,10 @@
+// TODO replace with Natural_Ordering[uint]
+public class UInt_Ordering <: Ordering[uint]
+{
+    published fn compare(self, first: uint, second: uint) -> int8
+    {
+        if first > second => return -1;
+        if first == second => return 0;
+        return 1;
+    }
+}
