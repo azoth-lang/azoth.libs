@@ -1,0 +1,9 @@
+/*
+#Intrinsic
+published fn print_raw_utf8_bytes(bytes: Raw_Hybrid_Bounded_List[byte], start: size, byte_count: size)
+    => INTRINSIC();
+
+#Intrinsic
+published fn read_raw_utf8_bytes_line(bytes: mut Raw_Hybrid_Bounded_List[byte], start: size) -> size
+    => INTRINSIC();
+*/

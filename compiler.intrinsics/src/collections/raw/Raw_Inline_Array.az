@@ -1,0 +1,14 @@
+/*
+#Intrinsic
+published move struct Raw_Inline_Array[Count: size, T]
+{
+    published init(ref mut self, ensureZeroed: bool) {...}
+    // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
+    published get count() => Count;
+    // Overloading `self` on `ref` vs `iref` allows for determining the proper return type
+    published unsafe fn at(ref mut self, index: size) -> ref var T {...};
+    published unsafe fn at(iref mut self, index: size) -> iref var T {...};
+    published unsafe fn at(ref self, index: size) -> ref T {...};
+    published unsafe fn at(iref self, index: size) -> iref T {...};
+}
+*/

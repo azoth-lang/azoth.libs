@@ -1,7 +1,7 @@
 /// A growable buffer of data.
 ///
 /// # Remarks
-/// Used internally by collections to ensure efficent memory management. Can be used by performance
+/// Used internally by collections to ensure efficient memory management. Can be used by performance
 /// critical code to avoid extra layers of indirection.
 published move /*struct*/ class Buffer[T ind]
     // invariant .count <= .capacity

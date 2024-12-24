@@ -1,0 +1,17 @@
+/*
+#Intrinsic
+published move struct Raw_Inline_Bounded_List[Capacity: size, T]
+{
+    published init(ref mut self) {...}
+    // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
+    published get capacity() => Capacity;
+    published get count() => size;
+    published fn add(ref mut self, value: T);
+    published unsafe fn shorten(ref temp iso self, count: size); // temp iso to prevent a reference to the removed items(s)
+    // Overloading `self` on `ref` vs `iref` allows for determining the proper return type
+    published unsafe fn at(ref mut self, index: size) -> ref var T {...};
+    published unsafe fn at(iref mut self, index: size) -> iref var T {...};
+    published unsafe fn at(ref self, index: size) -> ref T {...};
+    published unsafe fn at(iref self, index: size) -> iref T {...};
+}
+*/

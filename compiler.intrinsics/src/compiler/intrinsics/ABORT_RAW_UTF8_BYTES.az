@@ -1,0 +1,5 @@
+/*
+// TODO this should use a pointer instead of Raw_Hybrid_Bounded_List
+#Intrinsic
+published fn ABORT_RAW_UTF8_BYTES(bytes: Raw_Hybrid_Bounded_List[byte], start: size, byte_count: size) -> never
+*/
