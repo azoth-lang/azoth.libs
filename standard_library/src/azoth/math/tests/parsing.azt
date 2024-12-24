@@ -1,0 +1,12 @@
+namespace parsing
+{
+    #Test
+    public fn \"Parse mult-digit positive integer to uint"()
+    {
+        let subject = ASCII_String("56984");
+
+        let result = parse_uint(subject);
+
+        Assert.that(result).equals(56984);
+    }
+}

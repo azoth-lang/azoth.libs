@@ -6,8 +6,8 @@ class ASCII_String_Iterator <: Iterator[ascii_char]
 
     public new(mut self, .str)
     {
-        .index = 0;//.str.start;
-        .end = 0;//.index + .str.length;
+        .index = .str.start;
+        .end = .index + .str.length;
     }
 
     published fn size_hint(self) -> size => .str.length - .index;

@@ -3,4 +3,4 @@
 //     * sign() function
 //     * abs() function
 published fn abs(value: int) -> uint
-    => if value >=0 => value as! uint else => -value as! uint;
+    => (if value >= 0 => value else => -value) as! uint;
