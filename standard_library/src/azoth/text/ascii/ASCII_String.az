@@ -29,10 +29,11 @@ published const struct ASCII_String
         if other is let o?
         {
             if .length =/= o.length => return false;
-            /*foreach i in 0..o.length
-                => if .bytes.at(i as size) =/= o.bytes.at(i as size)
-                    => return false;*/
-            NOT_IMPLEMENTED();
+            foreach i in 0..<o.length
+            {
+                 if .bytes.at(i as! size + .start) =/= o.bytes.at(i as! size + o.start)
+                    => return false;
+            }
             return true;
         }
         return false;

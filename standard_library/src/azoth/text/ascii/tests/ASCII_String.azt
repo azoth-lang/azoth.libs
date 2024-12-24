@@ -3,9 +3,10 @@ namespace ascii_string
     #Test
     public fn \"Split on space"()
     {
-        let value = ASCII_String("Hello\nWorld!");
+        let value = ASCII_String("Hello World!");
 
         let segments: mut = value.split(ascii_char(32)); // i.e. ' '
+
         Assert.that(segments.\next()).equals(ASCII_String("Hello"));
         Assert.that(segments.\next()).equals(ASCII_String("World!"));
         Assert.that(segments.\next()).is_none();
