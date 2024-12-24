@@ -1,0 +1,6 @@
+// TODO this should be a method on a trait for Signed_Number or something. It would define:
+//     * Negation operator
+//     * sign() function
+//     * abs() function
+published fn abs(value: int) -> uint
+    => if value >=0 => value as! uint else => -value as! uint;
