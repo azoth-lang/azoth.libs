@@ -2,7 +2,7 @@ class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
 {
     let str: ASCII_String;
     let split_on: byte;
-    let start: size;
+    var start: size;
     var index: size;
     let end: size;
 
@@ -18,13 +18,12 @@ class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
 
     published fn \next(mut self) -> ASCII_String?
     {
-        NOT_IMPLEMENTED();
         // TODO this should be implemented on top of ASCII_String and slice
-        /*while .index < .end
+        while .index < .end
         {
             if .str.bytes.at(.index) == .split_on
             {
-                let result = new ASCII_String(.start, .index - .start, .str.bytes);
+                let result = ASCII_String(.start, .index - .start, .str.bytes);
                 .start = .index += 1;
                 return result;
             }
@@ -32,10 +31,10 @@ class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
         }
         if .start <= .end
         {
-            let result = new ASCII_String(.start, .end - .start, .str.bytes);
+            let result = ASCII_String(.start, .end - .start, .str.bytes);
             .start = .end + 1;
             return result;
         }
-        return none;*/
+        return none;
     }
 }
