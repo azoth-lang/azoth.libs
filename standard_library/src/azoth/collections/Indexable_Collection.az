@@ -15,4 +15,32 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
     /// An `Mutable_Iterable` that allows mutating the elements of this collection
     published fn mutable_iterate(temp iso self) -> iso Iterator[/*ref var*/ T]
         => new Indexable_Collection_Mutable_Iterator[T](move self);
+
+    published fn unstable_sort(temp iso self, order: Ordering[T])
+    {
+        // TODO implement a high performance sort algo. See: introsort, pdqsort, ipnsort
+        // TODO support `move` element types?
+        // TODO think about safety of a comparison that modifies something about the elements, see
+        //      https://github.com/Voultapher/sort-research-rs/blob/main/writeup/sort_safety/text.md
+        .insertion_sort(0, .count-1, order);
+    }
+
+    fn insertion_sort(mut self, start_index: size, end_index: size, order: Ordering[T])
+    {
+        // TODO support using `with order`
+        foreach i in (start_index+1)..<end_index
+        {
+            // TODO support using foreach for this
+            var j = i as! size;
+            // TODO a way to remove the duplicate .at() calls?
+            while j > 0 and order.compare(.at(j-1), .at(j)) > 0
+            {
+                // TODO add and use a swap method
+                let t = .at(j-1);
+                .set_at(j-1, .at(j));
+                .set_at(j, t);
+                j -= 1;
+            }
+        }
+    }
 }

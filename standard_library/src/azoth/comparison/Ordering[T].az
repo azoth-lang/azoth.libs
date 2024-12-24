@@ -1,5 +1,6 @@
 /// A total order over `T`
 published trait Ordering[T in] <: Partial_Ordering[T], Key_Comparer[T]
 {
-    published fn compare(self, first: T, second: T) -> ordering;
+    // TODO return ordering
+    published fn compare(self, first: T, second: T) -> int8;
 }

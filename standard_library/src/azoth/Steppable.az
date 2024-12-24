@@ -1,4 +1,4 @@
-/// A type whose values form are discrete totally ordered values supporting moving along the sequence
+/// A type whose values are discrete totally ordered values supporting moving along the sequence
 /// of values. For example, all integer types, but also character types.
 ///
 /// # Remarks
