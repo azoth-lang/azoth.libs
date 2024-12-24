@@ -1,1 +1,3 @@
 // TODO published alias type Raw_Array[T] = Raw_Hybrid_Array[void, T];
+
+// TODO alias the raw collection types from intrinsics

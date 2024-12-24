@@ -12,8 +12,9 @@ Packages in the standard library include:
 * `azoth.core`: the core, platform-independent parts of the standard library. Should be imported by
   most library packages unless they really need something in the standard library.
 * `azoth.compilation`: attributes used to direct how the compiler handles code.
-* `azoth.compiler.intrinsics`: an empty package used to indicate a dependency on the version of
-  intrinsic functions and types offered by the compiler.
+* `azoth.compiler.intrinsics`: a package that declares intrinsic functions and types. By depending
+  on this package one declares a dependency on a specific version of the intrinsics provided by the
+  compiler.
 * `azoth.collections.raw`: provides the raw collection types.
 
 Packages in this repository not included in the standard library:

@@ -2,5 +2,9 @@
     "name": "azoth.compiler.intrinsics",
     "root_namespace": "azoth.compiler.intrinsics",
     "authors": ["Jeff Walker"],
-    "template": "lib"
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.compilation": { "path": "../compilation", "trusted": true }
+    }
 }
