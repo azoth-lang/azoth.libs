@@ -2,7 +2,7 @@
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published const struct ASCII_String <: Iterable[ascii_char]
+published const copy struct ascii_string <: Iterable[ascii_char]
 {
     /// The index of the start of the string data in `chars`.
     public let start: size;
@@ -24,24 +24,24 @@ published const struct ASCII_String <: Iterable[ascii_char]
     published fn iterate(self) -> mut Iterator[ascii_char]
         => new ASCII_String_Iterator(self);
 
-    published fn slice(self, start_index: size) -> ASCII_String
+    published fn slice(self, start_index: size) -> ascii_string
     {
-        if start_index >= .length => ABORT("start_index is not in the ASCII_String");
-        return ASCII_String(.start + start_index, .length - start_index, .bytes);
+        if start_index >= .length => ABORT("start_index is not in the ascii_string");
+        return ascii_string(.start + start_index, .length - start_index, .bytes);
     }
 
-    published fn slice(self, start_index: size, length: size) -> ASCII_String
+    published fn slice(self, start_index: size, length: size) -> ascii_string
     {
-        if start_index >= .length => ABORT("start_index is not in the ASCII_String");
+        if start_index >= .length => ABORT("start_index is not in the ascii_string");
         // Avoid overflow by subtracting instead of adding
-        if length > .length - start_index => ABORT("start_index + length is not in the ASCII_String");
-        return ASCII_String(.start + start_index, length, .bytes);
+        if length > .length - start_index => ABORT("start_index + length is not in the ascii_string");
+        return ascii_string(.start + start_index, length, .bytes);
     }
 
-    published fn split(self, split_on: ascii_char) -> mut Iterator[ASCII_String]
+    published fn split(self, split_on: ascii_char) -> mut Iterator[ascii_string]
         => new ASCII_String_Split_Iterator(self, split_on);
 
-    public fn equals(self, other: ASCII_String?) -> bool
+    public fn equals(self, other: ascii_string?) -> bool
     {
         if other is let o?
         {

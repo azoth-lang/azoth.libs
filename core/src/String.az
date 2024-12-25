@@ -23,7 +23,7 @@ published const class String
         .utf8_byte_count = utf8_byte_count;
     }
 
-    published new(mut self, value: ASCII_String)
+    published new(mut self, value: ascii_string)
     {
         .start = value.start;
         .utf8_byte_count = value.length;

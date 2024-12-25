@@ -10,8 +10,8 @@ published /*sealed*/ abstract class Assert
     published fn that(value: int?) -> AssertOnOptionalInt
         => new AssertOnOptionalInt(value);
 
-    published fn that(value: ASCII_String?) -> Assert_On_Optional_ASCII_String
-        => new Assert_On_Optional_ASCII_String(value);
+    published fn that(value: ascii_string?) -> Assert_On_Optional_ascii_string
+        => new Assert_On_Optional_ascii_string(value);
 }
 
 published /*sealed*/ class Assert[T]
@@ -58,19 +58,19 @@ published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
     }
 }
 
-published const class Assert_On_Optional_ASCII_String: Assert[ASCII_String?]
+published const class Assert_On_Optional_ascii_string: Assert[ascii_string?]
 {
-    let value: ASCII_String?;
+    let value: ascii_string?;
 
     published new(self, .value) { }
 
     published fn is_none(self)
     {
         if .value is let _?
-            { ABORT("Expected none, but was an ASCII_String."); }
+            { ABORT("Expected none, but was an ascii_string."); }
     }
 
-    published fn equals(self, value: ASCII_String)
+    published fn equals(self, value: ascii_string)
     {
         if not value.equals(.value)
             { ABORT("Expected value not found."); }

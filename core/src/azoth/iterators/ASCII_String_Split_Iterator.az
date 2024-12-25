@@ -1,6 +1,6 @@
-class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
+public class ASCII_String_Split_Iterator <: Iterator[ascii_string]
 {
-    let str: ASCII_String;
+    let str: ascii_string;
     let split_on: byte;
     var start: size;
     var index: size;
@@ -16,14 +16,14 @@ class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
 
     published fn size_hint(self) -> size => 1;
 
-    published fn \next(mut self) -> ASCII_String?
+    published fn \next(mut self) -> ascii_string?
     {
-        // TODO this should be implemented on top of ASCII_String and slice
+        // TODO this should be implemented on top of ascii_string and slice
         while .index < .end
         {
             if .str.bytes.at(.index) == .split_on
             {
-                let result = ASCII_String(.start, .index - .start, .str.bytes);
+                let result = ascii_string(.start, .index - .start, .str.bytes);
                 .start = .index += 1;
                 return result;
             }
@@ -31,7 +31,7 @@ class ASCII_String_Split_Iterator <: Iterator[ASCII_String]
         }
         if .start <= .end
         {
-            let result = ASCII_String(.start, .end - .start, .str.bytes);
+            let result = ascii_string(.start, .end - .start, .str.bytes);
             .start = .end + 1;
             return result;
         }

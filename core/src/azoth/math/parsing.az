@@ -1,4 +1,4 @@
-published fn parse_uint(value: ASCII_String) -> uint
+published fn parse_uint(value: ascii_string) -> uint
 {
     var result: uint = 0;
     foreach char in value

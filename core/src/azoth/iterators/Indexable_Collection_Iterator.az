@@ -1,4 +1,4 @@
-class Indexable_Collection_Iterator[T] <: Iterator[T]
+public class Indexable_Collection_Iterator[T] <: Iterator[T]
 {
     let collection: temp const Indexable_Collection[T];
     var index: size;
