@@ -1,0 +1,4 @@
+published const trait Newline <: Newline_Detector
+{
+    published get value(self) -> string;
+}

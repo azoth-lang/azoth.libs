@@ -1,0 +1,4 @@
+/// A writer that can write text to a pipe
+public abstract move class Text_Writer
+{
+}

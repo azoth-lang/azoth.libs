@@ -1,0 +1,4 @@
+/// A reader that can read text from a pipe
+public abstract move class Text_Reader
+{
+}

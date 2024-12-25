@@ -1,0 +1,4 @@
+public class String_Writer <: Text_Writer
+{
+
+}

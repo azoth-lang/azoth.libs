@@ -1,0 +1,24 @@
+/// Detects whether a sequence of one or two characters represents a newline sequence.
+published const trait Newline_Detector
+{
+    /// Determines if a two character sequences marks the end of line.
+    ///
+    /// # Parameters
+    /// char1
+    /// : The first of the two character sequence to check.
+    /// char2
+    /// : The second of the two character sequence to check or null if the first character is the
+    ///   last available character.
+    ///
+    /// # Returns
+    /// One of three values:
+    /// * `newline_detection.None`: These two characters are not the end of a line.
+    /// * `newline_detection.FirstCharacter`: The first character is the end of line (the second
+    //     character is part of the next line).
+    /// * `newline_detection.BothCharacters`: The two characters together are the end of the line
+    ///
+    /// # Remarks
+    /// If this method returns `None` or `FirstCharacter`, the second character must be checked to
+    /// see if it is a separate newline.
+    published fn is_newline(self, char1: unicode_scalar, char2: unicode_scalar?) -> newline_detection;
+}

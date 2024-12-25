@@ -1,0 +1,17 @@
+// TODO this should be an enum
+published copy struct newline_detection
+{
+//    /// No newline was detected.
+//    None = 0,
+//
+//    /// The first character is a newline.
+//    ///
+//    /// # Remarks
+//    ///
+//    /// The second character along with its successor should be separately checked to see if it is
+//    /// a newline.
+//    FirstCharacter = 1,
+//
+//    /// Both characters are the newline.
+//    BothCharacters = 2,
+}

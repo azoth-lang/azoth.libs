@@ -1,0 +1,2 @@
+/// An efficient byte data pipe.
+// see .NET System.IO.Pipelines.Pipe

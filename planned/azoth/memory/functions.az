@@ -16,7 +16,7 @@ public unsafe fn write_bytes(destination: @any, value: byte, byte_count: size) -
 {
     // TODO improve performance
     // TODO use llvm intrinsic
-    // Using while loop for gaurenteed peformance
+    // Using while loop for guaranteed performance
     var current = unsafe(destination as @byte);
     var end = current + byte_count;
     while(current < end)
