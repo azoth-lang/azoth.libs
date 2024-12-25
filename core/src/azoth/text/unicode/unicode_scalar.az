@@ -1,5 +1,5 @@
 // A Unicode Scalar (i.e. a Unicode Code Point that is not a high-surrogate and low-surrogate code point).
-public const struct unicode_scalar
+published const struct unicode_scalar
 {
     // public const MinValue: unicode_scalar = unicode_scalar(unicode_code_point.MinValue);
     // public const MaxValue: unicode_scalar = unicode_scalar(unicode_code_point.MaxValue);
@@ -14,4 +14,8 @@ public const struct unicode_scalar
     // {
     //     return self.value;
     // }
+
+    // TODO does this make sense given that it could produce
+    public fn to_string(self) -> string
+        => NOT_IMPLEMENTED();
 }

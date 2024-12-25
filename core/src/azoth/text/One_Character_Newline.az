@@ -1,0 +1,15 @@
+public const class One_Character_Newline <: Newline
+{
+    let newline: unicode_scalar;
+    published let value: string;
+
+    public new(self, .newline)
+    {
+        .value = .newline.to_string();
+    }
+
+    public fn is_newline(self, char1: unicode_scalar, char2: unicode_scalar) -> newline_detection
+        /* overrides */
+        => NOT_IMPLEMENTED();
+        //=> if char1 == .newline => newline_detection.FirstCharacter else => newline_detection.None;
+}

@@ -1,13 +1,18 @@
 import intrinsics;
 
-/// This is a temporary version of the `string` class.
+/// A Unicode string.
 ///
-/// Eventually, this should support slice operations which represent views onto a portion of an
-/// existing string. That is not supported yet.
+/// # Remarks
+///
+/// While the `string` struct is encoding agnostic, internally the string is stored in UTF-8. Since
+/// it is encoding agnostic, the Unicode string must be well-formed (see
+/// [Well-formed](https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-3/#G32849) in the
+/// Unicode spec). Normally all instances of `string` will contain a well-formed Unicode string.
+/// However, if the unsafe methods are improperly used, then a `string` could be constructed that
+/// isn't a well-formed Unicode string. In that case the behavior of the type is unpredictable and
+/// will likely produce errors.
 published const copy struct string
 {
-    // const DefaultCapacity: size = 16;
-
     /// The index of the start of the string data in `bytes`.
     public let start: size;
     /// The number of bytes in the string when encoded in UTF8.

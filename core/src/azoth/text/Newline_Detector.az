@@ -1,6 +1,8 @@
 /// Detects whether a sequence of one or two characters represents a newline sequence.
 published const trait Newline_Detector
 {
+    // published const Unicode: Newline_Detector = Unicode_Newline_Detector.Instance;
+
     /// Determines if a two character sequences marks the end of line.
     ///
     /// # Parameters

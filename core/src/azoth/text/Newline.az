@@ -1,4 +1,20 @@
 published const trait Newline <: Newline_Detector
 {
+    // /// Carriage Return followed by Linefeed. The standard newline sequence on Windows.
+    // published const Newline CR_LF = new Two_Character_Newline('\r', '\n');
+    //
+    // /// Linefeed followed Carriage Return. The standard newline sequence on certain embedded OSes
+    // /// like RISK OS.
+    // published const Newline LF_CR = new Two_Character_Newline('\n', '\r');
+    //
+    // /// Carriage Return. The standard newline sequence on Classic MacOS.
+    // published const Newline CR = new One_Character_Newline('\r');
+    //
+    // /// Linefeed. The standard newline character on Unix.
+    // published const Newline LF = new One_Character_Newline('\n');
+    //
+    // /// Record Separator. The standard newline character on old versions of QNX.
+    // published const Newline LF = new One_Character_Newline('\n');
+
     published get value(self) -> string;
 }

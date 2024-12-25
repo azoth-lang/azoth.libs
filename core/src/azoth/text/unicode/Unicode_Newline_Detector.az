@@ -1,0 +1,28 @@
+/// An end of line detector that follows the Unicode Technical Report #13 guidelines for newline
+/// detection.
+public const class Unicode_Newline_Detector <: Newline_Detector
+{
+    // public const Instance: Unicode_Newline_Detector = new Unicode_Newline_Detector();
+
+    new(self) { }
+
+    published fn is_newline(self, char1: unicode_scalar, char2: unicode_scalar?) -> newline_detection
+    {
+        NOT_IMPLEMENTED();
+        /*
+        return char1 match
+        {
+            '\r' // CR: Carriage Return U+000D
+                => char2 != '\n' ? newline_detection.FirstCharacter : newline_detection.BothCharacters;
+            '\n' // LF: Line Feed U+000A
+            | '\u(85)' // NEL: Next Line U+0085
+            | '\v' // VT: Vertical Tab U+000B
+            | '\f' // FF: Form Feed U+000C
+            | '\u(2028)' // LS: Line Separator U+2028
+            | '\u(2029)' // PS: Paragraph Separator U+2029
+                => newline_detection.FirstCharacter;
+            _ => newline_detection.None;
+        };
+        */
+    }
+}
