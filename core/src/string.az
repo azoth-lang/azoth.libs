@@ -1,10 +1,10 @@
 import intrinsics;
 
-/// This is a temporary version of the `String` class.
+/// This is a temporary version of the `string` class.
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published const class String
+published const copy struct string
 {
     // const DefaultCapacity: size = 16;
 
@@ -16,14 +16,14 @@ published const class String
     let bytes: const Raw_Hybrid_Bounded_List[void, byte];
 
     // Constructor is private because this is a temporary way of constructing strings for constants
-    /* unsafe */ new(mut self, bytes: const Raw_Hybrid_Bounded_List[void, byte], start: size, utf8_byte_count: size)
+    /* unsafe */ init(mut self, bytes: const Raw_Hybrid_Bounded_List[void, byte], start: size, utf8_byte_count: size)
     {
         .bytes = bytes;
         .start = start;
         .utf8_byte_count = utf8_byte_count;
     }
 
-    published new(mut self, value: ascii_string)
+    published init(mut self, value: ascii_string)
     {
         .start = value.start;
         .utf8_byte_count = value.length;
@@ -61,7 +61,7 @@ published const class String
         // requires .utf8_byte_count <= capacity
         => NOT_IMPLEMENTED();*/
 
-    /*public fn append(mut self, value: String)
+    /*public fn append(mut self, value: string)
         => NOT_IMPLEMENTED();
 
     fn ensure_capacity(mut self, capacity: size)
@@ -72,7 +72,7 @@ published const class String
     }*/
 
     // Once it is supported, this should be a copy constructor
-    // published safe new(other: String)
+    // published safe new(other: string)
     // {
     //     self.utf8_byte_count = other.utf8_byte_count;
     //     self.bytes = mem_allocate(self.utf8_byte_count);
@@ -80,7 +80,7 @@ published const class String
     // }
 
     /// Concatenate two strings producing a new one
-    // published /* safe */ fn concat(self, other: String) -> iso String
+    // published /* safe */ fn concat(self, other: string) -> iso string
     // {
     //     let new_byte_count = .utf8_byte_count + other.utf8_byte_count;
     //     let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
@@ -92,10 +92,10 @@ published const class String
     //     {
     //         new_bytes.add(other.bytes.at(i));
     //     }
-    //     return new String.from(new_bytes);
+    //     return string.from(new_bytes);
     // }
     //
-    // published safe fn equals(self, other: String) -> bool
+    // published safe fn equals(self, other: string) -> bool
     // {
     //     if self.utf8_byte_count =/= other.utf8_byte_count => return false;
 
@@ -110,12 +110,12 @@ published const class String
     //     return true;
     // }
 
-    // Pad this String out to a given length using the supplied string
+    // Pad this string out to a given length using the supplied string
     // Currently only works correctly if the string is comprised only of ASCII
     // characters and `with` is only a single character
-    // published safe fn pad_left(self, total_length: size, pad_with: String) -> String$owned
+    // published safe fn pad_left(self, total_length: size, pad_with: string) -> string$owned
     // {
-    //     if self.bytes >= total_length => return new String(self);
+    //     if self.bytes >= total_length => return string(self);
 
     //     let new_bytes = mem_allocate(total_length);
     //     let padding = total_length - self.utf8_byte_count;
@@ -126,7 +126,7 @@ published const class String
     //         // {
     //         //     mem_copy(pad_with.bytes, new_bytes+i, 1);
     //         // }
-    //         return new String(total_length, new_bytes);
+    //         return string(total_length, new_bytes);
     //     }
     // }
 }

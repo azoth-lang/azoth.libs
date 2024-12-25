@@ -1,6 +1,6 @@
 public class Exception
 {
-    public let message: String;
+    public let message: string;
     public let inner_exception: Exception?;
 
     public new(.message = "") { }

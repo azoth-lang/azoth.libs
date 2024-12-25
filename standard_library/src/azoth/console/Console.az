@@ -1,6 +1,6 @@
 published class Console
 {
-    let newline: String;
+    let newline: string;
 
     // For now, allow the console type to be directly constructed
     // TODO mark this as a type that must be constructed before `main`
@@ -9,10 +9,10 @@ published class Console
         .newline = "\n";
     }
 
-    published /* safe */ fn write(mut self, value: String)
+    published /* safe */ fn write(mut self, value: string)
         => unsafe (print_raw_utf8_bytes(value.raw_bytes(), value.start, value.utf8_byte_count));
 
-    published /* safe */ fn write_line(mut self, line: String)
+    published /* safe */ fn write_line(mut self, line: string)
     {
         .write(line);
         .write(.newline);
@@ -21,13 +21,13 @@ published class Console
     published /* safe */ fn write_line(mut self)
         => .write(.newline);
 
-    /*published safe fn read_line(mut self) -> iso String
+    /*published safe fn read_line(mut self) -> iso string
     {
         unsafe
         {
             let ptr = mem_allocate(1024);
             let length = read_utf8_line(ptr, 1024);
-            return new String(ptr, length);
+            return string(ptr, length);
         }
     }*/
 }

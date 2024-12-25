@@ -8,7 +8,7 @@ public extend struct uint
         return init Range.closed(self, limit);
     }
 
-    public fn display_format(self) -> String
+    public fn display_format(self) -> string
     {
         // ..
     }

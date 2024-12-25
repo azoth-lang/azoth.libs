@@ -13,7 +13,7 @@ published const copy struct ascii_string <: Iterable[ascii_char]
 
     public init(self, .start, .length, .bytes) { }
 
-    published init(self, value: String)
+    published init(self, value: string)
     {
         .start = value.start;
         .length = value.utf8_byte_count;

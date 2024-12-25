@@ -1,6 +1,6 @@
 // Note: This is declared in the global namespace so that it will take precedence
-// over any `String` types declared in other packages.
-public ref struct String
+// over any `string` types declared in other packages.
+public ref struct string
 {
     // For now, we implement this without using Array[byte] for simplicity
     // public let bytes: Array[byte]$ref;
@@ -19,8 +19,8 @@ public ref struct String
         self.bytes = bytes;
     }
 
-    public unsafe implicit operator "_"(byte_count: size, bytes: @byte) -> String$forever
+    public unsafe implicit operator "_"(byte_count: size, bytes: @byte) -> string$forever
     {
-        return unsafe(String.from_utf8_unchecked[$forever](byte_count, bytes));
+        return unsafe(string.from_utf8_unchecked[$forever](byte_count, bytes));
     }
 }
