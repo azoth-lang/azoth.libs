@@ -1,3 +1,3 @@
 /// Marks that a function or type is intrinsic meaning that its implementation is provided directly
 /// by the compiler. The code is only used to define the published API.
-published const struct Intrinsic_Attribute { }
+published const copy struct Intrinsic_Attribute { }
