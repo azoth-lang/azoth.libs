@@ -6,7 +6,7 @@ public class ASCII_String_Split_Iterator <: Iterator[ascii_string]
     var index: size;
     let end: size;
 
-    public new(mut self, .str, split_on: ascii_char)
+    public init(mut self, .str, split_on: ascii_char)
     {
         .split_on = split_on.value;
         .start = .str.start;

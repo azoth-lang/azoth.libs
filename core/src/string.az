@@ -35,20 +35,20 @@ published const struct string
         .bytes = value.bytes;
     }
 
-    // published new(mut self)
+    // published init(mut self)
     // {
-    //     self.new(16);
+    //     self.init(16);
     // }
 
-    /*published new(mut self, var capacity: size)
+    /*published init(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
-        .bytes = new Raw_Hybrid_Bounded_List[void, byte](capacity);
+        .bytes = Raw_Hybrid_Bounded_List[void, byte](capacity);
         .start = 0;
         .utf8_byte_count = 0;
     }*/
 
-    // new from(mut self, bytes: iso Raw_Bounded_List[byte])
+    // init from(mut self, bytes: iso Raw_Bounded_List[byte])
     // {
     //     .bytes = bytes;
     //     .start = 0;
@@ -77,7 +77,7 @@ published const struct string
     }*/
 
     // Once it is supported, this should be a copy constructor
-    // published safe new(other: string)
+    // published safe init(other: string)
     // {
     //     self.utf8_byte_count = other.utf8_byte_count;
     //     self.bytes = mem_allocate(self.utf8_byte_count);
@@ -88,7 +88,7 @@ published const struct string
     // published /* safe */ fn concat(self, other: string) -> iso string
     // {
     //     let new_byte_count = .utf8_byte_count + other.utf8_byte_count;
-    //     let new_bytes: mut = new Raw_Bounded_List[byte](new_byte_count);
+    //     let new_bytes: mut = Raw_Bounded_List[byte](new_byte_count);
     //     foreach i: size in .start..<(.start+.utf8_byte_count)
     //     {
     //         new_bytes.add(.bytes.at(i));

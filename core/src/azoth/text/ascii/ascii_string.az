@@ -22,7 +22,7 @@ published const struct ascii_string <: Iterable[ascii_char]
     }
 
     published fn iterate(self) -> mut Iterator[ascii_char]
-        => new ASCII_String_Iterator(self);
+        => ASCII_String_Iterator(self);
 
     published fn slice(self, start_index: size) -> ascii_string
     {
@@ -39,7 +39,7 @@ published const struct ascii_string <: Iterable[ascii_char]
     }
 
     published fn split(self, split_on: ascii_char) -> mut Iterator[ascii_string]
-        => new ASCII_String_Split_Iterator(self, split_on);
+        => ASCII_String_Split_Iterator(self, split_on);
 
     public fn equals(self, other: ascii_string?) -> bool
     {

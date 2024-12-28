@@ -2,7 +2,7 @@
 #Intrinsic
 published class Raw_Hybrid_Bounded_List[F, T]
 {
-    published new(.fixed, .capacity) {...}
+    published init(.fixed, .capacity) {...}
     published var fixed: F;
     published let capacity: size;
     published get count() => size;
@@ -15,7 +15,7 @@ published class Raw_Hybrid_Bounded_List[F, T]
 #Intrinsic
 published class Raw_Hybrid_Bounded_List[F, Capacity: size, T]
 {
-    published new(.fixed) {...}
+    published init(.fixed) {...}
     published var fixed: F;
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get capacity() => Capacity;

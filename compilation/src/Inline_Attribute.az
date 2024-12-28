@@ -5,5 +5,5 @@ published const struct Inline_Attribute
     public init(self) { }
     // TODO public init(self, .directive) { }
 
-    // TODO public new(.directive = .Hint) { }
+    // TODO public init(.directive = .Hint) { }
 }

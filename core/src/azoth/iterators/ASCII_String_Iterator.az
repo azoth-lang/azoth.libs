@@ -4,7 +4,7 @@ public class ASCII_String_Iterator <: Iterator[ascii_char]
     var index: size;
     let end: size;
 
-    public new(mut self, .str)
+    public init(mut self, .str)
     {
         .index = .str.start;
         .end = .index + .str.length;

@@ -2,7 +2,7 @@
 #Intrinsic
 published class Raw_Hybrid_Array[F, T]
 {
-    published new(mute self, .fixed, .count, ensureZeroed: bool) {...}
+    published init(mute self, .fixed, .count, ensureZeroed: bool) {...}
     published var fixed: F;
     published let count: size;
     published unsafe fn at(mut self, index: size) -> iref var T {...};
@@ -12,7 +12,7 @@ published class Raw_Hybrid_Array[F, T]
 #Intrinsic
 published class Raw_Hybrid_Array[F, Count: size, T]
 {
-    published new(mut self, .fixed, ensureZeroed: bool) {...}
+    published init(mut self, .fixed, ensureZeroed: bool) {...}
     published var fixed: F;
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get count() => Count;
