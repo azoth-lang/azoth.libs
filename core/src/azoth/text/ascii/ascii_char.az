@@ -1,6 +1,6 @@
 
 /// A 7-bit ASCII character
-published const copy struct ascii_char
+published const struct ascii_char
     // TODO invariant value <= MaxCodePointValue
 {
     // TODO const MaxCodePointValue: byte = 0x7F;

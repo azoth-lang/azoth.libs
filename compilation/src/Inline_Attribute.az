@@ -1,4 +1,4 @@
-published const copy struct Inline_Attribute
+published const struct Inline_Attribute
 {
     // TODO public let directive: Inline_Directive;
 

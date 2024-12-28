@@ -1,17 +1,17 @@
 /// Unicode code unit for UTF-8. These are the individual units that make up the encoding.
-published const copy struct unicode_code_unit_8
+published const struct unicode_code_unit_8
 {
 
 }
 
 /// Unicode code unit for UTF-16. These are the individual units that make up the encoding.
-published const copy struct unicode_code_unit_16
+published const struct unicode_code_unit_16
 {
 
 }
 
 /// Unicode code unit for UTF-32. These are the individual units that make up the encoding.
-published const copy struct unicode_code_unit_32
+published const struct unicode_code_unit_32
 {
 
 }

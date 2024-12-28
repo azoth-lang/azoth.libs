@@ -10,7 +10,7 @@
 /// taking the values before and after an empty slice. Ranges are not comparable because there are
 /// multiple ways one might wish to compare them. Consider for example what order two ranges with
 /// the same start should have.
-published const copy struct range <: Iterable[int]
+published const struct range <: Iterable[int]
     // where T <: Steppable
     // invariant .start <= .end
 {

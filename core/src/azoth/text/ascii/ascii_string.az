@@ -2,7 +2,7 @@
 ///
 /// Eventually, this should support slice operations which represent views onto a portion of an
 /// existing string. That is not supported yet.
-published const copy struct ascii_string <: Iterable[ascii_char]
+published const struct ascii_string <: Iterable[ascii_char]
 {
     /// The index of the start of the string data in `chars`.
     public let start: size;

@@ -88,7 +88,7 @@ published move /*struct*/ class Buffer[T ind]
     {
         let new_items: mut = new Raw_Hybrid_Bounded_List[void, T](new_capacity);
         let count = .count;
-        // TODO create a more efficent copy mechanism
+        // TODO create a more efficient copy mechanism
         foreach i in 0..<count
             { new_items.add(.items.at(i as! size)); }
         .items = new_items;

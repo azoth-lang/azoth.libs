@@ -11,7 +11,7 @@ import intrinsics;
 /// However, if the unsafe methods are improperly used, then a `string` could be constructed that
 /// isn't a well-formed Unicode string. In that case the behavior of the type is unpredictable and
 /// will likely produce errors.
-published const copy struct string
+published const struct string
 {
     /// The index of the start of the string data in `bytes`.
     public let start: size;
