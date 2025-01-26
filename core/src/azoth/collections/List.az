@@ -2,16 +2,16 @@ published class List[T ind nonwritable out] <: Indexable_Collection[T]
 {
     var items: mut Buffer[T];
 
-    published new(mut self)
+    published init(mut self)
     {
-        .items = new Buffer[T]();
+        .items = Buffer[T]();
     }
 
-    // TOOD name: with_capacity
-    published new(mut self, var capacity: size)
+    // TODO name: with_capacity
+    published init(mut self, var capacity: size)
     {
         if capacity < 2 => capacity = 2;
-        .items = new Buffer[T](capacity);
+        .items = Buffer[T](capacity);
     }
 
     published get capacity(self) -> size

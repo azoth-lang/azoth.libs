@@ -9,7 +9,7 @@ public mut ref struct Raw_Array[T]
 {
     private let elements: @T;
 
-    public new(count: size)
+    public init(count: size)
     {
         .elements = allocate[T](count);
     }

@@ -2,16 +2,16 @@ published /*sealed*/ abstract class Assert
 {
     // TODO make generic using extensions
     // published fn that[T](value: T) -> Assert[T]
-    //     => new Assert[T](value);
+    //     => Assert[T](value);
 
     published fn that(value: bool) -> AssertOnBool
-        => new AssertOnBool(value);
+        => AssertOnBool(value);
 
     published fn that(value: int?) -> AssertOnOptionalInt
-        => new AssertOnOptionalInt(value);
+        => AssertOnOptionalInt(value);
 
     published fn that(value: ascii_string?) -> Assert_On_Optional_ascii_string
-        => new Assert_On_Optional_ascii_string(value);
+        => Assert_On_Optional_ascii_string(value);
 }
 
 published /*sealed*/ class Assert[T]
@@ -24,7 +24,7 @@ published /*sealed*/ class AssertOnBool: Assert[bool]
 {
     let value: bool;
 
-    published new(self, .value) { }
+    published init(self, .value) { }
 
     published fn is_true(self)
     {
@@ -43,7 +43,7 @@ published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
 {
     let value: int?;
 
-    published new(self, .value) { }
+    published init(self, .value) { }
 
     published fn is_none(self)
     {
@@ -62,7 +62,7 @@ published const class Assert_On_Optional_ascii_string: Assert[ascii_string?]
 {
     let value: ascii_string?;
 
-    published new(self, .value) { }
+    published init(self, .value) { }
 
     published fn is_none(self)
     {

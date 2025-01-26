@@ -4,7 +4,7 @@ namespace iterable
     public fn \"Can read while iterating"()
     {
         // TODO let subject = Mock[Collection[int]]
-        let subject = new Fake_Iterable();
+        let subject = Fake_Iterable();
 
         let iterator: mut Iterator[int] = subject.iterate();
 
@@ -19,7 +19,7 @@ namespace iterable
     public fn \"Cannot mutate while iterating"()
     {
         // TODO let subject = Mock[Collection[int]]
-        let subject: mut = new Fake_Iterable();
+        let subject: mut = Fake_Iterable();
 
         {
             let iterator: mut Iterator[int] = subject.iterate();
@@ -38,7 +38,7 @@ namespace iterable
     class Fake_Iterable <: Iterable[int]
     {
         published fn iterate(temp const self) -> mut Iterator[int]
-            => new Fake_Iterator(self);
+            => Fake_Iterator(self);
 
         public fn test_read(self) { }
 
@@ -49,7 +49,7 @@ namespace iterable
     {
         let iterable: temp const Fake_Iterable;
 
-        public new(mut self, .iterable) { }
+        public init(mut self, .iterable) { }
 
         published fn \next(mut self) -> int?
             => none;

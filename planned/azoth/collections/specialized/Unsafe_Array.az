@@ -2,14 +2,14 @@
 public mut ref struct Unsafe_Array[T]
 {
     // TODO is this typed correctly? Will it compile?
-    public const empty: Unsafe_Array[never] = new Unsafe_Array[never](0);
+    public const empty: Unsafe_Array[never] = Unsafe_Array[never](0);
 
     public let count: size;
     private let elements: Raw_Array[T]$ref;
 
-    public new(.count)
+    public init(.count)
     {
-        self.elements = new Raw_Array[T](self.count);
+        self.elements = Raw_Array[T](self.count);
     }
 
     // Unsafe because count may not match elements?

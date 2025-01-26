@@ -2,9 +2,9 @@
 /// detection.
 public const class Unicode_Newline_Detector <: Newline_Detector
 {
-    // public const Instance: Unicode_Newline_Detector = new Unicode_Newline_Detector();
+    // public const Instance: Unicode_Newline_Detector = Unicode_Newline_Detector();
 
-    new(self) { }
+    init(self) { }
 
     published fn is_newline(self, char1: unicode_scalar, char2: unicode_scalar?) -> newline_detection
     {

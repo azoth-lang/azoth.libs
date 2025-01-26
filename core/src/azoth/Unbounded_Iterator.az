@@ -6,7 +6,7 @@ public trait Unbounded_Iterator[T ind out]
     // TODO implement operations once `yield` is implemented
 
     published fn \where(mut self, predicate: (T) -> bool) -> mut Unbounded_Iterator[T]
-        => new Where_Iterator[T](self, predicate);
+        => Where_Iterator[T](self, predicate);
 
     // TODO published delete(iso self)?
 

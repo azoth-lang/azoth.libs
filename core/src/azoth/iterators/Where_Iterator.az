@@ -6,7 +6,7 @@ public class Where_Iterator[T out] <: Iterator[T], Unbounded_Iterator[T]
     let iterator: mut Unbounded_Iterator[T];
     let predicate: (T) -> bool;
 
-    public new(mut self, .iterator, .predicate) { }
+    public init(mut self, .iterator, .predicate) { }
 
     /// # Notes
     /// There is no way of knowing how many elements will be left after filtering, so the lower
@@ -47,7 +47,7 @@ public class Where_Iterator[T out] <: Iterator[T], Unbounded_Iterator[T]
 //     let iterator: mut Source;
 //     let predicate: (T) -> bool;
 
-//     public new(mut self, .iterator, .predicate) { }
+//     public init(mut self, .iterator, .predicate) { }
 
 //     published fn \next(mut self) -> T?
 //     {

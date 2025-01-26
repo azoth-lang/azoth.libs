@@ -3,7 +3,7 @@ public class Indexable_Collection_Mutable_Iterator[T out] <: Iterator[T]
     let collection: temp iso Indexable_Collection[T];
     var index: size;
 
-    public new(mut self, .collection)
+    public init(mut self, .collection)
     {
         .index = 0;
     }

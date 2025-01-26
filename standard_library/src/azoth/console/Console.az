@@ -2,13 +2,6 @@ published class Console
 {
     let newline: string;
 
-    // For now, allow the console type to be directly constructed
-    // TODO mark this as a type that must be constructed before `main`
-    published new(mut self)
-    {
-        .newline = "\n";
-    }
-
     // For now, allow the console type to be directly initialized
     // TODO mark this as a type that must be constructed before `main`
     published init(mut self)

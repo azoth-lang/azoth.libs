@@ -6,5 +6,5 @@
 public trait Reversible_Iterable[T ind out] <: Iterable[T]
 {
     /// An iterator that will iterate over the items in reverse order.
-    published /*new*/ fn reverse(self) -> Iterator[T];
+    published fn reverse(self)  -> Iterator[T] /*hides*/;
 }

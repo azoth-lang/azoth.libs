@@ -3,7 +3,7 @@ public const class One_Character_Newline <: Newline
     let newline: unicode_scalar;
     published let value: string;
 
-    public new(self, .newline)
+    public init(self, .newline)
     {
         .value = .newline.to_string();
     }

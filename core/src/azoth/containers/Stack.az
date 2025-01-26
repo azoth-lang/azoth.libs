@@ -5,19 +5,19 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
     var count: size;
     var cached_chunk: mut Buffer_Chunk[T]?;
 
-    public new(mut self)
+    public init(mut self)
     {
-        .chunk = .first_chunk = new Buffer_Chunk[T]();
+        .chunk = .first_chunk = Buffer_Chunk[T]();
     }
 
     // TODO name: with_capacity
-    published new(mut self, var capacity: size)
+    published init(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
-        .chunk = .first_chunk = new Buffer_Chunk[T](capacity);
+        .chunk = .first_chunk = Buffer_Chunk[T](capacity);
     }
 
-    // public new(items: Iterable[T])
+    // public init(items: Iterable[T])
     // {
     //     self();
     //     foreach item in items
@@ -60,7 +60,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
             }
             else
             {
-                .chunk = new Buffer_Chunk[T](.count, .chunk);
+                .chunk = Buffer_Chunk[T](.count, .chunk);
             }
             // TODO check result is true
             .chunk.try_add(item);

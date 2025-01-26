@@ -1,22 +1,22 @@
 published class Hash_Set[T ind] <: Set[T]
 {
-    published new(mut self)
+    published init(mut self)
         // where T: Hashable
     {
-        //self.new()
+        //self.init()
     }
 
-    published new(mut self, key_comparer: Hash_Equivalence[T])
+    published init(mut self, key_comparer: Hash_Equivalence[T])
     {
     }
 
     // TODO name with_capacity
-    published new(mut self, capacity: size)
+    published init(mut self, capacity: size)
     {
 
     }
 
-    published new(mut self, capacity: size, key_comparer: Hash_Equivalence[T])
+    published init(mut self, capacity: size, key_comparer: Hash_Equivalence[T])
     {
 
     }

@@ -11,18 +11,18 @@ published move /*struct*/ class Buffer[T ind]
     // TODO use optional type to avoid allocating empty `Raw_Hybrid_Bounded_List[T]`
     var items: mut Raw_Hybrid_Bounded_List[void, T];
 
-    published new(mut self)
+    published init(mut self)
         // #prove ensures .count == 0 and .capacity == DefaultCapacity
     {
         let DefaultCapacity: size = 16; // TODO make this a constant
-        .items = new Raw_Hybrid_Bounded_List[void, T](DefaultCapacity);
+        .items = Raw_Hybrid_Bounded_List[void, T](DefaultCapacity);
     }
 
     // TODO name: with_capacity
-    published new(mut self, capacity: size)
+    published init(mut self, capacity: size)
         // #prove ensures .count == 0 and .capacity == capacity
     {
-        .items = new Raw_Hybrid_Bounded_List[void, T](capacity);
+        .items = Raw_Hybrid_Bounded_List[void, T](capacity);
     }
 
     published get capacity(self) -> size
@@ -86,7 +86,7 @@ published move /*struct*/ class Buffer[T ind]
         // requires new_capacity >= .count
         // #prove ensures .capacity == new_capacity
     {
-        let new_items: mut = new Raw_Hybrid_Bounded_List[void, T](new_capacity);
+        let new_items: mut = Raw_Hybrid_Bounded_List[void, T](new_capacity);
         let count = .count;
         // TODO create a more efficient copy mechanism
         foreach i in 0..<count

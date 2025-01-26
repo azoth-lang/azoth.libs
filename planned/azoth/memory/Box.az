@@ -5,7 +5,7 @@ public mut struct Box[T]
 {
     let value: @T;
 
-    public new[params Args: List[type]](params args: tuple_of(Args))
+    public init[params Args: List[type]](params args: tuple_of(Args))
         // where T has a constructor taking Args?
         // where T.type <: init(params Args)
     {

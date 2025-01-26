@@ -5,11 +5,11 @@ published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <:
     // TODO type parameter access should be `Self.Key`?
     let key_comparer: Hash_Equivalence[Key];
 
-    // published new(mut self) { }
+    // published init(mut self) { }
 
-    published new(mut self, .key_comparer) { }
+    published init(mut self, .key_comparer) { }
 
-    published new /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
+    published init /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
 
     published get key_comparer(self) -> Hash_Equivalence[Key]
         => .key_comparer;

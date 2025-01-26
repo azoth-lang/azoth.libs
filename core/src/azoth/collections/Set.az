@@ -4,12 +4,12 @@ published trait Set[T ind] <: Collection[T]
 
     published fn create() -> Hash_Set[T]
         // where T: Hashable
-        => new Hash_Set[T]();
+        => Hash_Set[T]();
 
 
     // published fn create_by_identity() -> Hash_Set[T]
     //     where T: ReferenceType
-    //     => new Hash_Set[T](new Identity_Equivalence());
+    //     => Hash_Set[T](Identity_Equivalence());
 
     published fn contains(self, value: T) -> bool;
 

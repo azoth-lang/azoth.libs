@@ -2,16 +2,16 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
 {
     let items: mut Buffer[T];
 
-    public new(mut self)
+    public init(mut self)
     {
-        .items = new Buffer[T]();
+        .items = Buffer[T]();
     }
 
     // TODO name: with_capacity
-    published new(mut self, var capacity: size)
+    published init(mut self, var capacity: size)
     {
         if capacity < 16 => capacity = 16;
-        .items = new Buffer[T](capacity);
+        .items = Buffer[T](capacity);
     }
 
     // #Inline(.Always)

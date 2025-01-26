@@ -6,12 +6,12 @@
 //     public const count: size = Types.count;
 //     private let values: Parameters[params Types];
 
-//     public new(params .values) { }
+//     public init(params .values) { }
 
 //     #Inline
 //     public operator #(_) (params values: Parameters[params Types]) -> Tuple[params Types]$owned
 //     {
-//         return new Tuple[params Types](params values);
+//         return Tuple[params Types](params values);
 //     }
 
 //     #Inline

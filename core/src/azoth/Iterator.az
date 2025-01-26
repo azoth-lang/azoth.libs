@@ -19,12 +19,12 @@ public trait Iterator[T ind out] <: Unbounded_Iterator[T]
     published fn size_hint(self) -> size;
 
     published fn \where(mut self, predicate: (T) -> bool) -> mut Iterator[T]
-        => new Where_Iterator[T](self, predicate);
+        => Where_Iterator[T](self, predicate);
 
     // TODO replace with `to_dictionary` that selects dictionary type based on `Key_Comparer`
     // published fn to_hash_dictionary[Value](mut self, value_selector: (T) -> Value) -> mut Hash_Dictionary[T, Value]
     // {
-    //     let dictionary = new Hash_Dictionary[T, Value](.size_hint(), new Identity_Equivalence[T]());
+    //     let dictionary = Hash_Dictionary[T, Value](.size_hint(), Identity_Equivalence[T]());
     //     foreach key in self
     //     {
     //         dictionary.add(key, value_selector(key));
@@ -61,7 +61,7 @@ public trait Iterator[T ind out] <: Unbounded_Iterator[T]
     // max
     // published fn max(mut self) -> T?
     //     where T <: Ordered
-    //     => .max(new Natural_Ordering[T]());
+    //     => .max(Natural_Ordering[T]());
 
     // published fn max(mut self, order: Ordering[T]) -> T?
     // {

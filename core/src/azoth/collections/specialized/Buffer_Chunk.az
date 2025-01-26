@@ -8,23 +8,23 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     // TODO use private inheritance to avoid extra indirection
     var items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
 
-    published new(mut self)
+    published init(mut self)
         // #prove ensures .count == 0 and .capacity == DefaultCapacity
     {
         let DefaultCapacity: size = 16; // TODO make this a constant
-        .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, DefaultCapacity);
+        .items = Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, DefaultCapacity);
     }
 
-    published new(mut self, capacity: size)
+    published init(mut self, capacity: size)
         // #prove ensures .count == 0 and .capacity == capacity
     {
-        .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, capacity);
+        .items = Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](none, capacity);
     }
 
-    published new(mut self, capacity: size, next_chunk: mut Buffer_Chunk[T])
+    published init(mut self, capacity: size, next_chunk: mut Buffer_Chunk[T])
         // #prove ensures .count == 0 and .capacity == capacity
     {
-        .items = new Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](next_chunk, capacity);
+        .items = Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T](next_chunk, capacity);
     }
 
     published get next_chunk(mut self) -> mut Buffer_Chunk[T]?

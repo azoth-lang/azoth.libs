@@ -4,7 +4,7 @@ public const class Hashable_Hash_Equivalence[shareable T in] <: Hash_Equivalence
 {
     let factory: Hasher_Factory;
 
-    published new(self, .factory) { }
+    published init(self, .factory) { }
 
     published fn equal(const self, lent first: T, lent second: T) -> bool
     {

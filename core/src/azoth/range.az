@@ -43,7 +43,7 @@ published const struct range <: Iterable[int]
         => .start <= value and value < .end;
 
     published fn iterate(const self) -> mut Range_Iterator
-        => return new Range_Iterator(self);
+        => return Range_Iterator(self);
 }
 
 // The range classes are temporary classes used to handle range expressions.
@@ -62,7 +62,7 @@ published const struct range <: Iterable[int]
     // TODO make this a computed property
     published let count: size;
 
-    published new(.start, .end)
+    published init(.start, .end)
         // requires start <= end
     {
         self.count = self.end - self.start + 1;

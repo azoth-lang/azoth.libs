@@ -3,7 +3,7 @@ namespace unbounded_iterator
     #Test
     public fn \"Where filters iterators"()
     {
-        let subject: mut = new List[int]();
+        let subject: mut = List[int]();
         subject.add(4);
         subject.add(42);
         subject.add(-1);

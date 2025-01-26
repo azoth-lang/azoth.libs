@@ -7,9 +7,9 @@ public ref struct string
     public let byte_count: size; // TODO this should just be the count of the byte array i.e. `bytes.count`
     public let bytes: @byte;
 
-    // public unsafe new(count: size, bytes: @byte)
+    // public unsafe init(count: size, bytes: @byte)
     // {
-    //     .bytes = unsafe(new Array[byte](count, bytes));
+    //     .bytes = unsafe(Array[byte](count, bytes));
     // }
 
     public unsafe init from_utf8_unchecked[$ref](byte_count: size, bytes: @byte)
