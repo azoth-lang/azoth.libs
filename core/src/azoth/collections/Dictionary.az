@@ -18,6 +18,8 @@ published trait Dictionary[Key shareable ind, Value ind nonwritable out] <: Coll
 
     published fn at(self, lent key: Key) -> Value?;
 
+    //published fn try_at(lent self, lent key: Key) -> Value?
+
     published fn set_at(mut self, key: Key, value: Value);
 
     published fn get_at_or_add(mut self, key: Key, value: Value) -> Value;
