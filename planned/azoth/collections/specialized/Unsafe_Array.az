@@ -5,7 +5,7 @@ public mut ref struct Unsafe_Array[T]
     public const empty: Unsafe_Array[never] = Unsafe_Array[never](0);
 
     public let count: size;
-    private let elements: Raw_Array[T]$ref;
+    let elements: Raw_Array[T]$ref;
 
     public init(.count)
     {
@@ -15,7 +15,7 @@ public mut ref struct Unsafe_Array[T]
     // Unsafe because count may not match elements?
     // Because the type of elements is `Raw_Array[T]$ref` we know the lifetime
     // of the `Unsafe_Array[T]`
-    private unsafe init(.count, .elements) { }
+    unsafe init(.count, .elements) { }
 
     /// Unsafe because the element may not be initialized
     public unsafe fn at(mut self, index: size) -> ref var T

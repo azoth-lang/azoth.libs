@@ -7,7 +7,7 @@
 /// memory. It doesn't carry a size.
 public mut ref struct Raw_Array[T]
 {
-    private let elements: @T;
+    let elements: @T;
 
     public init(count: size)
     {
