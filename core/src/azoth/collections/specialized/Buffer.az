@@ -44,7 +44,7 @@ published move /*struct*/ class Buffer[T ind]
     {
         let count = .items.count;
         if index >= count => ABORT("set_at(): index out of bounds");
-        .items.set_at(index, value);
+        .items.at(index) = value;
     }
 
     published fn add(mut self, value: T)
@@ -62,7 +62,7 @@ published move /*struct*/ class Buffer[T ind]
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
-            { .items.set_at(i as! size, .items.at(i as! size + 1)); }
+            { .items.at(i as! size) = .items.at(i as! size + 1); }
         .items.shrink(count - 1);
         return item;
     }

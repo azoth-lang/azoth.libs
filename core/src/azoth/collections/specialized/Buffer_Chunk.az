@@ -5,7 +5,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
 {
     // const DefaultCapacity: size = 16;
 
-    // TODO use private inheritance to avoid extra indirection
+    // TODO use private inheritance or make Buffer_Chunk a struct to avoid extra indirection
     var items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
 
     published init(mut self)
@@ -52,7 +52,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     {
         let count = .items.count;
         if index >= count => ABORT("set_at(): index out of bounds");
-        .items.set_at(index, value);
+        .items.at(index) = value;
     }
 
     published fn try_add(mut self, value: T) -> bool
@@ -71,7 +71,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
         if index >= count => ABORT("remove_at(): index out of bounds");
         let item = .items.at(index);
         foreach i in index..<(count - 1)
-            { .items.set_at(i as! size, .items.at(i as! size + 1)); }
+            { .items.at(i as! size) = .items.at(i as! size + 1); }
         .items.shrink(count - 1);
         return item;
     }
