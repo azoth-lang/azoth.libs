@@ -1,5 +1,31 @@
+/// An equivalence relation on a type `T`.
+///
+/// # Remarks
+///
+/// An equivalence relation divides the values of `T` into subsets that are equivalence classes.
+///
+/// In mathematical terms, this is technically a setoid since it is a type and an equivalence
+/// relation on that type.
 published trait Equivalence[T in] <: Partial_Equivalence[T]
 // TODO restrict T to `read`, `const`, or `id` (or `temp const`?) i.e. non-mutable?
 {
-    published fn equal(self, lent first: T, lent second: T) -> bool;
+    /// Determine whether the two values are equivalent according to this equivalence relation.
+    ///
+    /// # Remarks
+    ///
+    /// This method must define a relationship, here represented with the '∼' symbol, such that it
+    /// has the following properties:
+    ///
+    /// * reflexivity: a ∼ a
+    /// * symmetry: a ∼ b if and only if b ∼ a
+    /// * transitivity: if a ∼ b and b ∼ c then a ∼ c
+    //  * consistency: if a ∼ b and no field changes on a or b, then a ∼ b (is still true)
+    ///
+    /// Implementations that do not have these properties can lead to unexpected behavior.
+    ///
+    /// It is important to understand that an equivalence relation is independent of equality. Just
+    /// because a type has an equality relation such that a =/= b does mean not that it can't be the
+    /// case that a ∼ b.
+    // TODO document that a changed value can cause changed equivalence and possibly add new types
+    published fn equivalent(self, lent first: T, lent second: T) -> bool;
 }

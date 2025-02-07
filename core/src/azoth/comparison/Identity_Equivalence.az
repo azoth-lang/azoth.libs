@@ -1,9 +1,10 @@
+// TODO use `object` declaration
 /// An equivalence relation that compares reference types by their identity.
 public const class Identity_Equivalence <: Hash_Equivalence[id Any]
 {
     // TODO ensure a single instance
 
-    published fn equal(const self, first: id Any, second: id Any) -> bool
+    published fn equivalent(const self, first: id Any, second: id Any) -> bool
         => first ≡≡ second;
 
     published fn hash(const self, value: id Any) -> nuint

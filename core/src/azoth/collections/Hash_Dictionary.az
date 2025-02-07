@@ -9,7 +9,7 @@ published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <:
 
     published init(mut self, .key_comparer) { }
 
-    published init /*with_capacity*/(mut self, capacity: size, .key_comparer) { }
+    published init with_capacity(mut self, capacity: size, .key_comparer) { }
 
     published get key_comparer(self) -> Hash_Equivalence[Key]
         => .key_comparer;
