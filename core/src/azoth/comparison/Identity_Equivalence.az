@@ -1,5 +1,6 @@
 // TODO use `object` declaration
 /// An equivalence relation that compares reference types by their identity.
+// TODO should this be named Reference_Equivalence?
 public const class Identity_Equivalence <: Hash_Equivalence[id Any]
 {
     // TODO ensure a single instance

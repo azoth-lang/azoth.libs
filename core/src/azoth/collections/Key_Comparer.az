@@ -1,6 +1,6 @@
 /// A comparer for keys. Can be either a `Ordering[T]` or `Hash_Equivalence[T]`
-// TODO change to: alias type Key_Comparer[T] = Ordering[T] | Hash_Equivalence[T];
-// or enum trait
+// TODO change to: `alias type Key_Comparer[T] = Ordering[T] | Hash_Equivalence[T];`. This is not
+// inheritance because a key comparer should also be stable and those types don't guarantee stability.
 published trait Key_Comparer[T in]
 {
 }

@@ -1,5 +1,5 @@
 // Note: `Key` should be `ind` because when using identity equivalence, temp const dictionary shouldn't change the key type.
-// Note: the `Value` could `read out` meaning that once the collection is can only be read, that
+// Note: The `Value` can be `nonwritable out` meaning that once the collection can only be read, that
 // parameter acts like an `out` parameter. However, the `Key` can't be that because it must still be
 // passed into `at()` in order to retrieve values. Thus `Key` may only ever vary by the capability.
 published trait Dictionary[Key shareable ind, Value ind nonwritable out] <: Collection[key_value_pair[Key, Value]]
