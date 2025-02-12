@@ -1,4 +1,5 @@
-published trait Set[T ind] <: Collection[T]
+// TODO make `T` `shareable ind`
+published trait Set[T /*shareable*/ ind] <: Collection[T]
 {
     // TODO allow constructors in traits so these can be called like constructors
 
@@ -6,20 +7,22 @@ published trait Set[T ind] <: Collection[T]
         // where T: Hashable
         => Hash_Set[T]();
 
+    //TODO published get comparer(self) -> Key_Comparer[shareable T];
 
     // published fn create_by_identity() -> Hash_Set[T]
     //     where T: ReferenceType
     //     => Hash_Set[T](Identity_Equivalence());
 
-    published fn contains(self, value: T) -> bool;
+    published fn contains(self, lent value: T) -> bool;
 
     published fn add(mut self, value: T) -> bool;
 
+    // TODO can the iterator become part of the sharing set and cause problems?
     published fn add(mut self, values: mut Iterator[T])
     {
         foreach value in values
             { .add(value); }
     }
 
-    published fn remove(mut self, value: T) -> bool;
+    published fn remove(mut self, lent value: T) -> bool;
 }
