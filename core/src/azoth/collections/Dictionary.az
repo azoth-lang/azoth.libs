@@ -9,7 +9,7 @@ published trait Dictionary[Key shareable ind, Value ind nonwritable out] <: Coll
     // {
     // }
 
-    published get key_comparer(self) -> Key_Comparer[Key];
+    published get key_comparer(self) -> Key_Comparer[shareable Key];
 
     // TODO keys: Set[Key]
     // TODO values: Collection[Value]

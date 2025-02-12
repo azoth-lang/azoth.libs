@@ -5,7 +5,7 @@
 /// A partial equivalence relation is an equivalence relation on a subset of the values of `T`.
 /// Values not in that subset return `none`. Floating-point types are an example of a type with a
 /// partial equivalence relation since `NaN` cannot be compared to `NaN`.
-published trait Partial_Equivalence[T in]
+published const trait Partial_Equivalence[T in]
 // TODO restrict T to `read`, `const`, or `id`?
 {
     /// Determine whether the two values are equivalent according to this partial equivalence

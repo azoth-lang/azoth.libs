@@ -3,7 +3,7 @@
 published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <: Dictionary[Key, Value]
 {
     // TODO type parameter access should be `Self.Key`?
-    let key_comparer: Hash_Equivalence[Key];
+    let key_comparer: Hash_Equivalence[shareable Key];
 
     // published init(mut self) { }
 
@@ -11,6 +11,6 @@ published class Hash_Dictionary[Key shareable ind, Value ind nonwritable out] <:
 
     published init with_capacity(mut self, capacity: size, .key_comparer) { }
 
-    published get key_comparer(self) -> Hash_Equivalence[Key]
+    published get key_comparer(self) -> Hash_Equivalence[shareable Key]
         => .key_comparer;
 }

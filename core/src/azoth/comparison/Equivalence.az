@@ -6,7 +6,7 @@
 ///
 /// In mathematical terms, this is technically a setoid since it is a type and an equivalence
 /// relation on that type.
-published trait Equivalence[T in] <: Partial_Equivalence[T]
+published const trait Equivalence[T in] <: Partial_Equivalence[T]
 // TODO restrict T to `read`, `const`, or `id` (or `temp const`?) i.e. non-mutable?
 {
     /// Determine whether the two values are equivalent according to this equivalence relation.
