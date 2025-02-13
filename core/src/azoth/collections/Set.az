@@ -13,7 +13,8 @@ published trait Set[T /*shareable*/ ind] <: Collection[T]
     //     where T: ReferenceType
     //     => Hash_Set[T](Identity_Equivalence());
 
-    published fn contains(self, lent value: T) -> bool;
+    // TODO using `shareable T` might allow allow `T nowritable out`
+    published fn contains(self, lent value: /*shareable*/ T) -> bool;
 
     published fn add(mut self, value: T) -> bool;
 

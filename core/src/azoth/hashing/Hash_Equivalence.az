@@ -1,4 +1,5 @@
 /// An equivalence relation between values that also supports hashing for placement in a hash table.
+// TODO document why like Swift it makes sense for this to implement Equivalence[T]
 published const trait Hash_Equivalence[T in] <: Equivalence[T], Key_Comparer[T]
 {
     published fn hash(self, lent value: T) -> nuint;

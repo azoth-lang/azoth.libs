@@ -5,20 +5,21 @@
 /// A partial equivalence relation is an equivalence relation on a subset of the values of `T`.
 /// Values not in that subset return `none`. Floating-point types are an example of a type with a
 /// partial equivalence relation since `NaN` cannot be compared to `NaN`.
+///
+/// These are allowed on mutable values to enable comparing objects by current value.
 published const trait Partial_Equivalence[T in]
-// TODO restrict T to `read`, `const`, or `id`?
 {
     /// Determine whether the two values are equivalent according to this partial equivalence
     /// relation. If they cannot be compared, returns `none`.
     ///
     /// # Remarks
     ///
-    /// This method must define a relationship, here represented with the character 'R', such that
-    /// it has the following properties:
+    /// This method must define a relationship, here represented with the character 'R', that has
+    /// the following properties:
     ///
     /// * symmetry: a R b if and only if b R a (likewise if a R b is `none`, then so it `b R a`)
     /// * transitivity: if a R b and b R c then a R c
-    //  * consistency: if a R b and no field changes on a or b, then a R b (is still true)
+    /// * consistency: if a R b and no field changes on a or b, then a R b (is still true)
     ///
     /// Implementations that do not have these properties can lead to unexpected behavior.
     ///
@@ -28,6 +29,8 @@ published const trait Partial_Equivalence[T in]
     /// It is important to understand that an equivalence relation is independent of equality. Just
     /// because a type has an equality relation such that a =/= b does mean not that it can't be the
     /// case that a R b.
-    // TODO document that a changed value can cause changed equivalence and possibly add new types
+    ///
+    /// It should also be noted that consistency applies only when values are not mutated. So a R b
+    /// can change value if a or b change.
     published fn equivalent(self, lent first: T, lent second: T) -> bool?;
 }
