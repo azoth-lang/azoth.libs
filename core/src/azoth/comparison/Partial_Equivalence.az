@@ -17,7 +17,7 @@ published const trait Partial_Equivalence[T in]
     /// This method must define a relationship, here represented with the character 'R', that has
     /// the following properties:
     ///
-    /// * symmetry: a R b if and only if b R a (likewise if a R b is `none`, then so it `b R a`)
+    /// * symmetry: a R b if and only if b R a (likewise a R b is `none` if and only if b R a is `none`)
     /// * transitivity: if a R b and b R c then a R c
     /// * consistency: if a R b and no field changes on a or b, then a R b (is still true)
     ///

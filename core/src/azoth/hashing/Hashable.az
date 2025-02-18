@@ -4,7 +4,7 @@
 // TODO in Rust they make a point about `Hash` not having prefixes because sequences need to be
 // properly separated. That isn't a problem in C# because of the way hashing works. How does Swift
 // handle it?
-public trait Hashable[TSelf] <: Equatable[TSelf]
+public trait Hashable[const TSelf] <: Equatable[TSelf]
 {
     published fn hash(self, lent hasher: mut Hasher);
 }

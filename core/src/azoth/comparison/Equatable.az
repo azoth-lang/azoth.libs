@@ -1,8 +1,12 @@
 /// A type for which there is a natural [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation).
-public trait Equatable[TSelf] <: Partially_Equatable[TSelf]
+public trait Equatable[const Domain] <: Partially_Equatable[Domain]
 {
     // TODO replace with operator
-    public fn equals(const self, other: /*const*/ TSelf) -> bool;
+    public fn equals(const self, other: Domain) -> bool;
+
+    // TODO add can_equal
+    // protected fn can_equal(const self, other: Domain) -> bool
+    //     => other is Self;
 
     // public abstract override operator _==_(const self, other: const Self) -> bool
         // reflexive a == a
