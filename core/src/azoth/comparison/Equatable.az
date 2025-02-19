@@ -11,10 +11,10 @@ public trait Equatable[const Domain] <: Partially_Equatable[Domain]
     /// `can_equal` method is provided to support this. To ensure symmetry define equality as
     /// `self === other or other.can_equal(self) and ...` followed by all the conditions for equality.
     // TODO replace with operator
-    public fn equals(const self, other: Domain) -> bool;
+    public fn equals(const self, other: Domain) -> bool /*overrides*/;
 
     // TODO add can_equal
-    // protected fn can_equal(const self, other: Domain) -> bool
+    protected fn can_equal(const self, other: Domain) -> bool /*overrides*/;
     //     => other is Self;
 
     // public abstract override operator _==_(const self, other: const Self) -> bool
