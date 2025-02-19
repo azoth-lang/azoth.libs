@@ -73,6 +73,7 @@ public trait Partially_Equatable[const Domain]
     /// Note that partial equality is not reflective. That is, there may be values such that a R a
     /// returns `none`.
     ///
+    // TODO more discussion of implementing equals and the need to check other is Type
     /// Implementing `==` properly on types that are not sealed requires extra caution to ensure
     /// that the implementation if symmetric even as new subtypes are added to the hierarchy. The
     /// `can_equal` method is provided to support this. To ensure symmetry define equality as

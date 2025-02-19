@@ -1,6 +1,15 @@
 /// A type for which there is a natural [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation).
 public trait Equatable[const Domain] <: Partially_Equatable[Domain]
 {
+    /// Since reference equality typically implies abstract value equality it is common implement
+    /// equality by first comparing `self === other` and returning `true` if the two are the same
+    /// object. This avoids the performance cost of comparing the actual values for the very cost of
+    /// a very quick reference comparison.
+    ///
+    /// Implementing `==` properly on types that are not sealed requires extra caution to ensure
+    /// that the implementation if symmetric even as new subtypes are added to the hierarchy. The
+    /// `can_equal` method is provided to support this. To ensure symmetry define equality as
+    /// `self === other or other.can_equal(self) and ...` followed by all the conditions for equality.
     // TODO replace with operator
     public fn equals(const self, other: Domain) -> bool;
 
