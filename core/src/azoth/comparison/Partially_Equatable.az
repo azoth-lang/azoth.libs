@@ -99,8 +99,8 @@ public trait Partially_Equatable[const Domain]
     /// compare equal. For example, if a type is a proxy it may wish to compare equal to the type
     /// it is a proxy for.
     // TODO add can_equal
-    published protected fn can_equal(const self, other: Domain) -> bool?;
-    // TODO    => other is Self;
+    published protected fn can_equal(const self, other: Domain) -> bool?
+        => other is Self;
 
     /// Determine whether the two values are not equal. If they cannot be compared, returns `none`.
     ///
