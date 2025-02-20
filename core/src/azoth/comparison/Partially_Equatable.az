@@ -4,7 +4,7 @@
 ///
 /// # Remarks
 ///
-/// Types that have multiple reasonably definitions of equality without one that is clearly what
+/// Types that have multiple reasonable definitions of equality without one that is clearly what
 /// most would consider equal should not implement this trait. Instead, multiple
 /// `Partial_Equivalence` implementations should be provided and developers can select which to
 /// apply in any given situation using a `with` block. For example, Unicode strings can be compared
@@ -73,16 +73,42 @@ public trait Partially_Equatable[const Domain]
     /// Note that partial equality is not reflective. That is, there may be values such that a R a
     /// returns `none`.
     ///
-    // TODO more discussion of implementing equals and the need to check other is Type
     /// Implementing `==` properly on types that are not sealed requires extra caution to ensure
-    /// that the implementation if symmetric even as new subtypes are added to the hierarchy. The
-    /// `can_equal` method is provided to support this. To ensure symmetry define equality as
-    /// `other.can_equal(self) and ...` followed by all the conditions for equality.
+    /// that the implementation is symmetric even as new subtypes are added to the hierarchy. The
+    /// `can_equal` method is provided to support this. To ensure symmetry be sure to call
+    /// `other.can_equal(self)` and if the result is not `true` return the result of `can_equal`.
+    /// Note that `can_equal` can return `none` indicating that the `other` value is not comparable.
+    /// In that case `==` must also return `none`. However since `none or true` produces `true` one
+    /// must be careful to not improperly use logical connectives.
+    ///
+    /// # Example
+    ///
+    /// Here is an example of a typical implementation of `equals` for a class `Example` with two
+    /// fields `a` and `b` that inherits from `Base` (which implements `Equatable`). Here, there is
+    /// a special value `Example.Not_A_Value` that cannot be compared for equality.
+    ///
+    /// ```
+    /// published fn equals(const self, other: Base) -> bool? overrides
+    /// {
+    ///     if self === Example.Not_A_Value or other === Example.Not_A_Value => return none;
+    ///     if self === other => return true;
+    ///     let can_equal = other.can_equal(self);
+    ///     if not can_equal => return can_equal;
+    ///     return other is Example o and .a == o.a and .b == o.b;
+    /// }
+    /// ```
+    /// This example shows that it is necessary to first check for the special `Example.Not_A_Value`
+    /// because `Example.Not_A_Value == Example.Not_A_Value` should return `none`. Next it checks
+    /// for reference equality between `self` and `other` to optimize that case. It then ensures
+    /// that `other` can be compared to `self` for equality by calling `other.can_equal(self)`.
+    /// Note that only if `true` is returned does it go on to check for equality. Otherwise, it
+    /// returns the result of the call to `can_equal`. It finishes by checking that other is an
+    /// instance of the type `Example` and that all fields are equal.
     // TODO replace with operator ==
     public fn equals(const self, other: Domain) -> bool?;
     // TODO is it possible to enforce the properties with `ensures`?
-    // ensures return implies other == self
-    // ensures let a:Domain, b:Domain, c:Domain; a==b and b==c implies a==c;
+    // ensures /*symmetry*/ return implies other == self
+    // ensures /*transitivity*/ let a:Domain, b:Domain, c:Domain; a==b and b==c implies a==c;
 
     /// Whether `other` can be compared to `self`.
     ///
@@ -98,7 +124,7 @@ public trait Partially_Equatable[const Domain]
     /// cases. However, it will need to be overridden in cases where a different type wishes to
     /// compare equal. For example, if a type is a proxy it may wish to compare equal to the type
     /// it is a proxy for.
-    // TODO add can_equal
+    // TODO #Inline
     published protected fn can_equal(const self, other: Domain) -> bool?
         => other is Self;
 
@@ -111,6 +137,7 @@ public trait Partially_Equatable[const Domain]
     ///
     /// When overriding, implementations must ensure that `(a =/= b) == not (a == b)`.
     // TODO add not equal operator
-    // public operator _=/=_(const self, other: Domain) -> bool?
+    // #Inline
+    // published operator _=/=_(const self, other: Domain) -> bool?
     //     => not (self == other);
 }

@@ -1,29 +1,123 @@
-/// A type for which there is a natural [equivalence relation](https://en.wikipedia.org/wiki/Equivalence_relation).
-public trait Equatable[const Domain] <: Partially_Equatable[Domain]
+/// A type for abstract values can be checked for equality.
+///
+/// # Remarks
+///
+/// Types that have multiple reasonable definitions of equality without one that is clearly what
+/// most would consider equal should not implement this trait. Instead, multiple `Equivalence`
+/// implementations should be provided and developers can select which to apply in any given
+/// situation using a `with` block. For example, Unicode strings can be compared either by their
+/// Unicode scalar sequence or by converting to normal form and comparing or relative to some
+/// culture. As such, unicode strings should not implement `==`. On the other hand, ASCII strings
+/// can be compared case sensitive or case insensitive, but the case sensitive comparison is the one
+/// that would be clearly considered equal. So ASCII strings should provide `==` that compares
+/// strings in a case sensitive manner.
+///
+/// This trait provides a way compare a type (or family of types) for abstract value equality. This
+/// means that two objects/values are considered equal when their abstract values are substitutable
+/// for each other. Typically, this means that they are behaviorally equal. That is, in almost all
+/// ways the behavior of the two values is indistinguishable. Of course, there are some aspects of
+/// an object that are not part of its abstract value but may still be behaviorally observable. For
+/// objects, the first such aspect is object identity. If two references refer to the same object
+/// (e.g. `a === b`) then they must necessarily be equal (i.e. `a == b`). However, the inverse is
+/// not the case. This is because object identity is never considered to be part of the abstract
+/// value of an object/value. Another example is types which have multiple internal representations
+/// for a value. These internal representations may be distinguishable by certain operations or by
+/// inspecting the bytes of the value, but they represent the same abstract value and should be
+/// equal. A final example is that for floating point types `-0 == 0`. Here their are some
+/// behavioral differences since `1/0 == Inf` while `1/-0 == -Inf`. Nevertheless, the sign of zero
+/// is not considered to be part of the abstract value.
+///
+/// Generally, equality should reflect behavioral equality except for object identity and multiple
+/// internal representations of a value. If equality is being defined in a way that treats values
+/// that are behaviorally distinct in other ways as equal, one should strongly consider not
+/// implementing `Equatable` and instead providing an `Equivalence`.
+///
+/// Because two values should be behaviorally equal to be considered equal, the `==` operation is
+/// defined only over `const` values. This is because if two distinct mutable objects were
+/// considered equal and one was mutated, then they would not longer be behaviorally equal. For
+/// comparison on mutable values, use `Equivalence`.
+published trait Equatable[const Domain] <: Partially_Equatable[Domain]
 {
-    /// Since reference equality typically implies abstract value equality it is common implement
+    // TODO replace the generic parameter `Domain` with an associated type.
+
+    /// Determine whether the two values are equal.
+    ///
+    /// # Remarks
+    ///
+    /// This method must define a relationship, here represented with the '==' symbol, that has
+    /// the following properties:
+    ///
+    /// * reflexivity: a == a
+    /// * symmetry: a == b if and only if b == a
+    /// * transitivity: if a == b and b == c then a == c
+    /// * substitutability: if a == b then it should be possible to substitute b for a in all
+    ///   expressions that depend only on the abstract value of a. Put another way, a and b should
+    ///   be behaviorally equal except for those aspects and operations that distinguish more than
+    ///   just the abstract value.
+    ///
+    /// Implementations that do not have these properties can lead to unexpected behavior.
+    ///
+    /// Since reference equality implies abstract value equality it is common implement
     /// equality by first comparing `self === other` and returning `true` if the two are the same
     /// object. This avoids the performance cost of comparing the actual values for the very cost of
     /// a very quick reference comparison.
     ///
     /// Implementing `==` properly on types that are not sealed requires extra caution to ensure
-    /// that the implementation if symmetric even as new subtypes are added to the hierarchy. The
+    /// that the implementation is symmetric even as new subtypes are added to the hierarchy. The
     /// `can_equal` method is provided to support this. To ensure symmetry define equality as
-    /// `self === other or other.can_equal(self) and ...` followed by all the conditions for equality.
+    /// `self === other or other.can_equal(self) and ...` followed by all the conditions for
+    /// equality.
+    ///
+    /// # Example
+    ///
+    /// Here is an example of a typical implementation of `equals` for a class `Example` with two
+    /// fields `a` and `b` that inherits from `Base` (which implements `Equatable`).
+    ///
+    /// ```
+    /// published fn equals(const self, other: Base) -> bool overrides
+    ///     => self === other
+    ///         or other.can_equal(self)
+    ///             and other is Example o
+    ///             and .a == o.a
+    ///             and .b == o.b;
+    /// ```
+    ///
+    /// This example shows the optimization of first checking for reference equality between `self`
+    /// and `other`. It then ensures that `other` can be compared to `self` for equality by calling
+    /// `other.can_equal(self)`. It finishes by checking that other is and instance of the type
+    /// `Example` and that all fields are equal.
     // TODO replace with operator
-    public fn equals(const self, other: Domain) -> bool /*overrides*/;
+    published fn equals(const self, other: Domain) -> bool /*overrides*/;
+    // TODO is it possible to enforce the properties with `ensures`?
+    // ensures /*reflexivity*/ self == self
 
-    // TODO add can_equal
-    protected fn can_equal(const self, other: Domain) -> bool /*overrides*/;
-    //     => other is Self;
+    /// Whether `other` can be compared to `self`.
+    ///
+    /// # Returns
+    ///
+    /// * `true` if they can be compared (i.e. `==` should compare their abstract values)
+    /// * `false` if they are not equal to each other (i.e. `==` should return `false`)
+    ///
+    /// # Remarks
+    ///
+    /// The default implementation of `can_equal` is `other is Self` and will be correct in most
+    /// cases. However, it will need to be overridden in cases where a different type wishes to
+    /// compare equal. For example, if a type is a proxy it may wish to compare equal to the type
+    /// it is a proxy for.
+    // TODO #Inline
+    published protected fn can_equal(const self, other: Domain) -> bool /*overrides*/
+        => other is Self;
 
-    // public abstract override operator _==_(const self, other: const Self) -> bool
-        // reflexive a == a
-        //ensures self == self;
-        // The following postconditions are inherited from PartiallyEquatable
-        // symmetry if a==b, then b==a
-        // transitivity: if a==b and b==c, then a==c
-
-    // public operator _=/=_(const self, other: const Self) -> bool
-    //  => not (self == other);
+    /// Determine whether the two values are not equal. If they cannot be compared, returns `none`.
+    ///
+    /// # Remarks
+    ///
+    /// The default implementation should be sufficient in almost all cases. In rare cases, it can
+    /// be overridden to provide improved performance.
+    ///
+    /// When overriding, implementations must ensure that `(a =/= b) == not (a == b)`.
+    // TODO add not equal operator
+    // #Inline
+    // published operator _=/=_(const self, other: const Self) -> bool
+    //     => not (self == other);
 }
