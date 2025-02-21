@@ -1,12 +1,12 @@
 // TODO use `object` declaration
 /// An equivalence relation that compares reference types by their identity.
-// TODO should this be named Reference_Equivalence?
+// TODO should this be named Reference_Equivalence or even Reference_Equality?
 public const class Identity_Equivalence <: Hash_Equivalence[id Any]
 {
     // TODO ensure a single instance
 
     published fn equivalent(const self, first: id Any, second: id Any) -> bool
-        => first ≡≡ second;
+        => first @== second;
 
     published fn hash(const self, value: id Any) -> nuint
         => value.identity_hash();

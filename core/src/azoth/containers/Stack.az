@@ -73,7 +73,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
         if .count == 0 => return;
 
         .count = 0;
-        if .chunk ≡/≡ .first_chunk
+        if .chunk @=/= .first_chunk
         {
             // drop all but first chunk
             .chunk = .first_chunk;
