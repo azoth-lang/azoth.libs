@@ -1,11 +1,11 @@
-/// A type for which there is a natural total order.
+/// A type for which there is a natural partial order.
 /// The comparison must satisfy, for all `a`, `b` and `c`
 /// * antisymmetry: if `a < b` then `not(a > b)``, as well as `a > b` implying `not(a < b)`
 /// * transitivity: `a < b` and `b < c` implies `a < c`
 /// The same must hold for both == and >
 
 // see https://www.reddit.com/r/ProgrammingLanguages/comments/9u63pe/language_design_comparing_and_sorting/
-public trait Partially_Ordered[const Domain] <: Partially_Equatable[Domain]
+public trait Partially_Ordered[const Domain]
 {
     public fn compare(const self, other: Domain) -> ordering?;
 
