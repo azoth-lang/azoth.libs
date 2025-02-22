@@ -1,5 +1,5 @@
 /// A type that supports equality comparison and hashing for placement in a hash table.
-// TODO document while it makes sense for Hashable to implement Equatable like in Swift rather than
+// TODO document why it makes sense for Hashable to implement Equatable like in Swift rather than
 // not like in Rust.
 // TODO in Rust they make a point about `Hash` not having prefixes because sequences need to be
 // properly separated. That isn't a problem in C# because of the way hashing works. How does Swift

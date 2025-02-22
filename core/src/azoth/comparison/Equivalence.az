@@ -2,7 +2,8 @@
 ///
 /// # Remarks
 ///
-/// An equivalence relation divides the values of `T` into subsets that are equivalence classes.
+/// An equivalence relation divides the values of `T` into subsets of values that are considered
+/// equivalent, called equivalence classes.
 ///
 /// In mathematical terms, this is technically a setoid since it is a type and an equivalence
 /// relation on that type.

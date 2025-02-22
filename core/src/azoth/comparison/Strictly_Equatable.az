@@ -1,0 +1,15 @@
+// trait Strictly_Equatable
+
+// fn strict_equals[T](left: T, right: T) -> bool
+// where T: Strictly_Equatable
+
+// fn strict_equals[T](left: T?, right: T) -> bool
+// where T: Strictly_Equatable
+
+// fn strict_equals[T](left: T, right: T?) -> bool
+// where T: Strictly_Equatable
+
+// fn strict_equals[T](left: T?, right: T?) -> bool
+// where T: Strictly_Equatable
+
+// TODO what about more levels of optional?

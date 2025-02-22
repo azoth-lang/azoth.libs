@@ -1,18 +1,16 @@
-// TODO perhaps the name `Ordering` should be reserved for the definition of an ordering for a particular type (i.e. Ordering[T])
-
-public /*enum*/ const struct ordering
+public /*closed*/ const struct ordering
 {
-    // Less,
-    // Equal,
-    // Greater;
+    // value Precedes,
+    // value Equivalent,
+    // value Succeeds,
 
     // public fn reverse(self) -> Ordering
     // {
     //     return match self
     //     {
-    //         .Less => .Greater,
-    //         .Equal => .Equal,
-    //         .Greater => .Less
+    //         .Precedes => .Succeeds,
+    //         .Equivalent => .Equivalent,
+    //         .Succeeds => .Precedes
     //     };
     // }
 }
