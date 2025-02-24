@@ -1,6 +1,5 @@
 // A type for which there is a natural [total order](https://en.wikipedia.org/wiki/Total_order).
-public trait Ordered[const Domain] <: Equatable[Domain], Partially_Ordered[Domain]
+public trait Ordered[const Domain] <: Equatable[Domain]
 {
-    // This works because `ordering <: ordering?`
-    public /*override*/ fn compare(const self, other: Domain) -> ordering;
+    public fn compare(const self, other: Domain) -> ordering;
 }

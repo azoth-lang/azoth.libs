@@ -1,11 +1,20 @@
+public trait Strictly_Equatable[const Domain]
+{
+    published fn strict_equals(const self, other: Domain) -> bool;
+
+    published protected fn can_strictly_equal(const self, other: Domain) -> bool
+        => other is Self;
+}
 // trait Strictly_Equatable
 
 // fn strict_equals[T](left: T, right: T) -> bool
 // where T: Strictly_Equatable
 
+// Overload avoids needing to convert right to optional
 // fn strict_equals[T](left: T?, right: T) -> bool
 // where T: Strictly_Equatable
 
+// Overload avoids needing to convert left to optional
 // fn strict_equals[T](left: T, right: T?) -> bool
 // where T: Strictly_Equatable
 

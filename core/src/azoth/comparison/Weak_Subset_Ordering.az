@@ -1,0 +1,5 @@
+// A weak order over a subset of `T`
+public const trait Weak_Subset_Ordering[T in] <: Partial_Equivalence[T]
+{
+    published fn compare(self, lent first: T, lent second: T) -> ordering?;
+}

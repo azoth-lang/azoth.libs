@@ -1,0 +1,4 @@
+public trait Strictly_Ordered[const Domain] <: Strictly_Equatable[Domain]
+{
+    public fn strict_compare(const self, other: Domain) -> ordering;
+}

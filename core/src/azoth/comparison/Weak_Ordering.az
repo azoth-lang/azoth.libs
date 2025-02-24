@@ -1,15 +1,10 @@
-/// A type for which there is a natural partial order.
-/// The comparison must satisfy, for all `a`, `b` and `c`
-/// * antisymmetry: if `a < b` then `not(a > b)``, as well as `a > b` implying `not(a < b)`
-/// * transitivity: `a < b` and `b < c` implies `a < c`
-/// The same must hold for both == and >
-
-// see https://www.reddit.com/r/ProgrammingLanguages/comments/9u63pe/language_design_comparing_and_sorting/
-public trait Partially_Ordered[const Domain]
+/// A weak order over `T`
+published const trait Weak_Ordering[T in] <: Equivalence[T], Key_Comparer[T]
 {
-    public fn compare(const self, other: Domain) -> ordering?;
+    // TODO return ordering
+    published fn compare(self, lent first: T, lent second: T) -> int8;
 
-    // public override operator _==_ (const self, other: const Self) -> bool?
+    // public operator _==_ (const self, other: const Self) -> bool?
     // {
     //     return .compare(other) == .Equal;
     // }

@@ -1,6 +1,6 @@
 /// A total order over `T`
-published trait Ordering[T in] <: Partial_Ordering[T], Key_Comparer[T]
+published const trait Ordering[T in] <: Weak_Ordering[T]
 {
     // TODO return ordering
-    published fn compare(self, first: T, second: T) -> int8;
+    published fn compare(self, lent first: T, lent second: T) -> int8;
 }
