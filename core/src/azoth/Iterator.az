@@ -81,7 +81,7 @@ public trait Iterator[T ind out] <: Unbounded_Iterator[T]
 
     // min_and_max aka range? or interval?
 
-    /// Need names to distingush if it aborts on empty or multiple
+    /// Need names to distinguish if it aborts on empty or multiple
     // published fn single(mut self) -> T?
 
     // sum

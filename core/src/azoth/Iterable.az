@@ -1,7 +1,6 @@
 // TODO what is the right way to represent this?
 public trait Iterable[T ind out]
 {
-
     // TODO rename to .values()?
     // TODO should iterate over `ref T` to avoid copying of large value types (No that should be separate!)
     published fn iterate(temp const self) -> mut Iterator[/*ref*/ T];
@@ -10,7 +9,7 @@ public trait Iterable[T ind out]
 
     // --------------------- Iterator[T] forwards
     // TODO why does this compile? The `predicate` shouldn't be allowed to be shared with the `lent`
-    // return value. Is it because funtion types are currently effectively immutable?
+    // return value. Is it because function types are currently effectively immutable?
     published fn \where(temp const self, predicate: (T) -> bool) -> mut Iterator[T]
         => .iterate().\where(predicate);
 }

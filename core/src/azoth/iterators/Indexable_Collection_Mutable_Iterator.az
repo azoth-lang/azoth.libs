@@ -12,7 +12,8 @@ public class Indexable_Collection_Mutable_Iterator[T out] <: Iterator[T]
 
     published fn \next(mut self) -> T?
     {
-        // Note it is not a concern that the collection size could change, because it is `const`
+        // Note it is not a concern that the collection size could change, because it is `temp iso`
+        // so nothing else can change it.
         if .index >= .collection.count
             { return none; }
 

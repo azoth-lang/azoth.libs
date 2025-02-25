@@ -5,9 +5,12 @@ public trait Collection[T ind out] <: Iterable[T]
     published get count(self) -> size;
 
     /// O(1)
+    /// Must ensure `.is_empty iff .count == 0`
+    // TODO #Inline
     published get is_empty(self) -> bool
         => .count == 0;
 
     /// O(1)?
     published fn clear(mut self);
+    // TODO ensures .is_empty
 }
