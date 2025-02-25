@@ -28,7 +28,7 @@ published class List[T ind nonwritable out] <: Indexable_Collection[T]
     // TODO does this need `lent self`?
     published fn set_at(mut self, index: size, value: T)
         // requires index < .count
-        => .items.set_at(index, value);
+        => .items.at(index) = value;
 
     // TODO does this need `lent self`?
     published fn add(mut self, value: T)

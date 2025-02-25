@@ -8,7 +8,7 @@ published move /*struct*/ class Buffer[T ind]
 {
     // const DefaultCapacity: size = 16;
 
-    // TODO use optional type to avoid allocating empty `Raw_Hybrid_Bounded_List[T]`
+    // TODO use optional type to avoid allocating empty `Raw_Hybrid_Bounded_List[T]`?
     var items: mut Raw_Hybrid_Bounded_List[void, T];
 
     published init(mut self)
@@ -31,20 +31,12 @@ published move /*struct*/ class Buffer[T ind]
     published get count(self) -> size
         => .items.count;
 
-    published fn at(self, index: size) -> T
+    published fn at(readable self, index: size) -> self |> iref var T
         // requires index < .count
     {
         let count = .items.count;
         if index >= count => ABORT("at(): index out of bounds");
         return .items.at(index);
-    }
-
-    published fn set_at(mut self, index: size, value: T)
-        // requires index < .count
-    {
-        let count = .items.count;
-        if index >= count => ABORT("set_at(): index out of bounds");
-        .items.at(index) = value;
     }
 
     published fn add(mut self, value: T)
