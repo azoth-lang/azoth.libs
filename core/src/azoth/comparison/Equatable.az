@@ -18,12 +18,13 @@
 /// As another example, if a rational number type didn't always store numbers in reduced form, then
 /// `1/2 == 2/4`.
 ///
-/// Note that an `Equatable type` defines true equality that is necessarily a total relation that
-/// meets all the properties of equality. This prevents `float32` and other IEEE floating point
-/// types from implementing `Equatable` because the "equality" operation on them violates these
-/// properties. Specifically, it is not total since `NaN == NaN` is not true and it does not
-/// have substitutability because `-0 == 0` even though `1/0 == Inf` while `1/-0 == -Inf`. In such
-/// cases, an `Equivalence[T]` or `Partial_Equivalence[T]` can be provided instead.
+/// Note that an `Equatable` type defines true equality that is necessarily a relation that meets
+/// all the properties of an equivalence relation and equality. This prevents `float32` and other
+/// IEEE floating point types from implementing `Equatable` because the "equality" operation on them
+/// violates these properties. Specifically, it is not reflexive since `NaN == NaN` is not true and
+/// it does not have substitutability because `-0 == 0` even though `1/0 == Inf` while
+/// `1/-0 == -Inf`. In such cases, an `Equivalence[T]` or `Partial_Equivalence[T]` can be provided
+/// instead.
 ///
 /// Some types have what seem to be multiple reasonable definitions of equality. If a type has only
 /// two, it may be appropriate to implement both strict equality and `Equatable` for that type. If
@@ -47,9 +48,9 @@
 /// defined only over `const` values. This is because if two distinct mutable objects were
 /// considered equal and one was mutated, then they would not longer be behaviorally equal. For
 /// comparison on mutable values, use `Equivalence`.
+published trait Equatable[const Domain]
 // TODO where Self <: Domain
 // TODO where Domain <: Partially_Equatable[Domain]
-published trait Equatable[const Domain]
 {
     /// The domain of types that can be compared for equality.
     ///
@@ -59,7 +60,7 @@ published trait Equatable[const Domain]
     /// make sense to expand the domain of equality in subclasses. If it were done, that would imply
     /// that the base class ought to also be comparable within that domain.
     // TODO replace the generic parameter `Domain` with an associated type:
-    // published in type Domain;
+    // published type Domain;
     // TODO where Self <: Domain
     // TODO where Domain <: Partially_Equatable[.Domain = Domain]
 
@@ -93,12 +94,12 @@ published trait Equatable[const Domain]
     ///
     /// # Example
     ///
-    /// Here is an example of a typical implementation of `equals` for a class `Example` with two
-    /// fields `a` and `b` that inherits from `Base` (which implements `Equatable`).
+    /// Here is an example of a typical implementation of `equals` for a class `Example` that
+    /// inherits from `Base` (which implements `Equatable`) with two fields `a` and `b` .
     ///
     /// ```
-    /// published fn equals(const self, other: Base) -> bool overrides
-    ///     => self === other
+    /// published fn equals(const self, other: const Base) -> bool overrides
+    ///     => self @== other
     ///         or other.can_equal(self)
     ///             and other is Example o
     ///             and .a == o.a
@@ -120,8 +121,8 @@ published trait Equatable[const Domain]
     ///
     /// # Returns
     ///
-    /// * `true` if they can be compared (i.e. `==` should compare their abstract values)
-    /// * `false` if they are not equal to each other (i.e. `==` should return `false`)
+    /// * `true` if they can be compared (i.e. `==` should compare their abstract values).
+    /// * `false` if they are not equal to each other (i.e. `==` should return `false`).
     ///
     /// # Remarks
     ///
@@ -140,7 +141,7 @@ published trait Equatable[const Domain]
     /// The default implementation should be sufficient in almost all cases. In rare cases, it can
     /// be overridden to provide improved performance.
     ///
-    /// When overriding, implementations must ensure that `a =/= b == not a == b`.
+    /// When overriding, implementations must ensure that `a =/= b iff not a == b`.
     // TODO add not equal operator
     // #Inline
     // published operator _=/=_(const self, other: const Self) -> bool
