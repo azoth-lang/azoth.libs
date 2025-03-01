@@ -1,0 +1,56 @@
+/// A fixed length array of values.
+///
+/// # Remarks
+///
+/// Arrays are special among collections because they can be slices of other arrays and even of
+/// other collections. However, they can only slice collections on the heap. To support slices of
+/// data on the stack or heap, use `Span[T]`.
+///
+/// Arrays are structs so that they introduce no indirection overhead into slicing. They are
+/// internally represented as an `iref var T` along with a `count`.
+public struct Array[T ind]
+// TODO implement Indexable_Collection and confirm struct implementing trait works
+{
+    /*
+    let items: iref var T;
+    public let count: size;
+
+    public init(mut self, .count)
+    // TODO where T ...? Can have the value zero? Or has a default value initializer and this is
+    // updated to call it?
+    {
+        // Allocate a new array and reference the first element
+        // TODO use named parameter for `ensure_zeroed`
+        .items = Raw_Hybrid_Array[void, T](.count, true).at(0);
+    }
+
+    /// Allocate an array of the given size filled with `fill_value`.
+    // Note by default generic types are copyable. If array is changed so T can be move, then this
+    // would need a constraint that the type was copyable.
+    public init(mut self, .count, fill_value: T)
+    {
+        // Allocate a new array of T and reference the first element
+        // TODO use named parameter for `ensure_zeroed`
+        .items = Raw_Hybrid_Array[void, T](.count, false).at(0);
+        foreach i in 0..<.count
+        {
+            .at(i) = fill_value;
+        }
+    }
+
+    /// Allocate an uninitialized array.
+    ///
+    /// # Parameters
+    ///
+    /// * `ensure_zeroed`: if `true`, the memory of the array will definitely be zeroed out. Note
+    ///   that for many types, that will not be a properly initialized value. For managed types, the
+    ///   array may be zeroed even if `ensure_zeroed` is `false`. This is to avoid the garbage
+    ///   collector incorrectly following non-zeroed references to memory that doesn't contain
+    ///   objects or to objects that should be garbage.
+    public unsafe init uninitialized(mut self, .count, ensure_zeroed: bool)
+    {
+        // Allocate a new array and reference the first element
+        .items = Raw_Hybrid_Array[void, T](.count, ensure_zeroed).at(0);
+    }
+    */
+}
