@@ -1,5 +1,6 @@
 /// An iterator for a potentially infinite sequence of items.
-public trait Unbounded_Iterator[T ind out]
+// TODO make this a move type to allow resource ownership by iterators
+public /*move*/ trait Unbounded_Iterator[T ind out]
 {
     published fn \next(mut self) -> T?;
 
