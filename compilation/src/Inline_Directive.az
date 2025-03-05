@@ -1,6 +1,6 @@
-/*public enum struct Inline_Directive
+/*public closed const struct Inline_Directive
 {
-    Never,
-    Hint,
-    Always,
+    value Never;
+    value Hint;
+    value Always;
 }*/

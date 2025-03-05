@@ -1,3 +1,3 @@
-public const struct Attribute_Usage
+public /*closed*/ const struct Attribute_Usage
 {
 }
