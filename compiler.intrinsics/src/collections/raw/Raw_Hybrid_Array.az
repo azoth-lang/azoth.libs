@@ -1,13 +1,13 @@
 #Intrinsic
 published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
 {
-    //#Intrinsic
+    #Intrinsic
     published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
-    //#Intrinsic
+    #Intrinsic
     published get prefix(readable self) -> self |> P => INTRINSIC();
-    //#Intrinsic
+    #Intrinsic
     published get count(self) -> size => INTRINSIC();
-    //#Intrinsic
+    #Intrinsic
     published /*unsafe*/ fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();
 }
 
