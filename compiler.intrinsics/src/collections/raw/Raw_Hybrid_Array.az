@@ -2,11 +2,9 @@
 published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
 {
     //#Intrinsic
-    published /*unsafe*/ init(mut self, prefix: P, count: size, ensure_zeroed: bool) { INTRINSIC(); }
+    published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
     //#Intrinsic
-    published get prefix(self) -> P => INTRINSIC();
-    //#Intrinsic
-    published set prefix(mut self, prefix: P) => INTRINSIC();
+    published get prefix(readable self) -> self |> P => INTRINSIC();
     //#Intrinsic
     published get count(self) -> size => INTRINSIC();
     //#Intrinsic
@@ -17,11 +15,10 @@ published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
 #Intrinsic
 published class Raw_Hybrid_Array[P ind nonwritable out, Count: size, T ind nonwritable out]
 {
-    published unsafe init(mut self, prefix: P, ensure_zeroed: bool) { INTRINSIC(); }
     //#Intrinsic
-    published get prefix(self) -> P => INTRINSIC();
+    published unsafe init(mut self, ensure_prefix_zeroed: bool, ensure_zeroed: bool) { INTRINSIC(); }
     //#Intrinsic
-    published set prefix(mut self, prefix: P) => INTRINSIC();
+    published get prefix(readable self) -> self |> P => INTRINSIC();
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get count() => Count;
     published unsafe fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();

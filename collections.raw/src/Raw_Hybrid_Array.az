@@ -1,0 +1,10 @@
+// TODO published alias type Raw_Hybrid_Array[P, T] = Raw_Hybrid_Array[P, T];
+
+// published extend[P, T] Raw_Hybrid_Array[P, T]
+// {
+//     published /*unsafe*/ init(mut self, prefix: P, count: size, ensure_zeroed: bool)
+//     {
+//         self.init(.ensure_prefix_zeroed = false, count, ensure_zeroed);
+//         .prefix = prefix;
+//     }
+// }

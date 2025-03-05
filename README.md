@@ -22,6 +22,8 @@ Packages in this repository not included in the standard library:
 * `azoth.text.unicode`: provides advanced Unicode functionality that requires additional lookup
   tables and may need to be updated with the Unicode standard more frequently than the standard
   library.
+* `azoth.runtime`: this package is included by the compiler to provide runtime services. This
+  includes the `int` and `uint` types, garbage collection, and concurrency.
 
 Packages of note that are not in this repository:
 

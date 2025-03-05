@@ -1,5 +1,5 @@
-public extend struct int
+public extend struct int32
 {
-    // public const min: int = -2**31;
-    // public const max: int = 2**31-1;
+    // public const min: int = -2^31;
+    // public const max: int = 2^31-1;
 }
