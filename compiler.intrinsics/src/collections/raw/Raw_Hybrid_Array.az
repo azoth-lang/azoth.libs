@@ -1,22 +1,29 @@
-/*
 #Intrinsic
-published class Raw_Hybrid_Array[F, T]
+published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
 {
-    published init(mute self, .fixed, .count, ensureZeroed: bool) {...}
-    published var fixed: F;
-    published let count: size;
-    published unsafe fn at(mut self, index: size) -> iref var T {...};
-    published unsafe fn at(self, index: size) -> iref T {...};
+    //#Intrinsic
+    published /*unsafe*/ init(mut self, prefix: P, count: size, ensure_zeroed: bool) { INTRINSIC(); }
+    //#Intrinsic
+    published get prefix(self) -> P => INTRINSIC();
+    //#Intrinsic
+    published set prefix(mut self, prefix: P) => INTRINSIC();
+    //#Intrinsic
+    published get count(self) -> size => INTRINSIC();
+    //#Intrinsic
+    published /*unsafe*/ fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();
 }
 
+/*
 #Intrinsic
-published class Raw_Hybrid_Array[F, Count: size, T]
+published class Raw_Hybrid_Array[P ind nonwritable out, Count: size, T ind nonwritable out]
 {
-    published init(mut self, .fixed, ensureZeroed: bool) {...}
-    published var fixed: F;
+    published unsafe init(mut self, prefix: P, ensure_zeroed: bool) { INTRINSIC(); }
+    //#Intrinsic
+    published get prefix(self) -> P => INTRINSIC();
+    //#Intrinsic
+    published set prefix(mut self, prefix: P) => INTRINSIC();
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get count() => Count;
-    published unsafe fn at(mut self, index: size) -> iref var T {...};
-    published unsafe fn at(self, index: size) -> iref T {...};
+    published unsafe fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();
 }
 */
