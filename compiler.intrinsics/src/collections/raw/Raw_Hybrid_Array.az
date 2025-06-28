@@ -1,6 +1,7 @@
 #Intrinsic
 published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
 {
+    // TODO declare named arguments
     #Intrinsic
     published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
     #Intrinsic
