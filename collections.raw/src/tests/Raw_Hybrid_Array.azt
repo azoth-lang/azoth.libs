@@ -1,0 +1,9 @@
+namespace raw_hybrid_array
+{
+    /*#Test
+    public fn \"Construct empty"()
+    {
+        // TODO use named arguments when available
+        let subject = Raw_Hybrid_Array[void, never](false, 0, false);
+    }*/
+}
