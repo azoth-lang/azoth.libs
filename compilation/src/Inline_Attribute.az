@@ -1,4 +1,4 @@
-published /*closed*/ const struct Inline_Attribute
+published /*sealed*/ const struct Inline_Attribute
 {
     // TODO public let directive: Inline_Directive;
 

@@ -5,6 +5,8 @@
     "template": "lib",
     "dependencies":
     {
-        "azoth.compiler.intrinsics": { "path": "../compiler.intrinsics", "trusted": true, "relation": "published" }
+        "azoth.compiler.intrinsics": { "path": "../compiler.intrinsics", "trusted": true, "relation": "published" },
+        // This is included for testing
+        "azoth.core": { "path": "../core", "trusted": true, "relation":"dev" }
     }
 }
