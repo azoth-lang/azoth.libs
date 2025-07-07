@@ -1,9 +1,23 @@
 namespace raw_hybrid_array
 {
-    /*#Test
+    #Test
     public fn \"Construct empty"()
     {
         // TODO use named arguments when available
         let subject = Raw_Hybrid_Array[void, never](false, 0, false);
-    }*/
+    }
+
+    #Test
+    public fn \"Construct array of uninitialized bytes"()
+    {
+        // TODO use named arguments when available
+        let subject = Raw_Hybrid_Array[void, byte](false, 100, false);
+    }
+
+    #Test
+    public fn \"Construct array of Any"()
+    {
+        // TODO use named arguments when available
+        let subject = Raw_Hybrid_Array[void, Any](false, 100, false);
+    }
 }

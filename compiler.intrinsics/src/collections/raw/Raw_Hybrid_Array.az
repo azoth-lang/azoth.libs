@@ -1,5 +1,5 @@
 #Intrinsic
-published class Raw_Hybrid_Array[P ind nonwritable out, T ind nonwritable out]
+published class Raw_Hybrid_Array[P shareable ind, T ind nonwritable out]
 {
     // TODO declare named arguments
     #Intrinsic
