@@ -1,0 +1,4 @@
+// TODO this needs an attribute or something to indicate to the test runner that it marks a test
+public /*sealed*/ const class Test_Attribute
+{
+}

@@ -6,7 +6,7 @@
     "dependencies":
     {
         "azoth.compiler.intrinsics": { "path": "../compiler.intrinsics", "trusted": true, "relation": "published" },
-        // This is included for testing
-        "azoth.core": { "path": "../core", "trusted": true, "relation":"dev" }
+
+        "azoth.testing": { "path": "../testing", "relation":"dev" }
     }
 }

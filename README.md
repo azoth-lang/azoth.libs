@@ -19,6 +19,7 @@ Packages in the standard library include:
 
 Packages in this repository not included in the standard library:
 
+* `azoth.testing`: the standard unit testing framework for azoth.
 * `azoth.text.unicode`: provides advanced Unicode functionality that requires additional lookup
   tables and may need to be updated with the Unicode standard more frequently than the standard
   library.

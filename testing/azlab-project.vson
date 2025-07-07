@@ -1,0 +1,10 @@
+{
+    "name": "azoth.testing",
+    "root_namespace": "azoth.testing",
+    "authors": ["Jeff Walker"],
+    "template": "lib",
+    "dependencies":
+    {
+        "azoth.core": { "path": "../core", "trusted": true }
+    }
+}
