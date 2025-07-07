@@ -20,4 +20,16 @@ namespace raw_hybrid_array
         // TODO use named arguments when available
         let subject = Raw_Hybrid_Array[void, Any](false, 100, false);
     }
+
+    #Test
+    public fn \"Set and get prefix"()
+    {
+        // TODO use named arguments when available
+        let subject: mut = Raw_Hybrid_Array[byte, never](false, 0, false);
+
+        subject.prefix = 42;
+        let result = subject.prefix;
+
+        Assert.that(result).equals(42);
+    }
 }
