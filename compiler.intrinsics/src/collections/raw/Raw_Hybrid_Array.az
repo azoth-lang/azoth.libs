@@ -6,7 +6,7 @@ published class Raw_Hybrid_Array[P shareable ind, T ind nonwritable out]
     published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
     /// Unsafe because it could allow reading of uninitialized or unconstructed memory
     #Intrinsic
-    published /*unsafe*/ get prefix(readable self) -> P => INTRINSIC();
+    published /*unsafe*/ get prefix(self) -> P => INTRINSIC();
     #Intrinsic
     published set prefix(mut self, prefix: P) => INTRINSIC();
     #Intrinsic

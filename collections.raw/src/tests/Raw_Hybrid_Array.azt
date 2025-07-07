@@ -32,4 +32,15 @@ namespace raw_hybrid_array
 
         Assert.that(result).equals(42);
     }
+
+    #Test
+    public fn \"Count"()
+    {
+        // TODO use named arguments when available
+        let subject: mut = Raw_Hybrid_Array[void, byte](false, 42, false);
+
+        let result = subject.count;
+
+        Assert.that(result).equals(42);
+    }
 }
