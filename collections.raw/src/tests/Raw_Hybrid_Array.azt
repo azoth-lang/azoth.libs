@@ -37,9 +37,21 @@ namespace raw_hybrid_array
     public fn \"Count"()
     {
         // TODO use named arguments when available
-        let subject: mut = Raw_Hybrid_Array[void, byte](false, 42, false);
+        let subject = Raw_Hybrid_Array[void, byte](false, 42, false);
 
         let result = subject.count;
+
+        Assert.that(result).equals(42);
+    }
+
+        #Test
+    public fn \"At"()
+    {
+        // TODO use named arguments when available
+        let subject: mut = Raw_Hybrid_Array[void, byte](false, 1, false);
+
+        subject.at(0) = 42;
+        var result = subject.at(0);
 
         Assert.that(result).equals(42);
     }
