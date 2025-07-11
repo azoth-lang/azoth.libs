@@ -2,8 +2,8 @@
 #Intrinsic
 published class Raw_Hybrid_Bounded_List[F, T]
 {
-    published init(.fixed, .capacity) {...}
-    published var fixed: F;
+    published init(.prefix, .capacity) {...}
+    published var prefix: F;
     published let capacity: size;
     published get count() => size;
     published unsafe fn shorten(count: size); // unsafe because there may be iref to them
@@ -15,8 +15,8 @@ published class Raw_Hybrid_Bounded_List[F, T]
 #Intrinsic
 published class Raw_Hybrid_Bounded_List[F, Capacity: size, T]
 {
-    published init(.fixed) {...}
-    published var fixed: F;
+    published init(.prefix) {...}
+    published var prefix: F;
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get capacity() => Capacity;
     published get count() => size;

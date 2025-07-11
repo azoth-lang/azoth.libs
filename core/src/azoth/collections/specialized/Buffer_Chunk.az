@@ -28,7 +28,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     }
 
     published get next_chunk(mut self) -> mut Buffer_Chunk[T]?
-        => .items.\fixed;
+        => .items.prefix;
 
     published get capacity(self) -> size
         => .items.capacity;
