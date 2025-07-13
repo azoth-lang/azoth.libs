@@ -3,6 +3,7 @@
 ## Planned
 
 * `Bag[T]`: hash based and order based (order based is a sorted list?)
+  * They are hash based or order based since they store items with a count. Perhaps there is another collection that just stores items unordered.
 * `Set[T]`: hash based and order based
 * `Dictionary[T, V]`: hash based and order based
 * Concurrent Collections
