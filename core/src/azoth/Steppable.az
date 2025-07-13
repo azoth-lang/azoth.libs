@@ -4,28 +4,28 @@
 /// # Remarks
 /// This type is the bound of `T` in `Range[T]`.
 /// (See Rust `std::iter::Step` except this type is totally ordered.)
-published trait Steppable[const TSelf] <: Ordered[TSelf]
+published trait Steppable <: Ordered[const Self]
 {
-    published fn steps_to(self, value: TSelf) -> int;
+    published fn steps_to(self, value: Self) -> int;
     //      ensures if self == value => return == 0
     //      ensures if self < value => return > 0
     //      ensures if self > value => return < 0
 
     /// Move forward in the sequence of values. Returns `none` if the end of the sequence has been
     /// reached (e.g. `> Self.max`).
-    published fn step_forward(self, steps: uint /*= 1*/) -> TSelf?;
+    published fn step_forward(self, steps: uint /*= 1*/) -> Self?;
     //      ensures if steps == 0 => self == return
     //      ensures if steps > 0 > return > self;
 
-    published fn step_forward(self) -> TSelf?
+    published fn step_forward(self) -> Self?
         => .step_forward(1);
 
     /// Move backward in the sequence of values. Returns `none` if the start of the sequence has
     /// been reached (e.g. `< Self.min`).
-    published fn step_backward(self, steps: uint /*= 1*/) -> TSelf?;
+    published fn step_backward(self, steps: uint /*= 1*/) -> Self?;
     //      ensures if steps == 0 => self == return
     //      ensures if steps > 0 => return < self;
 
-    published fn step_backward(self) -> TSelf?
+    published fn step_backward(self) -> Self?
         => .step_backward(1);
 }
