@@ -1,0 +1,111 @@
+/*
+/// An array with a prefix of another type. This can be used to control memory layout and avoid
+/// extra layers of indirection.
+///
+/// ## Notes
+/// `Hybrid_Array[P, T]` is a a pseudo reference and cannot be inherited from. Even if it were a class
+/// it would be sealed because its dynamic size in memory does not allow additional fields to be
+/// added in subclasses. However, a struct or value can be used for the prefix to allow arbitrary
+/// fields to be stored inline.
+///
+/// Slicing a `Hybrid_Array[P, T]` produces an `Array[T]` because it is not possible to preserve the
+/// prefix on the slice.
+published value Hybrid_Array[any P ind, any T ind] <: Array[T]
+    where move P
+    where move T
+{
+    let values: mut Raw_Hybrid_Array[P, iso Var[T]];
+
+    published init(mut self, prefix: P, count: size)
+        where T: Defaultable
+    {
+        self.init(prefix, count, T.default);
+    }
+
+    published init(mut self, prefix: P, count: size, fill_value: T)
+        where T: aliasable // aka copyable to every element
+    {
+        .values = Raw_Hybrid_Array[P, T](count);
+        foreach i in 0..<count
+        {
+            .values.initialize(i, fill_value);
+        }
+    }
+
+    published init[E](mut self, prefix: P, count: size, factory: mut () -> T throws E)
+        where E: Exception
+    {
+        .values = Raw_Hybrid_Array[P, T](count);
+        foreach i in 0..<count
+        {
+            try .values.initialize(i, factory())
+                catch ex: E => throw .drop_values(i, ex);
+        }
+    }
+
+    published init[E](mut self, prefix: P, count: size, factory: mut (size) -> T throws Exception)
+        where E: Exception
+    {
+        .values = Raw_Hybrid_Array[P, T](count);
+        foreach i in 0..<count
+        {
+            try .values.initialize(i, factory(i))
+                catch ex: E => throw .drop_values(i, ex);
+        }
+    }
+
+    /// Used by Indexable_Collection.to_hybrid_array()
+    public init(mut self, prefix: P, values: Indexable_Collection[T])
+    {
+        .values = Raw_Hybrid_Array[P, T](count);
+        foreach i in 0..<count
+        {
+            .values.at(i) = values.at(i);
+        }
+    }
+
+    /// Used by Indexable_Collection.to_hybrid_array()
+    public init(mut self, prefix: P, values: Iterator[T])
+    {
+        // TODO implement gathering elements and then making an array
+        // TODO handle exceptions from the iterator
+    }
+
+    fn drop_values(mut self, count: size, ex: Exception) -> Aggregate_Exception
+        => Aggregate_Exception(.drop_values(size).prepend(ex));
+
+    fn drop_values(mut self, count: size) -> Iterator[Exception]
+    {
+        foreach i in 0..<count
+        {
+            try drop(move .values.at(i) = uninitialized)
+                catch ex: Exception => yield ex;
+        }
+    }
+
+    published get prefix(self) alias P => .values.prefix;
+    published set prefix(mut self, value: P)
+        where P: ??? // not move. If it were movable, this would destruct and need temp iso to P
+        => .value.prefix = value;
+    // TODO is temp iso correct here? Seems like not. We don't need temp iso to self, we need P to
+    // be isolated.
+    published move set prefix(temp iso self, value: P) -> P
+        where P: move iso
+        => move .values.prefix = value;
+
+    // support indexed getters?
+    published get at(self, index: size) -> alias T
+        => .values.at(index);
+
+    published set at(mut self, index: size, value: T)
+        where T: ??? // not move. If it were movable, this would destruct and need temp iso to T
+        => .vales.at(index) = value;
+
+    published move set at(mut self, index: size, value: T) -> P
+        where P: move iso
+        => move .values.at(index) = value;
+
+    // TODO implicit conversion to Array[T]
+    // TODO slice to Array[T]
+}
+*/

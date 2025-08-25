@@ -1,9 +1,7 @@
 // TODO what is the right way to represent this?
 public trait Mutable_Iterable[T ind out]
 {
-    // TODO should iterate over `ref var T` to allow mutation
-    // TODO rename to iterate_refs()? or just refs()?
-    published fn iterate(temp iso self) -> mut Iterator[/*ref var*/ T];
+    // TODO should iterate over `Var[T]` to allow mutation
+    // TODO rename to mutable_values()? make it a property?
+    published fn iterate(temp iso self) -> mut Iterator[/*Var[T]*/ T];
 }
-
-// TODO regular iterate is over `T`, there should be an iterate over `ref T`

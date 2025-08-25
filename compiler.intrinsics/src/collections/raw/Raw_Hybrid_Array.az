@@ -1,11 +1,13 @@
 #Intrinsic
-published class Raw_Hybrid_Array[P shareable ind, T ind nonwritable out]
+published /*sealed*/ class Raw_Hybrid_Array[any P ind, any T ind nonwritable out]
+    // where move P
+    // where move T
 {
     // TODO declare named arguments
     #Intrinsic
     published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
-    /// Unsafe because it could allow reading of uninitialized or unconstructed memory
-    #Intrinsic
+    /// Unsafe because it could allow reading of uninitialized memory
+    #Intrinsic // TODO return type needs to create alias? i.e. if T is `iso Foo` then this returns `mut Foo` (but how to move out?)
     published /*unsafe*/ get prefix(self) -> P => INTRINSIC();
     #Intrinsic
     published set prefix(mut self, prefix: P) => INTRINSIC();
@@ -15,9 +17,12 @@ published class Raw_Hybrid_Array[P shareable ind, T ind nonwritable out]
     published /*unsafe*/ fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();
 }
 
+// let x = move a.prefix = new_value();
+// But this is not a fully general functionality because it requires that the old value can be moved
+
 /*
 #Intrinsic
-published class Raw_Hybrid_Array[P ind nonwritable out, Count: size, T ind nonwritable out]
+published sealed class Raw_Hybrid_Array[P ind nonwritable out, Count: size, T ind nonwritable out]
 {
     //#Intrinsic
     published unsafe init(mut self, ensure_prefix_zeroed: bool, ensure_zeroed: bool) { INTRINSIC(); }

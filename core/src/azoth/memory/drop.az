@@ -1,0 +1,7 @@
+
+/*
+/// Take ownership of a move type and drop it.
+published fn drop[iso T](value: T)
+    where T: move
+{ }
+*/

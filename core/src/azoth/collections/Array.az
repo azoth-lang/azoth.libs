@@ -1,3 +1,5 @@
+// TODO published alias type Array[T] = Hybrid_Array[void, T];
+
 /// A fixed length array of values.
 ///
 /// # Remarks
@@ -8,7 +10,7 @@
 ///
 /// Arrays are structs so that they introduce no indirection overhead into slicing. They are
 /// internally represented as an `iref var T` along with a `count`.
-public struct /* value */ Array[T ind]
+public struct /* value */ Array[any T ind]
 // TODO implement Indexable_Collection and confirm struct implementing trait works
 {
     /*
@@ -53,4 +55,11 @@ public struct /* value */ Array[T ind]
         .items = Raw_Hybrid_Array[void, T](.count, ensure_zeroed).at(0);
     }
     */
+}
+
+// TODO need something like static classes
+published /*static*/ class Array
+{
+    // TODO can this be assigned to all reference capabilities?
+    //published const empty: Array[never] = Array[never](0);
 }

@@ -1,0 +1,86 @@
+// TODO consider `readonly out` instead of nonwriteable. Where `readonly` would be a capability set
+// of `read`, `const` (should it include `id` too?)
+
+// TODO how do you do something like freeze the thing referenced by `Var[T]` without freezing it?
+// Perhaps `freeze ^v`? But the same doesn't quite work for a list since it may not contain any
+// elements.
+// published struct Var[any T ind readonly out]
+// {
+//     var value: T;
+
+//     published init(mut self, .value) { }
+
+//     // This exists to allow initial assignment. But will this cause issues with other assignments?
+//     published implicit operator as(value: T) -> iso Var[T]
+//         => Var[T](value);
+
+//     // Dereference the value to get
+//     // TODO this needs to distinguish that it can be called on `List[aliasable T]` and so doesn't
+//     // require that the value still be isolated. (this seems incorrect because of `T` is `iso X`
+//     // then the list type could currently be `mut List[X]` but `aliasable T` could be assumed to be
+//     // `mut X`.)
+//     published operator ^_(self[aliasable]) -> aliasable T => .value;
+
+//     // By metaphor with self viewpoint type, what is needed is the viewpoint of the new capability
+//     // for `T`.
+//     published operator ^_(self[aliasable]) -> self |> T => .value;
+
+//     // But that implies a very complex form of self viewpoint. Perhaps constraining `T` already
+//     // changes the meaning of `T`?
+//     published operator ^_(self[aliasable]) -> T => .value;
+
+//     // Note that it should be valid to do something like
+//     published fn apply(self, modify: (lent mut T) -> void) // but the type `mut T` isn't valid,
+//         // perhaps `aliasable T` is correct?
+//     {
+//         // T could currently be `iso X`
+//         modify(.value); // aliases value
+//         // but here the value is unaliased and again `iso`
+//     }
+
+//     // Maybe I'm thinking about this wrong. The capability of `self` is not part of the type. Maybe
+//     // the capability of independent parameters is also not part of the type current type. They are
+//     // more like self where one must specify what one needs from them. That actually produces
+//     // something syntactically the same as one of the options above:
+//     published operator ^_(self[aliasable]) -> self |> T => .value;
+//     // In this mode the capability constraint on independent just limits what is possible or perhaps
+//     // isn't even allowed. Perhaps independent should replace the constraint. You don't get to limit
+//     // e.g. `List[ind T readonly out]` or `List[independent T readonly out]`
+
+
+//     // Dereference the value to set (returns the old value so that it can be used for both
+//     // assignment (i.e. `^v = new`) and destructive read(i.e. `old <- ^v = new`).)
+//     // TODO this should clearly require that if `T` is iso then `self` must have `iso` for `T`.
+//     published operator ^_(mut self, value: T) -> T
+//         => .value <- value;
+
+
+//     // TODO don't support this conversion
+//     // The return type here must be an alias to `T`. Not sure how to represent that. There could be
+//     // a special `alias T` syntax. Here I've used the capability set restricted type to "upcast" to
+//     // an aliasable capability. This is consistent with Hash_Dictionary where I use `shareable Key`.
+//     published implicit operator as(self) -> aliasable T
+//         => .value;
+
+//     published implicit operator as(readable self) -> self |> mut Ref[T]
+//         => transmute[_, Ref[T]](self);
+
+//     // Alternatively, the dereference operator `^` could be overloaded. or the assignment operator
+
+//     // TODO use dereference instead
+//     published get value(self) -> aliasable T => .value;
+
+//     // TODO use dereference instead
+//     published set value(mut self, value: T) => .value = value;
+
+//     // TODO use dereference instead
+//     // TODO can only be called if isolation of T has been recovered. It is like we need `iso self`
+//     // but not for `self` but for `T`. Alternatively, that could be the default and the other methods
+//     // need to state that they have a relaxed requirement on T
+//     published move set value(mut self, value: T) -> T => move .value = value;
+
+//     // TODO use dereference instead
+//     // alternatively, think of it as a destructive read that must replace the value
+//     published destructive get value(mut self, value: T) -> T => .value <- value;
+//     // or => <- .value = value;
+// }

@@ -1,6 +1,6 @@
 /*
 #Intrinsic
-published class Raw_Hybrid_Bounded_List[F, T]
+published sealed class Raw_Hybrid_Bounded_List[F, T]
 {
     published init(.prefix, .capacity) {...}
     published var prefix: F;
@@ -13,7 +13,7 @@ published class Raw_Hybrid_Bounded_List[F, T]
 }
 
 #Intrinsic
-published class Raw_Hybrid_Bounded_List[F, Capacity: size, T]
+published sealed class Raw_Hybrid_Bounded_List[F, Capacity: size, T]
 {
     published init(.prefix) {...}
     published var prefix: F;

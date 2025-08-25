@@ -8,12 +8,11 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
     published fn set_at(mut self, index: size, value: T);
         // requires index < .count
 
-    // TODO should iterate over `ref T` to avoid copying of large value types
-    published fn iterate(temp const self) -> mut Iterator[/*ref*/ T]
+    published fn iterate(temp const self) -> mut Iterator[T]
         => Indexable_Collection_Iterator[T](self);
 
     /// An `Mutable_Iterable` that allows mutating the elements of this collection
-    published fn mutable_iterate(temp iso self) -> iso Iterator[/*ref var*/ T]
+    published fn mutable_iterate(temp iso self) -> iso Iterator[/*Var[T]*/ T]
         => Indexable_Collection_Mutable_Iterator[T](move self);
 
     published fn unstable_sort(temp iso self, order: Ordering[T])

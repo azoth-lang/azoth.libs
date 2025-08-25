@@ -6,7 +6,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     // const DefaultCapacity: size = 16;
 
     // TODO use private inheritance or make Buffer_Chunk a struct to avoid extra indirection
-    var items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
+    let items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
 
     published init(mut self)
         // #prove ensures .count == 0 and .capacity == DefaultCapacity
