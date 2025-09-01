@@ -21,7 +21,7 @@ public class ASCII_String_Split_Iterator <: Iterator[ascii_string]
         // TODO this should be implemented on top of ascii_string and slice
         while .index < .end
         {
-            if .str.bytes.at(.index) == .split_on
+            if .str.bytes.get(.index) == .split_on
             {
                 let result = ascii_string(.start, .index - .start, .str.bytes);
                 .start = .index += 1;

@@ -16,7 +16,7 @@ public class Indexable_Collection_Iterator[T] <: Iterator[T]
         if .index >= .collection.count
             { return none; }
 
-        let item = .collection.at(.index);
+        let item = .collection.get(.index);
         .index += 1;
         return item;
     }

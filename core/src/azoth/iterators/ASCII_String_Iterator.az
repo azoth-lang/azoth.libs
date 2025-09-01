@@ -16,7 +16,7 @@ public class ASCII_String_Iterator <: Iterator[ascii_char]
     {
         if .index < .end
         {
-            let char = ascii_char(.str.bytes.at(.index));
+            let char = ascii_char(.str.bytes.get(.index));
             .index += 1;
             return char;
         }
