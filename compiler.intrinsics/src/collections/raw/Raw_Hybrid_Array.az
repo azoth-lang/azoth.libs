@@ -14,7 +14,9 @@ published /*sealed*/ class Raw_Hybrid_Array[any P ind, any T ind nonwritable out
     #Intrinsic
     published get count(self) -> size => INTRINSIC();
     #Intrinsic
-    published /*unsafe*/ fn at(readable self, index: size) -> self |> iref var T => INTRINSIC();
+    published /*unsafe*/ fn get(readable self, index: size) -> aliasable T => INTRINSIC();
+    #Intrinsic
+    published /*unsafe*/ fn set(readable self, index: size, value: T) => INTRINSIC();
 }
 
 // let x = move a.prefix = new_value();

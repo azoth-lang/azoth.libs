@@ -31,12 +31,20 @@ published move /*struct*/ class Buffer[T ind]
     published get count(self) -> size
         => .items.count;
 
-    published fn at(readable self, index: size) -> self |> iref var T
+    published fn get(readable self, index: size) -> aliasable T
         // requires index < .count
     {
         let count = .items.count;
-        if index >= count => ABORT("at(): index out of bounds");
-        return .items.at(index);
+        if index >= count => ABORT("get(): index out of bounds");
+        return .items.get(index);
+    }
+
+    published fn set(readable self, index: size, value: T)
+        // requires index < .count
+    {
+        let count = .items.count;
+        if index >= count => ABORT("get(): index out of bounds");
+        return .items.set(index, value);
     }
 
     published fn add(mut self, value: T)
@@ -52,9 +60,9 @@ published move /*struct*/ class Buffer[T ind]
     {
         let count = .items.count;
         if index >= count => ABORT("remove_at(): index out of bounds");
-        let item = .items.at(index);
+        let item = .items.get(index);
         foreach i in index..<(count - 1)
-            { .items.at(i as! size) = .items.at(i as! size + 1); }
+            { .items.set(i as! size, .items.get(i as! size + 1)); }
         .items.shrink(count - 1);
         return item;
     }
@@ -82,7 +90,7 @@ published move /*struct*/ class Buffer[T ind]
         let count = .count;
         // TODO create a more efficient copy mechanism
         foreach i in 0..<count
-            { new_items.add(.items.at(i as! size)); }
+            { new_items.add(.items.take(i as! size)); }
         .items = new_items;
     }
 

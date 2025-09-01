@@ -21,7 +21,7 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
     public fn peek(self) -> T?
     {
         if .is_empty => return none;
-        return .items.at(.items.count - 1);
+        return .items.get(.items.count - 1);
     }
 
     public fn pop(mut self) -> T?

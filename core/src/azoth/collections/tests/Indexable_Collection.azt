@@ -74,12 +74,12 @@ namespace indexable_collection
 
         subject.unstable_sort(Int_Ordering());
 
-        Assert.that(subject.at(0)).equals(0);
-        Assert.that(subject.at(1)).equals(1);
-        Assert.that(subject.at(2)).equals(2);
-        Assert.that(subject.at(3)).equals(3);
-        Assert.that(subject.at(4)).equals(4);
-        Assert.that(subject.at(5)).equals(5);
+        Assert.that(subject.get(0)).equals(0);
+        Assert.that(subject.get(1)).equals(1);
+        Assert.that(subject.get(2)).equals(2);
+        Assert.that(subject.get(3)).equals(3);
+        Assert.that(subject.get(4)).equals(4);
+        Assert.that(subject.get(5)).equals(5);
     }
 
     class Fake_Collection <: Indexable_Collection[int]
@@ -94,7 +94,7 @@ namespace indexable_collection
         published get count(self) -> size
             => .count;
 
-        published fn at(self, index: size) -> int
+        published fn get(self, index: size) -> int
             => index;
     }
 }

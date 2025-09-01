@@ -48,7 +48,7 @@ published const struct ascii_string <: Iterable[ascii_char]
             if .length =/= o.length => return false;
             foreach i in 0..<o.length
             {
-                 if .bytes.at(i as! size + .start) =/= o.bytes.at(i as! size + o.start)
+                 if .bytes.get(i as! size + .start) =/= o.bytes.get(i as! size + o.start)
                     => return false;
             }
             return true;

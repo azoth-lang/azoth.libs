@@ -21,14 +21,14 @@ published class List[T ind nonwritable out] <: Indexable_Collection[T]
         => .items.count;
 
     // TODO does this need `lent self`?
-    published fn at(self, index: size) -> T
+    published fn get(self, index: size) -> aliasable T
         // requires index < .count
-        => .items.at(index);
+        => .items.get(index);
 
     // TODO does this need `lent self`?
-    published fn set_at(mut self, index: size, value: T)
+    published fn set(mut self, index: size, value: T)
         // requires index < .count
-        => .items.at(index) = value;
+        => .items.set(index) = value;
 
     published fn add(mut self, value: T)
         => .items.add(value);

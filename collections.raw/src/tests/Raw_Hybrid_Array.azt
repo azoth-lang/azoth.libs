@@ -45,13 +45,13 @@ namespace raw_hybrid_array
     }
 
         #Test
-    public fn \"At"()
+    public fn \"Get and Set"()
     {
         // TODO use named arguments when available
         let subject: mut = Raw_Hybrid_Array[void, byte](false, 1, false);
 
-        subject.at(0) = 42;
-        var result = subject.at(0);
+        subject.set(0, 42);
+        var result = subject.get(0);
 
         Assert.that(result).equals(42);
     }
