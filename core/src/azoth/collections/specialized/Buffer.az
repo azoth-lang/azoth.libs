@@ -3,7 +3,7 @@
 /// # Remarks
 /// Used internally by collections to ensure efficient memory management. Can be used by performance
 /// critical code to avoid extra layers of indirection.
-published move /*struct*/ class Buffer[T ind]
+published drop /*struct*/ class Buffer[T ind]
     // invariant .count <= .capacity
 {
     // const DefaultCapacity: size = 16;
@@ -39,12 +39,12 @@ published move /*struct*/ class Buffer[T ind]
         return .items.get(index);
     }
 
-    published fn set(readable self, index: size, value: T)
+    published fn set(mut self, index: size, value: T)
         // requires index < .count
     {
         let count = .items.count;
         if index >= count => ABORT("get(): index out of bounds");
-        return .items.set(index, value);
+        .items.set(index, value);
     }
 
     published fn add(mut self, value: T)
@@ -60,9 +60,10 @@ published move /*struct*/ class Buffer[T ind]
     {
         let count = .items.count;
         if index >= count => ABORT("remove_at(): index out of bounds");
-        let item = .items.get(index);
+        let item = .items.take(index);
+        // TODO Raw_Hybrid_Bounded_List ought to have a remove_at() method
         foreach i in index..<(count - 1)
-            { .items.set(i as! size, .items.get(i as! size + 1)); }
+            { .items.set(i as! size, .items.take(i as! size + 1)); }
         .items.shrink(count - 1);
         return item;
     }

@@ -96,5 +96,7 @@ namespace indexable_collection
 
         published fn get(self, index: size) -> int
             => index;
+
+        published fn clear(mut self) => .count = 0;
     }
 }

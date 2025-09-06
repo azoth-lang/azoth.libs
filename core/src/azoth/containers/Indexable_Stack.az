@@ -1,4 +1,4 @@
-public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iterable[T]
+public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iterable[aliasable T]
 {
     let items: mut Buffer[T];
 
@@ -18,7 +18,7 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
     public get count(self) -> size
         => .items.count;
 
-    public fn peek(self) -> T?
+    public fn peek(self) -> aliasable T?
     {
         if .is_empty => return none;
         return .items.get(.items.count - 1);

@@ -5,8 +5,8 @@ published class Buffer_Chunk[T ind] <: Collection[T]
 {
     // const DefaultCapacity: size = 16;
 
-    // TODO use private inheritance or make Buffer_Chunk a struct to avoid extra indirection
-    let items: mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
+    // TODO use private inheritance or make Buffer_Chunk a value to avoid extra indirection
+    let items: /*own*/ mut Raw_Hybrid_Bounded_List[mut Buffer_Chunk[T]?, T];
 
     published init(mut self)
         // #prove ensures .count == 0 and .capacity == DefaultCapacity
@@ -52,7 +52,7 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     {
         let count = .items.count;
         if index >= count => ABORT("set(): index out of bounds");
-        .items.set(index) = value;
+        .items.set(index, value);
     }
 
     published fn try_add(mut self, value: T) -> bool
@@ -69,9 +69,10 @@ published class Buffer_Chunk[T ind] <: Collection[T]
     {
         let count = .items.count;
         if index >= count => ABORT("remove_at(): index out of bounds");
-        let item = .items.get(index);
+        // TODO Raw_Hybrid_Bounded_List ought to have a remove_at() method
+        let item = .items.take(index);
         foreach i in index..<(count - 1)
-            { .items.set(i as! size, .items.get(i as! size + 1)); }
+            { .items.set(i as! size, .items.take(i as! size + 1)); }
         .items.shrink(count - 1);
         return item;
     }

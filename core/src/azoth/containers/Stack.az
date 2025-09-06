@@ -28,7 +28,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
     public get count(self) -> size
         => .count;
 
-    public fn peek(self) -> T?
+    public fn peek(self) -> aliasable T?
     {
         if .is_empty => return none;
         return .chunk.get(.chunk.count - 1);

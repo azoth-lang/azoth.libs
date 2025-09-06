@@ -1,6 +1,11 @@
 /// A collection whose elements can be randomly accessed by an index.
-public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Reversible_Iterable[T]
+public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Reversible_Iterable[aliasable T]
 {
+    /// Take an element. If this element has ownership then what is left behind is an invalid value
+    /// that must be overwritten or removed.
+    /// O(1)
+    published /* unsafe */ fn take(self, index: size) -> T;
+
     /// O(1)
     published fn get(self, index: size) -> aliasable T;
         // requires index < .count
@@ -8,14 +13,14 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
     published fn set(mut self, index: size, value: T);
         // requires index < .count
 
-    published fn iterate(temp const self) -> mut Iterator[T]
+    published fn iterate(temp const self) -> mut Iterator[aliasable T]
         => Indexable_Collection_Iterator[T](self);
 
     /// An `Mutable_Iterable` that allows mutating the elements of this collection
-    published fn mutable_iterate(temp iso self) -> iso Iterator[/*Var[T]*/ T]
+    published fn mutable_iterate(temp iso self) -> iso Iterator[/*Var[T]*/ aliasable T]
         => Indexable_Collection_Mutable_Iterator[T](move self);
 
-    published fn unstable_sort(temp iso self, order: Ordering[T])
+    published fn unstable_sort(temp iso self, order: Ordering[aliasable T])
     {
         // TODO implement a high performance sort algo. See: introsort, pdqsort, ipnsort
         // TODO support `move` element types?
@@ -24,7 +29,7 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
         .insertion_sort(0, .count-1, order);
     }
 
-    fn insertion_sort(mut self, start_index: size, end_index: size, order: Ordering[T])
+    fn insertion_sort(mut self, start_index: size, end_index: size, order: Ordering[aliasable T])
     {
         // TODO support using `with order`
         foreach i in (start_index+1)..end_index
@@ -35,8 +40,8 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
             while j > 0 and order.compare(.get(j-1), .get(j)) > 0
             {
                 // TODO add and use a swap method
-                let t = .get(j-1);
-                .set(j-1, .get(j));
+                let t = .take(j-1);
+                .set(j-1, .take(j));
                 .set(j, t);
                 j -= 1;
             }

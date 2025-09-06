@@ -1,4 +1,7 @@
 // TODO what is the right way to represent this?
+// TODO it seems odd that the type parameter is independent. Perhaps what is needed is to extend
+//      the collection types with Iterable[T] so that whatever the capability of T is at the time,
+//      an aliasable version of it can be iterated.
 public trait Iterable[T ind out]
 {
     // TODO rename to .values()? and make it a property?

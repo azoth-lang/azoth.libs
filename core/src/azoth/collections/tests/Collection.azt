@@ -34,5 +34,7 @@ namespace collection
 
         published get count(self) -> size
             => .count;
+
+        published fn clear(mut self) => .count = 0;
     }
 }
