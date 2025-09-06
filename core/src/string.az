@@ -17,7 +17,7 @@ published const struct string
     public let start: size;
     /// The number of bytes in the string when encoded in UTF8.
     published let utf8_byte_count: size;
-    // TODO use iref var?
+    // TODO use Ref[byte]
     let bytes: const Raw_Hybrid_Bounded_List[void, byte];
 
     // Constructor is private because this is a temporary way of constructing strings for constants

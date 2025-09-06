@@ -8,7 +8,7 @@ published const struct ascii_string <: Iterable[ascii_char]
     public let start: size;
     /// The length of the string.
     published let length: size;
-    // TODO use iref var?
+    // TODO use Ref[byte]
     public let bytes: const Raw_Hybrid_Bounded_List[void, byte];
 
     public init(self, .start, .length, .bytes) { }
