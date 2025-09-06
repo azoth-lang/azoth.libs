@@ -1,5 +1,5 @@
 #Intrinsic
-published /*sealed*/ class Raw_Hybrid_Array[any P ind, any T ind nonwritable out]
+published /*sealed*/ class Raw_Hybrid_Array[any P ind nonwritable out, any T ind nonwritable out]
     // where move P
     // where move T
 {
