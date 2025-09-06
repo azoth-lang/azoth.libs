@@ -4,7 +4,7 @@ public trait Indexable_Collection[T ind nonwritable out] <: Collection[T], Rever
     /// Take an element. If this element has ownership then what is left behind is an invalid value
     /// that must be overwritten or removed.
     /// O(1)
-    published /* unsafe */ fn take(self, index: size) -> T;
+    published /* unsafe */ fn take(mut self, index: size) -> T;
 
     /// O(1)
     published fn get(self, index: size) -> aliasable T;

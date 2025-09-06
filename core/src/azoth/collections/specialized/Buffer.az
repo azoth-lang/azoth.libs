@@ -31,6 +31,14 @@ published drop /*struct*/ class Buffer[T ind]
     published get count(self) -> size
         => .items.count;
 
+    published /*unsafe*/ fn take(mut self, index: size) -> T
+        // requires index < .count
+    {
+        let count = .items.count;
+        if index >= count => ABORT("get(): index out of bounds");
+        return .items.take(index);
+    }
+
     published fn get(readable self, index: size) -> aliasable T
         // requires index < .count
     {

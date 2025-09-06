@@ -84,7 +84,7 @@ namespace indexable_collection
 
     class Fake_Collection <: Indexable_Collection[int]
     {
-        let count: size;
+        var count: size;
 
         public init(mut self, count: size)
         {

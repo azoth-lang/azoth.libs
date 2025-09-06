@@ -7,7 +7,7 @@ published class List[T ind nonwritable out] <: Indexable_Collection[T]
         .items = Buffer[T]();
     }
 
-    // TODO name: with_capacity
+    // TODO named initializer: with_capacity
     published init(mut self, var capacity: size)
     {
         if capacity < 2 => capacity = 2;
@@ -20,12 +20,15 @@ published class List[T ind nonwritable out] <: Indexable_Collection[T]
     published get count(self) -> size
         => .items.count;
 
-    // TODO does this need `lent self`?
+    published /*unsafe*/ fn take(mut self, index: size) -> T
+        => .items.take(index);
+
+    // Doesn't need `lent self` because T is independent
     published fn get(self, index: size) -> aliasable T
         // requires index < .count
         => .items.get(index);
 
-    // TODO does this need `lent self`?
+    // Doesn't need `lent self` because T is independent
     published fn set(mut self, index: size, value: T)
         // requires index < .count
         => .items.set(index, value);
