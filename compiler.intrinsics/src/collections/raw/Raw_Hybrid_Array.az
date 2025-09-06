@@ -6,17 +6,19 @@ published /*sealed*/ class Raw_Hybrid_Array[any P ind nonwritable out, any T ind
     // TODO declare named arguments
     #Intrinsic
     published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
+    // TODO exchange_prefix()
     /// Unsafe because it could allow reading of uninitialized memory
-    #Intrinsic // TODO return type needs to create alias? i.e. if T is `iso Foo` then this returns `mut Foo` (but how to move out?)
-    published /*unsafe*/ get prefix(self) -> P => INTRINSIC();
+    #Intrinsic
+    published /*unsafe*/ get prefix(self) -> aliasable P => INTRINSIC();
     #Intrinsic
     published set prefix(mut self, prefix: P) => INTRINSIC();
     #Intrinsic
     published get count(self) -> size => INTRINSIC();
+    // TODO instead of take() implement a exchange(mut self, index: size, value: T) -> T
     #Intrinsic
-    published /*unsafe*/ fn get(readable self, index: size) -> aliasable T => INTRINSIC();
+    published /*unsafe*/ fn get(self, index: size) -> aliasable T => INTRINSIC();
     #Intrinsic
-    published /*unsafe*/ fn set(readable self, index: size, value: T) => INTRINSIC();
+    published /*unsafe*/ fn set(mut self, index: size, value: T) => INTRINSIC();
 }
 
 // let x = move a.prefix = new_value();
