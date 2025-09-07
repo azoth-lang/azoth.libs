@@ -20,7 +20,7 @@ published const struct ascii_char
 
     }*/
 
-    /*#Inline
+    /*#inline
     public operator _<=_(self, other: ascii_char) -> bool
         => .value <= other.value;*/
 

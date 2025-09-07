@@ -1,5 +1,5 @@
 /*
-#Intrinsic
+#intrinsic
 published move struct Raw_Inline_Bounded_List[Capacity: size, T]
 {
     published init(ref mut self) {...}

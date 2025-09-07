@@ -130,7 +130,7 @@ published trait Equatable[const Domain]
     /// cases. However, it will need to be overridden in cases where a different type wishes to
     /// compare equal. For example, if a type is a proxy it may wish to compare equal to the type
     /// it is a proxy for.
-    // TODO #Inline
+    // TODO #inline
     published protected fn can_equal(const self, other: Domain) -> bool
         => other is Self;
 
@@ -143,7 +143,7 @@ published trait Equatable[const Domain]
     ///
     /// When overriding, implementations must ensure that `a =/= b iff not a == b`.
     // TODO add not equal operator
-    // #Inline
+    // #inline
     // published operator _=/=_(const self, other: const Self) -> bool
     //     => not self == other;
 }

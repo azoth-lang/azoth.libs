@@ -1,6 +1,0 @@
-/*public closed const value Inline_Directive
-{
-    case Never;
-    case Hint;
-    case Always;
-}*/

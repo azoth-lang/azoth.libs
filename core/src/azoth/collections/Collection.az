@@ -6,7 +6,7 @@ public trait Collection[T ind out] <: Iterable[aliasable T]
 
     /// O(1)
     /// Must ensure `.is_empty iff .count == 0`
-    // TODO #Inline
+    // TODO #inline
     published get is_empty(self) -> bool
         => .count == 0;
 

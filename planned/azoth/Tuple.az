@@ -8,13 +8,13 @@
 
 //     public init(params .values) { }
 
-//     #Inline
+//     #inline
 //     public operator #(_) (params values: Parameters[params Types]) -> Tuple[params Types]$owned
 //     {
 //         return Tuple[params Types](params values);
 //     }
 
-//     #Inline
+//     #inline
 //     public fn at[n: size] -> Types.at(n)
 //         requires n < Types.count
 //     {

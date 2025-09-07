@@ -14,7 +14,7 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
         .items = Buffer[T](capacity);
     }
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public get count(self) -> size
         => .items.count;
 
@@ -30,11 +30,11 @@ public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iter
         return .items.remove_at(.items.count - 1);
     }
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public fn push(mut self, item: T)
         => .items.add(item);
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public fn clear(mut self)
         => .items.clear();
 }

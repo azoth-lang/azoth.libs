@@ -3,6 +3,6 @@
 /// implementation is needed. If this function is ever called, the compiler should cause an abort
 /// with an appropriate message.
 // TODO apply an attribute that will generate a compiler error if this is called from outside an intrinsic method.
-#Intrinsic
+#intrinsic
 published fn INTRINSIC() -> never
     => INTRINSIC();

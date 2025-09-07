@@ -1,23 +1,24 @@
-#Intrinsic
+// TODO rework into Unsafe_Hybrid_array
+#intrinsic
 published /*sealed*/ class Raw_Hybrid_Array[any P ind nonwritable out, any T ind nonwritable out]
     // where move P
     // where move T
 {
     // TODO declare named arguments
-    #Intrinsic
-    published /*unsafe*/ init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
+    #intrinsic
+    published /*unsafe*/ protected init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
     // TODO exchange_prefix()
     /// Unsafe because it could allow reading of uninitialized memory
-    #Intrinsic
+    #intrinsic
     published /*unsafe*/ get prefix(self) -> aliasable P => INTRINSIC();
-    #Intrinsic
+    #intrinsic
     published set prefix(mut self, prefix: P) => INTRINSIC();
-    #Intrinsic
+    #intrinsic
     published get count(self) -> size => INTRINSIC();
-    // TODO instead of take() implement a exchange(mut self, index: size, value: T) -> T
-    #Intrinsic
+    // TODO fn exchange(mut self, index: size, value: T) -> T
+    #intrinsic
     published /*unsafe*/ fn get(self, index: size) -> aliasable T => INTRINSIC();
-    #Intrinsic
+    #intrinsic
     published /*unsafe*/ fn set(mut self, index: size, value: T) => INTRINSIC();
 }
 
@@ -25,12 +26,12 @@ published /*sealed*/ class Raw_Hybrid_Array[any P ind nonwritable out, any T ind
 // But this is not a fully general functionality because it requires that the old value can be moved
 
 /*
-#Intrinsic
+#intrinsic
 published sealed class Raw_Hybrid_Array[P ind nonwritable out, Count: size, T ind nonwritable out]
 {
-    //#Intrinsic
+    //#intrinsic
     published unsafe init(mut self, ensure_prefix_zeroed: bool, ensure_zeroed: bool) { INTRINSIC(); }
-    //#Intrinsic
+    //#intrinsic
     published get prefix(readable self) -> self |> P => INTRINSIC();
     // TODO should generic parameters be publicly exposed members and this getter wouldn't be needed?
     published get count() => Count;

@@ -1,0 +1,18 @@
+/// Control inlining of the code marked with this attribute.
+///
+/// # Description
+///
+/// An invocable marked with this attribute causes the compiler to attempt to inline the code into
+/// call sites.
+///
+/// Note that `inline_directive.Always` will generate an error if the compiler is unable to inline
+/// the code. However, there are still cases where code will not be inlined. For example,
+/// an inlined function will not be inlined when called through a function reference.
+// TODO #attribute_usage(.Invocable)
+published const value inline_attribute
+{
+    // TODO published let directive: inline_directive;
+    // TODO public init(self, .directive /*= inline_directive.Hint*/) { }
+
+    public init(self) { }
+}

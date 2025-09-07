@@ -1,5 +1,5 @@
 /*
-#Intrinsic
+#intrinsic
 published sealed class Raw_Hybrid_Bounded_List[F, T]
 {
     published init(.prefix, .capacity) {...}
@@ -12,7 +12,7 @@ published sealed class Raw_Hybrid_Bounded_List[F, T]
     published fn add(mut self, value: T);
 }
 
-#Intrinsic
+#intrinsic
 published sealed class Raw_Hybrid_Bounded_List[F, Capacity: size, T]
 {
     published init(.prefix) {...}

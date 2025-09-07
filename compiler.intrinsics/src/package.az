@@ -2,5 +2,5 @@
 
 // TODO mark this package as one that can declare intrinsics. This allows the interpreter to very
 //      efficiently ignore packages that cannot contain intrinsics.
-// #Intrinsic
+// #intrinsic
 // published package;

@@ -1,9 +1,0 @@
-published /*sealed*/ const struct Inline_Attribute
-{
-    // TODO public let directive: Inline_Directive;
-
-    public init(self) { }
-    // TODO public init(self, .directive) { }
-
-    // TODO public init(.directive = .Hint) { }
-}

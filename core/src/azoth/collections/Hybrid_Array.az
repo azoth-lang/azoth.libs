@@ -1,0 +1,1 @@
+// TODO declare a Hybrid_Array[P, T] *value* type. Supporting field inlining or private inheritance doesn't seem worth it.

@@ -4,7 +4,7 @@
 /// the referenced boxed struct does not need to be constant.
 /// TODO: this is a place where it would be nice to have a type parameter that doesn't have an
 /// associated capability.
-#Intrinsic
+#intrinsic
 public /*value*/ struct Tagged_Reference[/*iso*/T]
     // TODO where T: struct
 {

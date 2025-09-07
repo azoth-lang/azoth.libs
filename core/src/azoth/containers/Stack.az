@@ -24,7 +24,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
     //         { add(item); }
     // }
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public get count(self) -> size
         => .count;
 
@@ -47,7 +47,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
         return item;
     }
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public fn push(mut self, item: T) -> void
         // overrides add
     {
@@ -67,7 +67,7 @@ public class Stack[T ind nonwritable out] <: Container[T], Collection[T]
         }
     }
 
-    // #Inline(.Always)
+    // #inline(.Always)
     public fn clear(mut self) -> void
     {
         if .count == 0 => return;

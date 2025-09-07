@@ -2,10 +2,10 @@ public move struct Parameters[]
 {
     public const count: size = 0;
 
-    #Inline
+    #inline
     public init() { }
 
-    #Inline
+    #inline
     public operator #(_) () -> Parameters[]
     {
         return Parameters[]();
@@ -19,17 +19,17 @@ public move struct Parameters[T, params Rest: Array[type]]
     private let first: T;
     private let rest: Parameters[params Rest];
 
-    #Inline
+    #inline
     public init(.first, params .rest) {  }
 
-    #Inline
+    #inline
     public operator #(_) (first: T, params rest: Parameters[params Rest])
         -> Parameters[T, params Rest]
     {
         return Parameters(first, params rest);
     }
 
-    #Inline
+    #inline
     public fn at[n: size] -> if n==0 => T else => Rest.at(n-1)
         requires n < Rest.count
     {
