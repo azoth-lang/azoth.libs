@@ -1,5 +1,5 @@
-// TODO this should be an enum
-published struct newline_detection
+// TODO this should be closed
+published /*closed*/ value newline_detection
 {
 //    /// No newline was detected.
 //    case None;
