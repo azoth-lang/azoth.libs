@@ -1,4 +1,4 @@
-public class Indexable_Stack[T ind nonwritable out] <: Stack[T], Reversible_Iterable[aliasable T]
+public class Indexable_Stack[T ind readonly out] <: Stack[T], Reversible_Iterable[aliasable T]
 {
     let items: mut Buffer[T];
 
