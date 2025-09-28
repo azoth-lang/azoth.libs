@@ -1,6 +1,6 @@
 // TODO rework into Unsafe_Hybrid_array
 #intrinsic
-published /*sealed*/ class Raw_Hybrid_Array[any P ind readonly out, any T ind readonly out]
+published /*sealed*/ class Raw_Hybrid_Array[independent P readonly out, independent T readonly out]
     // where move P
     // where move T
 {
@@ -27,7 +27,7 @@ published /*sealed*/ class Raw_Hybrid_Array[any P ind readonly out, any T ind re
 
 /*
 #intrinsic
-published sealed class Raw_Hybrid_Array[P ind readonly out, Count: size, T ind readonly out]
+published sealed class Raw_Hybrid_Array[independent P readonly out, Count: size, independent T readonly out]
 {
     //#intrinsic
     published unsafe init(mut self, ensure_prefix_zeroed: bool, ensure_zeroed: bool) { INTRINSIC(); }

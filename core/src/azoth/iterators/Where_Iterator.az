@@ -1,8 +1,8 @@
 // TODO should not implement Iterator[T] if source doesn't
-public class Where_Iterator[T out] <: Iterator[T], Unbounded_Iterator[T]
+public class Where_Iterator[any T out] <: Iterator[T], Unbounded_Iterator[T]
 {
     let iterator: mut Unbounded_Iterator[T];
-    let predicate: (T) -> bool;
+    let predicate: (aliasable T) -> bool;
 
     public init(mut self, .iterator, .predicate) { }
 

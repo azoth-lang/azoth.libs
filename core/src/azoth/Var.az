@@ -4,8 +4,8 @@
 // TODO how do you do something like freeze the thing referenced by `Var[T]` without freezing it?
 // Perhaps `freeze ^v`? But the same doesn't quite work for a list since it may not contain any
 // elements.
-// published struct Var[any T ind readonly out]
-// {
+published struct Var[independent T readonly out]
+{
 //     var value: T;
 
 //     published init(mut self, .value) { }
@@ -45,7 +45,7 @@
 //     published operator ^_(self[aliasable]) -> self |> T => .value;
 //     // In this mode the capability constraint on independent just limits what is possible or perhaps
 //     // isn't even allowed. Perhaps independent should replace the constraint. You don't get to limit
-//     // e.g. `List[ind T readonly out]` or `List[independent T readonly out]`
+//     // e.g. `List[independent T readonly out]` or `List[independent T readonly out]`
 
 
 //     // Dereference the value to set (returns the old value so that it can be used for both
@@ -83,4 +83,4 @@
 //     // alternatively, think of it as a destructive read that must replace the value
 //     published destructive get value(mut self, value: T) -> T => .value <- value;
 //     // or => <- .value = value;
-// }
+}

@@ -1,4 +1,4 @@
-public class Indexable_Collection_Iterator[T] <: Iterator[aliasable T]
+public class Indexable_Collection_Iterator[T] <: Iterator[T]
 {
     let collection: temp const Indexable_Collection[T];
     var index: size;
@@ -10,6 +10,7 @@ public class Indexable_Collection_Iterator[T] <: Iterator[aliasable T]
 
     published fn size_hint(self) -> size => .collection.count - .index;
 
+    // TODO `T` is restricted to `aliasable` so it shouldn't be needed here
     published fn \next(mut self) -> aliasable T?
     {
         // Note it is not a concern that the collection size could change, because it is `temp const`

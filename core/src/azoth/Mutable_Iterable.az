@@ -1,5 +1,5 @@
 // TODO what is the right way to represent this?
-public trait Mutable_Iterable[T ind out]
+public trait Mutable_Iterable[independent T out]
 {
     // TODO should iterate over `Var[T]` to allow mutation
     // TODO rename to mutable_values()? make it a property?

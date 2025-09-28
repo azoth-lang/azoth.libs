@@ -2,7 +2,7 @@
 // TODO it seems odd that the type parameter is independent. Perhaps what is needed is to extend
 //      the collection types with Iterable[T] so that whatever the capability of T is at the time,
 //      an aliasable version of it can be iterated.
-public trait Iterable[T ind out]
+public trait Iterable[independent T out]
 {
     // TODO rename to .values()? and make it a property?
     published fn iterate(temp const self) -> mut Iterator[T];
@@ -12,6 +12,6 @@ public trait Iterable[T ind out]
     // --------------------- Iterator[T] forwards
     // TODO why does this compile? The `predicate` shouldn't be allowed to be shared with the `lent`
     // return value. Is it because function types are currently effectively immutable?
-    published fn \where(temp const self, predicate: (T) -> bool) -> mut Iterator[T]
+    published fn \where(temp const self, predicate: (aliasable T) -> bool) -> mut Iterator[T]
         => .iterate().\where(predicate);
 }

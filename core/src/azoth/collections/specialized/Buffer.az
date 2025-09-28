@@ -3,7 +3,7 @@
 /// # Remarks
 /// Used internally by collections to ensure efficient memory management. Can be used by performance
 /// critical code to avoid extra layers of indirection.
-published drop /*struct*/ class Buffer[T ind]
+published drop /*struct*/ class Buffer[independent T]
     // invariant .count <= .capacity
 {
     // const DefaultCapacity: size = 16;

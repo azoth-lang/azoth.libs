@@ -10,7 +10,7 @@
 ///
 /// Arrays are structs so that they introduce no indirection overhead into slicing. They are
 /// internally represented as an `iref var T` along with a `count`.
-public value Array[any T ind]
+public value Array[independent T]
 // TODO implement Indexable_Collection and confirm struct implementing trait works
 {
     /*

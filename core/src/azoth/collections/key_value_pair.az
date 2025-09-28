@@ -1,5 +1,5 @@
-// Note: `Key` type must be `ind` otherwise the `key` field always inherits the `const` from this type.
-published const struct key_value_pair[Key shareable ind out, Value ind out]
+// Note: `Key` type must be `independent` otherwise the `key` field always inherits the `const` from this type.
+published const value key_value_pair[independent(shareable) Key out, independent Value out]
 {
     published let key: Key;
     published let value: Value;

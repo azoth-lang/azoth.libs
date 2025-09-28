@@ -1,5 +1,5 @@
 // A container holds items but provides limited access to them
-published trait Container[T ind readonly out]
+published trait Container[independent T readonly out]
 {
     /// O(1)
     published get count(self) -> size;

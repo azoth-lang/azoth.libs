@@ -1,5 +1,5 @@
 /// A collection whose elements can be randomly accessed by an index.
-public trait Indexable_Collection[T ind readonly out] <: Collection[T], Reversible_Iterable[aliasable T]
+public trait Indexable_Collection[independent T readonly out] <: Collection[T], Reversible_Iterable[aliasable T]
 {
     /// Take an element. If this element has ownership then what is left behind is an invalid value
     /// that must be overwritten or removed.
@@ -13,12 +13,14 @@ public trait Indexable_Collection[T ind readonly out] <: Collection[T], Reversib
     published fn set(mut self, index: size, value: T);
         // requires index < .count
 
+    // TODO if `temp iso self` allows returning `iso Iterator` then shouldn't `temp const self` too?
     published fn iterate(temp const self) -> mut Iterator[aliasable T]
-        => Indexable_Collection_Iterator[T](self);
+        => Indexable_Collection_Iterator[aliasable T](self);
 
+    // TODO uncomment method
     /// An `Mutable_Iterable` that allows mutating the elements of this collection
-    published fn mutable_iterate(temp iso self) -> iso Iterator[/*Var[T]*/ aliasable T]
-        => Indexable_Collection_Mutable_Iterator[T](move self);
+    // published fn mutable_iterate(temp iso self) -> iso Iterator[/*mut Var[T]*/ aliasable T]
+    //     => Indexable_Collection_Mutable_Iterator[aliasable T](move self);
 
     published fn unstable_sort(temp iso self, order: Ordering[aliasable T])
     {
