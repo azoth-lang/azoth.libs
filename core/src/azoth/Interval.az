@@ -1,6 +1,6 @@
 // An interval is possibly infinite set of values between two endpoints.
 // TODO how to implement empty?
-// TODO make this a struct?
+// TODO make this a value?
 // Note that as with math, if start equals end and one end is inclusive then that value is contained.
 // To clarify that, when it happens both ends will be marked inclusive.
 published /*sealed*/ const class Interval[T] <: Ordered[Interval[T]]

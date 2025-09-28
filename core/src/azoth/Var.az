@@ -1,14 +1,11 @@
-// TODO consider `readonly out` instead of nonwriteable. Where `readonly` would be a capability set
-// of `read`, `const` (should it include `id` too?)
-
 // TODO how do you do something like freeze the thing referenced by `Var[T]` without freezing it?
 // Perhaps `freeze ^v`? But the same doesn't quite work for a list since it may not contain any
 // elements.
 published struct Var[independent T readonly out]
 {
-//     var value: T;
+    var value: T;
 
-//     published init(mut self, .value) { }
+    published init(mut self, .value) { }
 
 //     // This exists to allow initial assignment. But will this cause issues with other assignments?
 //     published implicit operator as(value: T) -> iso Var[T]
@@ -29,14 +26,8 @@ published struct Var[independent T readonly out]
 //     // changes the meaning of `T`?
 //     published operator ^_(self[aliasable]) -> T => .value;
 
-//     // Note that it should be valid to do something like
-//     published fn apply(self, modify: (lent mut T) -> void) // but the type `mut T` isn't valid,
-//         // perhaps `aliasable T` is correct?
-//     {
-//         // T could currently be `iso X`
-//         modify(.value); // aliases value
-//         // but here the value is unaliased and again `iso`
-//     }
+    // published fn apply(self, modify: (iso, aliasable T) -> void)
+    //     => modify(.value);
 
 //     // Maybe I'm thinking about this wrong. The capability of `self` is not part of the type. Maybe
 //     // the capability of independent parameters is also not part of the type current type. They are
@@ -67,11 +58,21 @@ published struct Var[independent T readonly out]
 
 //     // Alternatively, the dereference operator `^` could be overloaded. or the assignment operator
 
-//     // TODO use dereference instead
-//     published get value(self) -> aliasable T => .value;
+    // TODO use dereference instead
+    published fn get(self) -> aliasable T => .value;
 
-//     // TODO use dereference instead
-//     published set value(mut self, value: T) => .value = value;
+    // TODO use dereference instead
+    published fn set(mut self, value: T) -> T
+    {
+        // TODO is this safe? It leave the var temporarily without a value. In a more complex method
+        //      that might be visible to other code. Hence the idea of `return move .value = value`
+        //      but that is only safe if you can do an atomic exchange which you can't do very
+        //      general value types.
+        // TODO `T` could be `iso` or `own`. This ought to require `move`
+        let oldValue = .value;
+        .value = value;
+        return oldValue;
+    }
 
 //     // TODO use dereference instead
 //     // TODO can only be called if isolation of T has been recovered. It is like we need `iso self`

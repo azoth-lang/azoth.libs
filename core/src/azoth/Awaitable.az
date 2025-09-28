@@ -1,9 +1,9 @@
 // DRAFT
 
 // Note: T = `void` for promises without a value
-public trait Awaitable[T out /*= void*/, TThrows out /*= never*/]
+public trait Awaitable[T out /*= void*/, Throws out /*= never*/]
 {
-    // type TAwaiter <: Awaiter[T, TThrows];
+    // type Awaiter <: Awaiter[T, Throws];
 
-    // published get awaiter() -> TAwaiter;
+    // published get awaiter() -> Awaiter;
 }

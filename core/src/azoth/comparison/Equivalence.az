@@ -29,7 +29,7 @@ published const trait Equivalence[T in] <: Partial_Equivalence[T]
     /// because a type has an equality relation such that a =/= b does mean not that it can't be the
     /// case that a ∼ b.
     ///
-    /// It should also be noted that consistency applies only when values are not mutated. So a R b
+    /// It should also be noted that consistency applies only when values are not mutated. So a ~ b
     /// can change value if a or b change.
-    published fn equivalent(self, lent first: T, lent second: T) -> bool /*overrides*/;
+    published fn equivalent(self, lent first: T, lent second: T) -> bool /*overrides -> bool?*/;
 }
