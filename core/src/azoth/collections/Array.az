@@ -11,8 +11,17 @@
 /// Arrays are structs so that they introduce no indirection overhead into slicing. They are
 /// internally represented as an `iref var T` along with a `count`.
 public value Array[independent T]
-// TODO implement Indexable_Collection and confirm struct implementing trait works
+// TODO implement Indexable_Collection and confirm value implementing trait works
 {
+    let count: size;
+    let first_item: mut Var[T];
+
+    public init(mut self, .count)
+    {
+        .first_item = Raw_Hybrid_Array[void, T](.count, true).get(0);
+    }
+
+
     /*
     let items: iref var T;
     public let count: size;

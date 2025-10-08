@@ -1,0 +1,38 @@
+// Any approach to optional where it is a value has problems with structs because their size depends
+// on the capability and because they behave differently. Also how does copying work?
+// But `Optional[iso T]` or `Optional[mut TOptional[` doesn't work as the parameter since constructing one would always require
+// that capability. But `Optional[T]` allows too much flexibility.
+public closed value Optional[iso T]
+{
+    case None;
+    case Some(value: T);
+}
+
+// Does this cause strangeness when used as a generic parameter? For example, `class Example[mut T]`
+// would not permit `Example[mut Foo?]` because the parameter is actually `const`. Also, doesn't
+// the independent parameter produce strangeness. If you have `Factory[iso Foo?]`, does that mean
+// the holder of the factory can adjust the type output? Perhaps that is ok. Perhaps it is a general
+// rule that nested independent parameters are not longer independent?
+// But how would this work when making aliases? `Array[independent T]` would need to be consistent.
+// But if you have an `mut Array[own Struct]` then an alias to is ought to still be `mut Array[own Struct]`
+// not `mut Array[mut Struct]`.
+public closed const value Optional[independent T]
+{
+    case None;
+    case Some(value: T);
+}
+
+// This seems to block flow typing.
+public closed const value Optional[T]
+{
+    case None;
+    case Some(value: T);
+}
+
+
+// Hypothetical syntax for a parameter that has the same capability as self
+public closed value Optional[self T]
+{
+    case None;
+    case Some(value: T);
+}

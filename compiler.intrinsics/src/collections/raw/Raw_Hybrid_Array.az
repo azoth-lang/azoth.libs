@@ -1,9 +1,39 @@
 // TODO rework into Unsafe_Hybrid_array
 #intrinsic
-published /*sealed*/ class Raw_Hybrid_Array[independent P readonly out, independent T readonly out]
-    // where move P
-    // where move T
+published /*sealed drop?*/ class Raw_Hybrid_Array[independent P readonly out, independent T readonly out]
+    // where P: drop?
+    // where T: drop?
 {
+    // #intrinsic
+    // published init(mut self, .prefix: P, .count: size, .ensure_zeroed: bool = true)
+    //     where T: unmanaged
+    //     { INTRINSIC(); }
+
+    // #intrinsic
+    // published init(mut self, .prefix: P, .count: size, factory: @(size)->T) { INTRINSIC(); }
+
+    // #intrinsic
+    // published init(mut self, .prefix: P, .count: size, value: T)
+    //     where T: aliasable
+    //     { INTRINSIC(); }
+
+    // // TODO the compiler must know how to initialize a Raw_Hybrid_Array to construct the params
+    // published operator #[_](params values: Raw_Hybrid_Array[P, T]) => values;
+
+    // // The compiler/language calls this when trying to construct a `params Raw_Hybrid_Array[void, T]`
+    // // but then how does it initialize the resulting Raw_Hybrid_Array?
+    // #intrinsic
+    // published operator params(count: size)
+    //     where P: void
+    //     { INTRINSIC(); }
+
+    // TODO need a good way to initialize the array
+    //      callback function
+    //      default value
+    //      copyable value
+    //      from iterator?
+    //      bumping length?
+
     // TODO declare named arguments
     #intrinsic
     published /*unsafe*/ protected init(mut self, ensure_prefix_zeroed: bool, count: size, ensure_zeroed: bool) { INTRINSIC(); }
@@ -11,6 +41,7 @@ published /*sealed*/ class Raw_Hybrid_Array[independent P readonly out, independ
     /// Unsafe because it could allow reading of uninitialized memory
     #intrinsic
     published /*unsafe*/ get prefix(self) -> aliasable P => INTRINSIC();
+    // TODO have setter return old value to support move assign
     #intrinsic
     published set prefix(mut self, prefix: P) => INTRINSIC();
     #intrinsic
