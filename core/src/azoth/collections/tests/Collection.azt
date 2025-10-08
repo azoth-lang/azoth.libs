@@ -23,7 +23,7 @@ namespace collection
         Assert.that(empty).is_false();
     }
 
-    class Fake_Collection <: Collection[int]
+    class Fake_Collection: Collection[int]
     {
         var count: size;
 

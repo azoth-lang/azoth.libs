@@ -1,5 +1,5 @@
 /// A weak order over `T`
-published const trait Weak_Ordering[T in] <: Equivalence[T], Key_Comparer[T]
+published const trait Weak_Ordering[T in]: Equivalence[T], Key_Comparer[T]
 {
     // TODO return ordering
     published fn compare(self, lent first: T, lent second: T) -> int8;

@@ -1,4 +1,4 @@
-public class ASCII_String_Split_Iterator <: Iterator[ascii_string]
+public class ASCII_String_Split_Iterator: Iterator[ascii_string]
 {
     let str: ascii_string;
     let split_on: byte;

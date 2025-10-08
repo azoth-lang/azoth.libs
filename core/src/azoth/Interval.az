@@ -3,8 +3,8 @@
 // TODO make this a value?
 // Note that as with math, if start equals end and one end is inclusive then that value is contained.
 // To clarify that, when it happens both ends will be marked inclusive.
-published /*sealed*/ const class Interval[T] <: Ordered[Interval[T]]
-    // where T <: Ordered
+published /*sealed*/ const class Interval[T]: Ordered[Interval[T]]
+    // where T: Ordered
 {
     published let start: bound[T];
     published let end: bound[T];

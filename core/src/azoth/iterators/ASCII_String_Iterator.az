@@ -1,4 +1,4 @@
-public class ASCII_String_Iterator <: Iterator[ascii_char]
+public class ASCII_String_Iterator: Iterator[ascii_char]
 {
     let str: ascii_string;
     var index: size;

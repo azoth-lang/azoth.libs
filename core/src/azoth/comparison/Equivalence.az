@@ -9,7 +9,7 @@
 /// relation on that type.
 ///
 /// These are allowed on mutable values to enable comparing objects by current value.
-published const trait Equivalence[T in] <: Partial_Equivalence[T]
+published const trait Equivalence[T in]: Partial_Equivalence[T]
 {
     /// Determine whether the two values are equivalent according to this equivalence relation.
     ///

@@ -1,4 +1,4 @@
-published class List[independent T readonly out] <: Indexable_Collection[T]
+published class List[independent T readonly out]: Indexable_Collection[T]
 {
     var items: mut Buffer[T];
 

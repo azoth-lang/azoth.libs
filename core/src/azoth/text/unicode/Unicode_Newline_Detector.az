@@ -1,6 +1,6 @@
 /// An end of line detector that follows the Unicode Technical Report #13 guidelines for newline
 /// detection.
-public const class Unicode_Newline_Detector <: Newline_Detector
+public const class Unicode_Newline_Detector: Newline_Detector
 {
     // public const Instance: Unicode_Newline_Detector = Unicode_Newline_Detector();
 

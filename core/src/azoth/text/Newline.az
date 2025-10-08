@@ -1,4 +1,4 @@
-published const trait Newline <: Newline_Detector
+published const trait Newline: Newline_Detector
 {
     // /// Carriage Return followed by Linefeed. The standard newline sequence on Windows.
     // published const Newline CR_LF = Two_Character_Newline('\r', '\n');

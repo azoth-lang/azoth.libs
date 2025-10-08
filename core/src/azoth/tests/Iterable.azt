@@ -35,7 +35,7 @@ namespace iterable
         subject.test_mutate();
     }
 
-    class Fake_Iterable <: Iterable[int]
+    class Fake_Iterable: Iterable[int]
     {
         published fn iterate(temp const self) -> mut Iterator[int]
             => Fake_Iterator(self);
@@ -45,7 +45,7 @@ namespace iterable
         public fn test_mutate(mut self) { }
     }
 
-    class Fake_Iterator <: Iterator[int]
+    class Fake_Iterator: Iterator[int]
     {
         let iterable: temp const Fake_Iterable;
 

@@ -3,7 +3,7 @@
 // Note: T = `void` for promises without a value
 public trait Awaitable[T out /*= void*/, Throws out /*= never*/]
 {
-    // type Awaiter <: Awaiter[T, Throws];
+    // type Awaiter: Awaiter[T, Throws];
 
     // published get awaiter() -> Awaiter;
 }

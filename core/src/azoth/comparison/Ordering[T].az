@@ -1,5 +1,5 @@
 /// A total order over `T`
-published const trait Ordering[T in] <: Weak_Ordering[T]
+published const trait Ordering[T in]: Weak_Ordering[T]
 {
     // TODO return ordering
     published fn compare(self, lent first: T, lent second: T) -> int8;

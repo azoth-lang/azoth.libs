@@ -1,5 +1,5 @@
 // TODO replace with Natural_Ordering[uint]
-public const class Int_Ordering <: Ordering[int]
+public const class Int_Ordering: Ordering[int]
 {
     published fn compare(self, first: int, second: int) -> int8
     {

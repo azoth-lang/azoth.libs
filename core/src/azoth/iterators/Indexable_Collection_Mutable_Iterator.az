@@ -1,4 +1,4 @@
-public class Indexable_Collection_Mutable_Iterator[aliasable T out] <: Iterator[T]
+public class Indexable_Collection_Mutable_Iterator[aliasable T out]: Iterator[T]
 {
     let collection: temp iso Indexable_Collection[T];
     var index: size;

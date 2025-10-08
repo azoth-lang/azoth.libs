@@ -1,4 +1,4 @@
-public class String_Writer <: Text_Writer
+public class String_Writer: Text_Writer
 {
 
 }

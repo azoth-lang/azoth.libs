@@ -3,7 +3,7 @@
 
 // The idea is that generics can only really be overloaded on number of arguments,
 // so two declarations with the same name and number of arguments must be specializations.
-public class List[T] <: List[T] // We must be a subtype of what we are specializing, we could inherit instead
+public class List[T]: List[T] // We must be a subtype of what we are specializing, we could inherit instead
     where T==bool // This is what specializes us
 {
 
@@ -11,11 +11,11 @@ public class List[T] <: List[T] // We must be a subtype of what we are specializ
 
 
 // An alternate syntax, since underscore means infer,
-public class List[_] <: List[bool]
+public class List[_]: List[bool]
 {
 }
 
-public specialize class List[_] <: List[bool]
+public specialize class List[_]: List[bool]
 
 
 public class List[T]

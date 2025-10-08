@@ -1,5 +1,5 @@
 // TODO make `T` `independent(shareable)`
-published trait Set[independent T] <: Collection[T]
+published trait Set[independent T]: Collection[T]
 {
     // TODO allow constructors in traits so these can be called like constructors
 

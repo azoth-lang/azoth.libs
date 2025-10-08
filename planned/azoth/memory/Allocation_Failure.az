@@ -1,4 +1,4 @@
-public enum class Allocation_Failure: Exception
+public enum class Allocation_Failure inherits Exception
 {
     /// There was not enough memory avalible to allocate the requested amount
     /// of memory. A smaller allocation may succed. If memory is freed, it may

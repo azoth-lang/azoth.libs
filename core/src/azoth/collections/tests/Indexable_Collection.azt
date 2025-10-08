@@ -84,7 +84,7 @@ namespace indexable_collection
         Assert.that(subject.get(5)).equals(5);
     }
 
-    class Fake_Collection <: Indexable_Collection[int]
+    class Fake_Collection: Indexable_Collection[int]
     {
         var count: size;
 

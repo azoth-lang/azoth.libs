@@ -16,10 +16,10 @@ public value Array[independent T]
     let count: size;
     let first_item: mut Var[T];
 
-    public init(mut self, .count)
-    {
-        .first_item = Raw_Hybrid_Array[void, T](.count, true).get(0);
-    }
+    // public init(mut self, .count)
+    // {
+    //     .first_item = Raw_Hybrid_Array[void, T](.count, true).get(0);
+    // }
 
 
     /*
@@ -66,7 +66,7 @@ public value Array[independent T]
     */
 }
 
-// TODO need something like static classes
+// TODO need something like static classes (`object` isn't quite the same since it is still a type)
 published /*static*/ class Array
 {
     // TODO can this be assigned to all reference capabilities?

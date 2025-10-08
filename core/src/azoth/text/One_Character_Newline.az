@@ -1,4 +1,4 @@
-public const class One_Character_Newline <: Newline
+public const class One_Character_Newline: Newline
 {
     let newline: unicode_scalar;
     published let value: string;

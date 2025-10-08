@@ -1,5 +1,5 @@
 public struct Range[T]
-    where T <: Ordered
+    where T: Ordered
 {
     public let start: T;
     public let start_inclusive: bool;

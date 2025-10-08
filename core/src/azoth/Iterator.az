@@ -8,7 +8,7 @@
 /// `size.max` is different on different systems. Consider items returned from a database table. The
 /// rows are finite, but whether they fit in `size` depends on the particular platform the code is
 /// running on.
-public /*drop*/ trait Iterator[any T out] <: Unbounded_Iterator[T]
+public /*drop*/ trait Iterator[any T out]: Unbounded_Iterator[T]
 {
     /// A hint as to the number of remaining elements. This value may not be correct and
     /// implementations should not fail if it is. In cases where the number of elements is known to
@@ -60,7 +60,7 @@ public /*drop*/ trait Iterator[any T out] <: Unbounded_Iterator[T]
 
     // max
     // published fn max(mut self) -> T?
-    //     where T <: Ordered
+    //     where T: Ordered
     //     => .max(Natural_Ordering[T]());
 
     // published fn max(mut self, order: Ordering[T]) -> T?

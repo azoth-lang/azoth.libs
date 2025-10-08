@@ -49,8 +49,8 @@
 /// considered equal and one was mutated, then they would not longer be behaviorally equal. For
 /// comparison on mutable values, use `Equivalence`.
 published trait Equatable[const Domain]
-// TODO where Self <: Domain
-// TODO where Domain <: Partially_Equatable[Domain]
+// TODO where Self: Domain
+// TODO where Domain: Partially_Equatable[Domain]
 {
     /// The domain of types that can be compared for equality.
     ///
@@ -61,8 +61,8 @@ published trait Equatable[const Domain]
     /// that the base class ought to also be comparable within that domain.
     // TODO replace the generic parameter `Domain` with an associated type:
     // published type Domain;
-    // TODO where Self <: Domain
-    // TODO where Domain <: Partially_Equatable[.Domain = Domain]
+    // TODO where Self: Domain
+    // TODO where Domain: Partially_Equatable[.Domain = Domain]
 
     /// Determine whether the two values are equal.
     ///

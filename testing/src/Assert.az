@@ -20,7 +20,7 @@ published /*sealed*/ class Assert[T]
 }
 
 
-published /*sealed*/ class AssertOnBool: Assert[bool]
+published /*sealed*/ class AssertOnBool inherits Assert[bool]
 {
     let value: bool;
 
@@ -39,7 +39,7 @@ published /*sealed*/ class AssertOnBool: Assert[bool]
     }
 }
 
-published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
+published /*sealed*/ class AssertOnOptionalInt inherits Assert[int?]
 {
     let value: int?;
 
@@ -58,7 +58,7 @@ published /*sealed*/ class AssertOnOptionalInt: Assert[int?]
     }
 }
 
-published const class Assert_On_Optional_ascii_string: Assert[ascii_string?]
+published const class Assert_On_Optional_ascii_string inherits Assert[ascii_string?]
 {
     let value: ascii_string?;
 

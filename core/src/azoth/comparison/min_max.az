@@ -2,7 +2,7 @@
 /// # Remarks
 /// If the values are equal, the first value will be returned.
 // public fn max[const T](a: T, b: T) -> T
-//     where T <: Ordered
+//     where T: Ordered
 //     => if a >= b => a else => b;
 
 
@@ -13,7 +13,7 @@
 /// # Remarks
 /// If the values are equal, the first value will be returned.
 // public fn min[const T](a: T, b: T) -> T
-//     where T <: Ordered
+//     where T: Ordered
 //     => if a <= b => a else => b;
 
 // public fn min[const T](a: T, b: T, ordering: Ordering[T] = context) -> T

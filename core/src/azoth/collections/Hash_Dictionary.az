@@ -1,6 +1,6 @@
 
 // See https://engineering.fb.com/2019/04/25/developer-tools/f14/ for ideas on high performance hash tables
-published class Hash_Dictionary[independent(shareable) Key, independent Value readonly out] <: Dictionary[Key, Value]
+published class Hash_Dictionary[independent(shareable) Key, independent Value readonly out]: Dictionary[Key, Value]
 {
     // TODO type parameter access should be `Self.Key`?
     let key_comparer: Hash_Equivalence[shareable Key];

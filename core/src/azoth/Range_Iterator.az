@@ -1,4 +1,4 @@
-published class Range_Iterator <: Iterator[int]
+published class Range_Iterator: Iterator[int]
 {
     let range: range;
     var index: uint;

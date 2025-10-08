@@ -13,6 +13,6 @@
 //     private safe fn GetLastError() -> DWORD;
 // }
 
-public struct System_Allocator <: Global_Allocator
+public struct System_Allocator: Global_Allocator
 {
 }

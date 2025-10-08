@@ -1,4 +1,4 @@
-// Would it be possible for Array[n: size, T] <: Array[T]? I think not, but implicit conversion could be an option.
+// Would it be possible for Array[n: size, T]: Array[T]? I think not, but implicit conversion could be an option.
 
 public mut ref struct Array[n: size, T]
 {

@@ -1,5 +1,5 @@
 /// A collection whose elements can be randomly accessed by an index.
-public trait Indexable_Collection[independent T readonly out] <: Collection[T], Reversible_Iterable[aliasable T]
+public trait Indexable_Collection[independent T readonly out]: Collection[T], Reversible_Iterable[aliasable T]
 {
     /// Take an element. If this element has ownership then what is left behind is an invalid value
     /// that must be overwritten or removed.

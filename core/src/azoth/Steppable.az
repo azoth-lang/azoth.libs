@@ -4,7 +4,7 @@
 /// # Remarks
 /// This type is the bound of `T` in `Range[T]`.
 /// (See Rust `std::iter::Step` except this type is totally ordered.)
-published trait Steppable <: Ordered[const Self]
+published trait Steppable: Ordered[const Self]
 {
     published fn steps_to(self, value: Self) -> int;
     //      ensures if self == value => return == 0
