@@ -31,8 +31,22 @@ public closed const value Optional[T]
 
 
 // Hypothetical syntax for a parameter that has the same capability as self
-public closed value Optional[self T]
+public closed drop[T] value Optional[T out]
 {
-    case None;
-    case Some(value: T);
+
+}
+
+public closed object None inherits Optional[never]
+
+public drop[T] value Some[self T out] inherits Optional[T]
+{
+    let value: T;
+
+    // TODO this is still strange because the type of the value parameter ought to be `mut` but it
+    // needs to be `iso` or `own` in some cases
+    init(mut self, .value) { }
+
+    // TODO the return type must have a capability matching `T`
+    public implicit operator as(value: T) -> Optional[T]
+        => Some(value);
 }
