@@ -43,10 +43,116 @@ public drop[T] value Some[self T out] inherits Optional[T]
     let value: T;
 
     // TODO this is still strange because the type of the value parameter ought to be `mut` but it
-    // needs to be `iso` or `own` in some cases
+    // needs to be `iso` or `own` in some cases. Maybe this is ok because the capability of self is
+    // determined by the type parameter not the `mut self`?
     init(mut self, .value) { }
 
+    // TODO what is strange here is that if `self` is `iso` how does that work since the initializer
+    // only implicitly returns `self`
+    init(any self, .value) { }
+
+    // What if instead the correct way is that the self param is always `init` but the return type
+    // can be specified with a `const` capability to indicate that it must freeze upon the call to
+    // the base initializer. What is strange there is that you still might have a mutable field that
+    // you are assigning a `const` reference into.
+
+    // OR
+
+    // The self param can have any capability. There is no `init` capability just an `init` phase
+    // before the call to the base initializer. The return type of an initializer always match the
+    // `self` parameter. However, implicit recovery is allowed after which is how `mut self` can
+    // result in `iso`.
+
     // TODO the return type must have a capability matching `T`
-    public implicit operator as(value: T) -> Optional[T]
-        => Some(value);
+    public implicit operator as(value: T) -> self Optional[T]
+        => Some[T](value);
+}
+
+public ref[p] drop[T] value Some[p T out] inherits Optional[T]
+{
+    let value: T;
+
+    // TODO this is still strange because the type of the value parameter ought to be `mut` but it
+    // needs to be `iso` or `own` in some cases.
+    init(mut self, .value) { }
+
+    // TODO what is strange here is that if `self` is `iso` how does that work since the initializer
+    // only implicitly returns `self`
+    init(any self, .value) { }
+
+    // TODO the return type must have a capability matching `T`
+    public implicit operator as(value: T) -> p Optional[T]
+        => Some[T](value);
+}
+
+// -----------------
+
+// TODO this doesn't work because the independent parameter won't vary correctly for structs, it
+// will act as if the independent parameter is in a reference type.
+public transparent closed drop[T] value Optional[independent T out]
+{
+
+}
+
+public closed object None inherits Optional[never]
+
+public transparent drop[T] value Some[independent T out] inherits Optional[T]
+{
+    let value: T;
+
+    init(mut self, .value) { }
+}
+
+
+// -----------------
+
+public closed drop[T] value Optional[none T out]
+{
+
+}
+
+public closed object None inherits Optional[never]
+
+public drop[T] value Some[none T out] inherits Optional[T]
+{
+    let value: self T;
+
+    init(any self, .value) { }
+}
+
+// -----------------
+
+public closed drop[T] value Optional
+{
+    public out type T;
+}
+
+public closed object None inherits Optional
+{
+    public out type T = never;
+}
+
+public drop[T] value Some[none T out] inherits Optional[T]
+{
+    let value: self T;
+
+    init(any self, .value) { }
+}
+
+
+// -----------------
+
+public closed drop[T] value Optional[self T out]
+    where T: not own struct
+{
+}
+
+public closed object None inherits Optional[never];
+
+public drop[T] value Some[self T out] inherits Optional[T]
+    where T: not own struct
+{
+    let value: T;
+
+    init(any self, .value) { }
 }
