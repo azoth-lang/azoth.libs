@@ -5,7 +5,7 @@
 public trait Iterable[independent T out]
 {
     // TODO rename to .values()? and make it a property?
-    published fn iterate(temp const self) -> mut Iterator[T];
+    published fn iterate(temp const self) -> /*own instead of mut*/ mut Iterator[T];
 
     // TODO implicit conversion to `Iterator[T]`
 

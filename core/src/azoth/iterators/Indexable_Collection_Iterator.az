@@ -10,8 +10,7 @@ public class Indexable_Collection_Iterator[T]: Iterator[T]
 
     published fn size_hint(self) -> size => .collection.count - .index;
 
-    // TODO `T` is restricted to `aliasable` so it shouldn't be needed here
-    published fn \next(mut self) -> aliasable T?
+    published fn \next(mut self) -> T? /*overrides?*/
     {
         // Note it is not a concern that the collection size could change, because it is `temp const`
         if .index >= .collection.count

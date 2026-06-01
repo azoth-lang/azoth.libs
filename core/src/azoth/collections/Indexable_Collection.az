@@ -13,8 +13,7 @@ public trait Indexable_Collection[independent T readonly out]: Collection[T], Re
     published fn set(mut self, index: size, value: T);
         // requires index < .count
 
-    // TODO if `temp iso self` allows returning `iso Iterator` then shouldn't `temp const self` too?
-    published fn iterate(temp const self) -> mut Iterator[aliasable T]
+    published fn iterate(temp const self) -> /*own instead of mut*/ mut Iterator[aliasable T]
         => Indexable_Collection_Iterator[aliasable T](self);
 
     // TODO uncomment method
