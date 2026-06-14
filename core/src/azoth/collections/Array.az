@@ -67,7 +67,8 @@ public value Array[independent T]
 }
 
 // TODO need something like static classes (`object` isn't quite the same since it is still a type)
-published /*static*/ class Array
+//      maybe `sealed abstract`?
+published /*static*/ abstract class Array
 {
     // TODO can this be assigned to all reference capabilities?
     //published const empty: Array[never] = Array[never](0);

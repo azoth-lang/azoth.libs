@@ -1,16 +1,14 @@
-public /*closed*/ const struct ordering
+public /*closed*/ const value ordering
 {
-    // value Precedes,
-    // value Equivalent,
-    // value Succeeds,
+    // case precedes;
+    // case equivalent;
+    // case succeeds;
 
     // public fn reverse(self) -> Ordering
-    // {
-    //     return match self
+    //     => match self
     //     {
     //         .Precedes => .Succeeds,
     //         .Equivalent => .Equivalent,
     //         .Succeeds => .Precedes
     //     };
-    // }
 }

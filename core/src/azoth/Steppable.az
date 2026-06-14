@@ -15,7 +15,7 @@ published trait Steppable: Ordered[const Self]
     /// reached (e.g. `> Self.max`).
     published fn step_forward(self, steps: uint /*= 1*/) -> Self?;
     //      ensures if steps == 0 => self == return
-    //      ensures if steps > 0 > return > self;
+    //      ensures if steps > 0 => return > self;
 
     published fn step_forward(self) -> Self?
         => .step_forward(1);

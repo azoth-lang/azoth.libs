@@ -66,6 +66,6 @@ Azoth consistently uses the following terms to avoid confusion:
 The distinction between a total order and a weak order is useful since it corresponds to whether a
 stable or unstable sort is needed when sorting by that ordering.
 
-Looking at all the commonly defined types in programming, it turns out that turn partial orders
+Looking at all the commonly defined types in programming, it turns out that true partial orders
 aren't particularly useful in programming. Likewise the many other kinds of relations defined in the
 order theory branch of math.

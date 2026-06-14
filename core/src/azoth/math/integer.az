@@ -1,6 +1,8 @@
 /// A numeric type whose values are integers. A given type may represent only
 /// a subset of the integers as do all the simple integer types, both signed
 /// and unsigned.
+// TODO whether this should be capitalized depends on how boxing works. It seems it should be since
+//      having one of these would mean it was boxed.
 public const trait integer
 {
     // TODO public operator _+_(self, other: Self) -> Self;
