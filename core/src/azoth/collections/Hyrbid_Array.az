@@ -10,7 +10,7 @@
 ///
 /// Slicing a `Hybrid_Array[P, T]` produces an `Array[T]` because it is not possible to preserve the
 /// prefix on the slice.
-published value Hybrid_Array[independent P, independent T]: Array[T]
+published struct Hybrid_Array[independent P, independent T]: Array[T]
     where move P
     where move T
 {

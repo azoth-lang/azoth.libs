@@ -5,7 +5,7 @@
 /// TODO: this is a place where it would be nice to have a type parameter that doesn't have an
 /// associated capability.
 #intrinsic
-public value Tagged_Reference[/*iso*/T]
+public struct Tagged_Reference[/*iso*/T]
     // TODO where T: struct
 {
 

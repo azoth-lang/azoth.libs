@@ -1,6 +1,6 @@
 
 /// A bound of an interval of `T`
-public const /*closed*/ value bound[T]
+public const /*closed*/ struct bound[T]
 {
     // case inclusive
     // case exclusive

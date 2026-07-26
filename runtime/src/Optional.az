@@ -2,7 +2,7 @@
 // on the capability and because they behave differently. Also how does copying work?
 // But `Optional[iso T]` or `Optional[mut TOptional[` doesn't work as the parameter since constructing one would always require
 // that capability. But `Optional[T]` allows too much flexibility.
-public closed value Optional[iso T]
+public closed struct Optional[iso T]
 {
     case None;
     case Some(value: T);
@@ -16,14 +16,14 @@ public closed value Optional[iso T]
 // But how would this work when making aliases? `Array[independent T]` would need to be consistent.
 // But if you have an `mut Array[own Struct]` then an alias to is ought to still be `mut Array[own Struct]`
 // not `mut Array[mut Struct]`.
-public closed const value Optional[independent T]
+public closed const struct Optional[independent T]
 {
     case None;
     case Some(value: T);
 }
 
 // This seems to block flow typing.
-public closed const value Optional[T]
+public closed const struct Optional[T]
 {
     case None;
     case Some(value: T);
@@ -31,14 +31,14 @@ public closed const value Optional[T]
 
 
 // Hypothetical syntax for a parameter that has the same capability as self
-public closed drop[T] value Optional[T out]
+public closed drop[T] struct Optional[T out]
 {
 
 }
 
-public closed object None inherits Optional[never]
+public value None inherits Optional[never]
 
-public drop[T] value Some[self T out] inherits Optional[T]
+public drop[T] struct Some[self T out] inherits Optional[T]
 {
     let value: T;
 
@@ -68,7 +68,7 @@ public drop[T] value Some[self T out] inherits Optional[T]
         => Some[T](value);
 }
 
-public ref[p] drop[T] value Some[p T out] inherits Optional[T]
+public ref[p] drop[T] struct Some[p T out] inherits Optional[T]
 {
     let value: T;
 
@@ -89,14 +89,14 @@ public ref[p] drop[T] value Some[p T out] inherits Optional[T]
 
 // TODO this doesn't work because the independent parameter won't vary correctly for structs, it
 // will act as if the independent parameter is in a reference type.
-public transparent closed drop[T] value Optional[independent T out]
+public transparent closed drop[T] struct Optional[independent T out]
 {
 
 }
 
 public closed object None inherits Optional[never]
 
-public transparent drop[T] value Some[independent T out] inherits Optional[T]
+public transparent drop[T] struct Some[independent T out] inherits Optional[T]
 {
     let value: T;
 
@@ -106,14 +106,14 @@ public transparent drop[T] value Some[independent T out] inherits Optional[T]
 
 // -----------------
 
-public closed drop[T] value Optional[none T out]
+public closed drop[T] struct Optional[none T out]
 {
 
 }
 
-public closed object None inherits Optional[never]
+public value None inherits Optional[never]
 
-public drop[T] value Some[none T out] inherits Optional[T]
+public drop[T] struct Some[none T out] inherits Optional[T]
 {
     let value: self T;
 
@@ -122,17 +122,17 @@ public drop[T] value Some[none T out] inherits Optional[T]
 
 // -----------------
 
-public closed drop[T] value Optional
+public closed drop[T] struct Optional
 {
     public out type T;
 }
 
-public closed object None inherits Optional
+public value None inherits Optional
 {
     public out type T = never;
 }
 
-public drop[T] value Some[none T out] inherits Optional[T]
+public drop[T] struct Some[none T out] inherits Optional[T]
 {
     let value: self T;
 
@@ -142,14 +142,14 @@ public drop[T] value Some[none T out] inherits Optional[T]
 
 // -----------------
 
-public closed drop[T] value Optional[self T out]
+public closed drop[T] struct Optional[self T out]
     where T: not own struct
 {
 }
 
-public closed object None inherits Optional[never];
+public value None inherits Optional[never];
 
-public drop[T] value Some[self T out] inherits Optional[T]
+public drop[T] struct Some[self T out] inherits Optional[T]
     where T: not own struct
 {
     let value: T;

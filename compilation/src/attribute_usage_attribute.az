@@ -1,4 +1,4 @@
-published const value attribute_usage_attribute
+published const struct attribute_usage_attribute
 {
     published let valid_targets: attribute_target;
     published let inherited: bool;

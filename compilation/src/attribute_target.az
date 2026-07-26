@@ -1,7 +1,7 @@
 /// # Design
 /// Because this must be the equivalent of a flags enum, it defines a set of constants and operators
 /// on those constants.
-published const value attribute_target
+published const struct attribute_target
 {
     let value: uint64;
 

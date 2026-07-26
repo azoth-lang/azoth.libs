@@ -1,4 +1,4 @@
-public /*closed*/ const value ordering
+public /*closed*/ const struct ordering
 {
     // case precedes;
     // case equivalent;

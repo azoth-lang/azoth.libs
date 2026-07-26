@@ -1,9 +1,9 @@
-published /*closed*/ const value inline_directive
+published /*closed*/ const struct inline_directive
 {
     // per naming convention, these cases act like constants and are pascal case
 /*
-    case Never;
-    case Hint;
-    case Always;
+    case never;
+    case hint;
+    case always;
 */
 }

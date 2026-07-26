@@ -11,7 +11,7 @@
 /// multiple ways one might wish to compare them. Consider for example what order two ranges with
 /// the same start should have.
 // TODO how does one represent a range that includes the max value?
-published const value range: Iterable[int]
+published const struct range: Iterable[int]
     // where T: Steppable
     // invariant .start <= .end
 {

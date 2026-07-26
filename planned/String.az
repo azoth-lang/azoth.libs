@@ -1,6 +1,6 @@
 // Note: This is declared in the global namespace so that it will take precedence
 // over any `string` types declared in other packages.
-public const value string
+public const struct string
 {
     // For now, we implement this without using Array[byte] for simplicity
     // public let bytes: Array[byte]$ref;
