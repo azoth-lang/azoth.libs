@@ -1,7 +1,7 @@
 // TODO how do you do something like freeze the thing referenced by `Var[T]` without freezing it?
 // Perhaps `freeze ^v`? But the same doesn't quite work for a list since it may not contain any
 // elements.
-published struct Var[independent T readonly out]
+published affine struct Var[independent T readonly out]
 {
     var value: T;
 
