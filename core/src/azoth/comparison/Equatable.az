@@ -81,7 +81,7 @@ published trait Equatable[const Domain]
     ///
     /// Implementations that do not have these properties can lead to unexpected behavior.
     ///
-    /// Since reference equality implies abstract value equality it is common implement
+    /// Since reference equality implies abstract value equality it is common to implement
     /// equality by first comparing `self @== other` and returning `true` if the two are the same
     /// object. This avoids the performance cost of comparing the actual values for the cost of a
     /// very quick reference comparison.
