@@ -1,0 +1,12 @@
+/*
+public class Object_Pool[iso T]
+    where T: reference // TODO What is the correct constraint?
+// TODO are drop types allowed? Should drop be required and used as the way to clear a returned object?
+{
+    public init(mut self, initializer: const () -> T) { ... }
+
+    public fn get_or_create(mut self) -> T -> ...;
+
+    public fn return(mut self, value: T) { ... }
+}
+*/

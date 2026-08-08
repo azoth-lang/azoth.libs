@@ -63,6 +63,8 @@ published trait Equatable[const Domain]
     // published type Domain;
     // TODO where Self: Domain
     // TODO where Domain: Partially_Equatable[.Domain = Domain]
+    // TODO why constrain Domain rather than having Equatable: Partially_Equatable? Perhaps because
+    //      something can be partially equatable on a wider domain than equatable?
 
     /// Determine whether the two values are equal.
     ///
