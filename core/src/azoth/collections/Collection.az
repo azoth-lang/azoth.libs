@@ -13,4 +13,17 @@ public trait Collection[independent T out]: Iterable[aliasable T]
     /// O(1)?
     published fn clear(mut self);
     // TODO ensures .is_empty
+
+    // TODO how to implement contains?
+    // /// O(n)
+    // published fn contains[const T1](mut self, lent value: T1)
+    //     where T1: Equatable
+    //     where T: T1.Domain
+    //     => .contains(value, value.natural_equivalence);
+
+    // /// O(n)
+    // published fn contains[T1](mut self, lent value: T1, e: Equivalence[T1])
+    //     where T : T1
+
+    // TODO contains_same method for search by identity?
 }
